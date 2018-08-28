@@ -12,9 +12,9 @@ body {margin: 0px; font-family: 'Muli', sans-serif;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
-.signup-page { background: #f9f5f5; float: left; width: 100%;padding: 70px 0px;}
+.signup-page { background: #f9f5f5; float: left; width: 100%;padding: 60px 0px;}
 .container {width: 80%; margin: 0px auto;}
-.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 50px; background: white;}
+.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 40px; background: white;}
 .login-text {}
 .myform-login, .myform-signup {width: 100%; display: grid; justify-content: center;}
 .input-field {}
