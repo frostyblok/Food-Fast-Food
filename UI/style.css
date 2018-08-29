@@ -16,9 +16,8 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .signup-page { background: #f9f5f5; float: left; width: 100%;padding: 60px 0px;}
 .container {width: 80%; margin: 0px auto;}
 .login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 40px; background: white;}
-.login-text {}
+.login-text {color: green;}
 .myform-login, .myform-signup {width: 100%; display: grid; justify-content: center;}
-.input-field {}
 .forgot-password {margin-bottom: 20px;}
 .forgot-password a, .signup-link a {color: #5b985b;}
 .input-field-bttn {margin: 10px 0px;}
@@ -36,7 +35,7 @@ input[type="submit"] {
     height: 50px;
     border: none;
     color: white;
-    background: #ce5353;
+    background: #d04040;;
     cursor: pointer;
     font-size: 20px;
 }
@@ -51,12 +50,12 @@ header {
     box-shadow: 0px 5px 26px #9a9999;
 }
 .logo-name {display: flex; float: left;}
-.logo-name img {width: 70px; height: 63px;}
-/*#logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}*/
+/*.logo-name img {width: 70px; height: 63px;}*/
+#logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}
 .logo-name-style {color: #d04040;}
 .fast-color {color: green;}
-.login-signup {float: right; margin-top: 36px;}
-.login_link, .signup_link {
+.login-signup, .logout {float: right; margin-top: 36px;}
+.login_link, .signup_link, .logout_link {
     margin-left: 15px;
     padding: 8px 27px;
     background: #d04040;
@@ -102,6 +101,44 @@ header {
 .paradigm-style li h4 {font-size: 20px; margin-bottom: 0px;}
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
+
+
+
+/****************Order page**************************/
+.row-main {}
+.sidebar, .main-interface {float: left;}
+.sidebar-content {background: #f3f3f3; padding-top: 35px; box-shadow: 0px 5px 25px #cdd0cd;}
+.categories-style {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    margin-bottom: 12px;
+    color: #d04040;
+}
+.menu-history {list-style: none; padding-left: 0px;}
+.menu-history li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
+.menu-history li a {text-decoration: none; font-size: 14px; color: #504f02;}
+.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding-top: 35px; padding-left: 30px;}
+.search-food, .menu-list-title, .available-meal {float: left; width: 100%;}
+.search-food {margin-bottom: 30px;}
+.search-meal input[type="text"] {width: 479px; background: #d0cdcd;}
+.search-meal input[type="submit"] {width: 100px; font-size: 16px; color: #eae34c;}
+.menu-list-title h4 {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    color: #d04040;
+}
+.available-meal-list {padding: 0px; list-style: none;}
+.available-meal-list li {display: inline-block; width: 100%; padding: 25px 0px; border-bottom: 1px solid #e8e3e3;}
+.meal-image {float: left; margin-right: 4%;}
+.meal-image img {width: 170px;}
+.meal-name {float: left; margin-right: 23%; width: 91px;}
+.meal-name h4 {font-size: 20px;}
+.meal-price {float: left; padding-top: 40px;}
+.price {margin-right: 17px; font-style: italic;}
+.meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
+.meal-price a:hover {text-decoration: underline;}
 
 
 /**************************Site footer*********************/
