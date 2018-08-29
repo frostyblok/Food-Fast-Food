@@ -15,10 +15,9 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .col-12 {width: 100%;}
 .signup-page { background: #f9f5f5; float: left; width: 100%;padding: 60px 0px;}
 .container {width: 80%; margin: 0px auto;}
-.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 40px; background: white;}
-.login-text {}
+.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 50px; background: white;}
+.login-text {color: green;}
 .myform-login, .myform-signup {width: 100%; display: grid; justify-content: center;}
-.input-field {}
 .forgot-password {margin-bottom: 20px;}
 .forgot-password a, .signup-link a {color: #5b985b;}
 .input-field-bttn {margin: 10px 0px;}
@@ -36,7 +35,7 @@ input[type="submit"] {
     height: 50px;
     border: none;
     color: white;
-    background: #ce5353;
+    background: #d04040;
     cursor: pointer;
     font-size: 20px;
 }
