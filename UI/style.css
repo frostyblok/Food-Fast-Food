@@ -102,6 +102,25 @@ header {
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
 
+/**********************Order histoty*******************/
+
+.order-history-text, .flex-container, .flex-body {float: left; width: 100%;}
+.order-history-text h4 {margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
+.flex-container {display: flex; flex-wrap: nowrap;}
+.flex-container > div {color: #504f02;}
+.order-cont {width: 227px;}
+.date-cont {width: 140px;}
+.status-cont {width: 155px;}
+.amount-cont {width: 101px;}
+
+.flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
+.flex-body li {display: flex; flex-wrap: nowrap; padding: 10px 0px;}
+.order-disp {width: 227px;}
+.order-disp a {color: #b5335d;}
+.date-disp {width: 140px;}
+.status-disp {width: 155px;}
+.amount-disp {width: 101px;}
+
 
 
 /****************Order page**************************/
