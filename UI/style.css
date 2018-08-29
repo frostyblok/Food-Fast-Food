@@ -52,7 +52,7 @@ header {
 }
 .logo-name {display: flex; float: left;}
 .logo-name img {width: 70px; height: 63px;}
-#logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}
+/*#logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}*/
 .logo-name-style {color: #d04040;}
 .fast-color {color: green;}
 .login-signup {float: right; margin-top: 36px;}
