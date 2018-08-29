@@ -138,7 +138,7 @@ header {
 .meal-price {float: left; padding-top: 40px;}
 .price {margin-right: 17px; font-style: italic;}
 .meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
-.meal-price a:hover {text-decoration: underline;}
+.meal-price a:hover {text-decoration: underline; }
 
 
 /**************************Site footer*********************/
