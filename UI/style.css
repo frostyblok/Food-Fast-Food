@@ -1,4 +1,5 @@
 body {margin: 0px; font-family: 'Muli', sans-serif;}
+section {float: left; width: 100%; padding: 50px 0px;}
 [class*="col-"] {float: left; padding: 15px;}
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -12,7 +13,7 @@ body {margin: 0px; font-family: 'Muli', sans-serif;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
-.signup-page { background: #f9f5f5; float: left; width: 100%;padding: 70px 0px;}
+.signup-page { background: #f9f5f5; float: left; width: 100%;padding: 60px 0px;}
 .container {width: 80%; margin: 0px auto;}
 .login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 50px; background: white;}
 .login-text {color: green;}
@@ -38,3 +39,75 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 20px;
 }
+
+
+
+/*************Index Page***********************/
+header {
+    float: left;
+    width: 100%;
+    padding: 20px 0px;
+    box-shadow: 0px 5px 26px #9a9999;
+}
+.logo-name {display: flex; float: left;}
+.logo-name img {width: 70px; height: 63px;}
+/*#logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}*/
+.logo-name-style {color: #d04040;}
+.fast-color {color: green;}
+.login-signup {float: right; margin-top: 36px;}
+.login_link, .signup_link {
+    margin-left: 15px;
+    padding: 8px 27px;
+    background: #d04040;
+    color: #efe34c;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.login_link:hover, .signup_link:hover {
+    background-color: beige;
+    color: green
+
+}
+
+.effective {
+    background-image: linear-gradient(to right, #be1417, #e6acad);
+    /*background-image: url(img/rea.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;*/
+}
+.effect-text-style {    color: white;
+    margin-bottom: 9px;}
+.effect-color {    color: #efef6f;}
+.effect-texxt-style {color: white; font-style: italic; margin-top: 1px; font-family: 'Indie Flower', cursive;}
+
+.work-model {color: #be1417;}
+.how-works {    
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+.works-text {margin-bottom: 53px;}
+.works-paradigm {
+    float: left;
+    width: 100%;
+    display: flex;
+}
+.order-food {margin-right: 15%;} 
+.recieve-food {margin-right: 15%; padding-top: 31px;}
+.enjoy-food {padding-top: 31px;}
+.paradigm-style {list-style: none; padding: 0px;}
+.paradigm-style li {text-align: center;}
+.paradigm-style li h4 {font-size: 20px; margin-bottom: 0px;}
+.paradigm-style li p {font-family: 'Indie Flower', cursive;}
+#font-opac {font-size: 110px; opacity: 0.7;}
+
+
+/**************************Site footer*********************/
+footer {
+    float: left;
+    width: 100%;
+    background: #c53f41;
+    color: #dadaca;
+}
+.copyright {text-align: center; font-size: 16px;}
