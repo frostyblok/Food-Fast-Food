@@ -55,8 +55,8 @@ header {
 #logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}
 .logo-name-style {color: #d04040;}
 .fast-color {color: green;}
-.login-signup {float: right; margin-top: 36px;}
-.login_link, .signup_link {
+.login-signup, .logout {float: right; margin-top: 35px;}  /********/
+.login_link, .signup_link, .logout_link {
     margin-left: 15px;
     padding: 8px 27px;
     background: #d04040;
@@ -88,20 +88,34 @@ header {
     float: left;
     width: 100%;
 }
-.works-text {margin-bottom: 53px;}
+.works-text {margin-top: 0px; margin-bottom: 15px;;} 
 .works-paradigm {
     float: left;
     width: 100%;
     display: flex;
+    justify-content: center;
 }
 .order-food {margin-right: 15%;} 
-.recieve-food {margin-right: 15%; padding-top: 31px;}
+.recieve-food {margin-right: 15%; padding-top: 24px;}
 .enjoy-food {padding-top: 31px;}
 .paradigm-style {list-style: none; padding: 0px;}
-.paradigm-style li {text-align: center;}
+.paradigm-style li {}                                          
 .paradigm-style li h4 {font-size: 20px; margin-bottom: 0px;}
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
+
+@media only screen and (min-width : 320px) and (max-width : 741px) {
+    .logo-name-style {
+        font-size: 26px;
+    }
+    .works-paradigm {
+        width: 100%;
+        display: grid;
+        justify-content: center;
+    }
+    .order-food, .recieve-food, .enjoy-food {margin-right: 0px; padding-top: 0px; text-align: center;}
+}
+
 
 
 /**************************Site footer*********************/
