@@ -159,6 +159,41 @@ header {
 .meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
 .meal-price a:hover {text-decoration: underline; }
 
+/**************************List of orders***********************/
+
+.order-name-cont {width: 171px;}
+.action-cont {width: 200px;}
+.amount-display {width: 200px;}
+.left-acc {    
+    background: green;
+    border: none;
+    width: 60px;
+    height: 25px;
+    color: white;
+    outline: none;
+}
+.right-dec {
+    background: red;
+    border: none;
+    width: 60px;
+    height: 25px;
+    color: white;
+    outline: none;
+}
+.complete-cont input {float: left;}
+#text {float: left; margin: 0px; margin-left: 10px; display: none;}
+.dashboard-style {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    margin-bottom: 12px;
+    color: #d04040;
+}
+.orders-new {list-style: none; padding-left: 0px;}
+.orders-new li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
+.orders-new li a {text-decoration: none; font-size: 14px; color: #504f02;}
+
+
 
 /**************************Site footer*********************/
 footer {
