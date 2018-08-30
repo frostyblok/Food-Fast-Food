@@ -118,11 +118,11 @@ header {
 .menu-history {list-style: none; padding-left: 0px;}
 .menu-history li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
 .menu-history li a {text-decoration: none; font-size: 14px; color: #504f02;}
-.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding-top: 35px; padding-left: 30px;}
+.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding: 35px 0px 35px 30px;}
 .search-food, .menu-list-title, .available-meal {float: left; width: 100%;}
 .search-food {margin-bottom: 30px;}
 .search-meal input[type="text"] {width: 479px; background: #d0cdcd;}
-.search-meal input[type="submit"] {width: 100px; font-size: 16px; color: #eae34c;}
+.search-meal input[type="submit"] {width: 15.4%; font-size: 16px; color: #eae34c;}
 .menu-list-title h4 {
     margin: 0px;
     padding-left: 15px;
@@ -139,6 +139,61 @@ header {
 .price {margin-right: 17px; font-style: italic;}
 .meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
 .meal-price a:hover {text-decoration: underline; }
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name h4 {margin-bottom: 0px;}
+    .meal-price {padding-top: 21px;}
+}
+@media only screen and (min-width : 481px) and (max-width : 656px) {
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name {margin-right: 0px !important;}
+    .meal-price {margin-right: 130px; padding-top: 18px;}
+}
+@media only screen and (min-width : 656px) and (max-width : 776px) {
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name {margin-right: 0px !important;}
+    .meal-price {margin-right: 105px; padding-top: 0px;}
+}
+@media only screen and (min-width : 777px) and (max-width : 1110px) {
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name {margin-right: 0px !important;}
+}
+@media only screen and (min-width : 1111px) and (max-width : 1329px) {
+    .meal-price {padding: 0px; margin-right: 25px;}
+}
 
 
 /**************************Site footer*********************/
