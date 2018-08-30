@@ -137,7 +137,7 @@ header {
 .menu-history {list-style: none; padding-left: 0px;}
 .menu-history li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
 .menu-history li a {text-decoration: none; font-size: 14px; color: #504f02;}
-.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding-top: 35px; padding-left: 30px;}
+.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding: 35px 0px 35px 30px;}
 .search-food, .menu-list-title, .available-meal {float: left; width: 100%;}
 .search-food {margin-bottom: 30px;}
 .search-meal input[type="text"] {width: 479px; background: #d0cdcd;}
