@@ -1,5 +1,6 @@
 body {margin: 0px; font-family: 'Muli', sans-serif;}
 section {float: left; width: 100%; padding: 50px 0px;}
+.support-col {width: 31% !important;}
 [class*="col-"] {float: left; padding: 15px;}
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -39,6 +40,28 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 20px;
 }
+@media only screen and (min-width : 320px) and (max-width : 1299px)  {
+    .support-col {display: none;}
+    .signup-page {padding: 25px 0px !important;}
+    .login-card {width: 91%; display: grid; justify-content: center; padding-bottom: 6px;}
+    .form {display: grid; width: 100%; justify-content: center;}
+    input[type="text"], input[type="password"] {
+        width: 198px;
+        height: 35px;
+        margin-bottom: 13px;
+        border: none;
+        background: whitesmoke;
+        outline: none;
+    }
+    input[type="submit"] {
+        width: 101px;
+        height: 26px;
+        margin: auto;
+        display: block;
+        font-size: 16px;
+    }
+    .forgot-password a, .signup-link a, .signup-link p {font-size: 14px;}
+}
 
 
 
@@ -54,7 +77,7 @@ header {
 #logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}
 .logo-name-style {color: #d04040;}
 .fast-color {color: green;}
-.login-signup, .logout {float: right; margin-top: 36px;}
+.login-signup, .logout {float: right; margin-top: 35px;}  /********/
 .login_link, .signup_link, .logout_link {
     margin-left: 15px;
     padding: 8px 27px;
@@ -87,20 +110,53 @@ header {
     float: left;
     width: 100%;
 }
-.works-text {margin-bottom: 53px;}
+.works-text {margin-top: 0px; margin-bottom: 15px;;} 
 .works-paradigm {
     float: left;
     width: 100%;
     display: flex;
+    justify-content: center;
 }
 .order-food {margin-right: 15%;} 
-.recieve-food {margin-right: 15%; padding-top: 31px;}
+.recieve-food {margin-right: 15%; padding-top: 24px;}
 .enjoy-food {padding-top: 31px;}
 .paradigm-style {list-style: none; padding: 0px;}
-.paradigm-style li {text-align: center;}
+.paradigm-style li {}                                          
 .paradigm-style li h4 {font-size: 20px; margin-bottom: 0px;}
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
+
+@media only screen and (min-width : 320px) and (max-width : 741px) {
+    .logo-name-style {
+        font-size: 26px;
+    }
+    .works-paradigm {
+        width: 100%;
+        display: grid;
+        justify-content: center;
+    }
+    .order-food, .recieve-food, .enjoy-food {margin-right: 0px; padding-top: 0px; text-align: center;}
+}
+
+
+/**********************Order histoty*******************/
+
+.order-history-text, .flex-container, .flex-body {float: left; width: 100%;}
+.order-history-text h4 {margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
+.flex-container {display: flex; flex-wrap: nowrap;}
+.flex-container > div {color: #504f02;}
+.order-cont {width: 227px;}
+.date-cont {width: 140px;}
+.status-cont {width: 155px;}
+.amount-cont {width: 101px;}
+
+.flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
+.flex-body li {display: flex; flex-wrap: nowrap; padding: 10px 0px;}
+.order-disp {width: 227px;}
+.order-disp a {color: #b5335d;}
+.date-disp {width: 140px;}
+.status-disp {width: 155px;}
+.amount-disp {width: 101px;}
 
 
 
@@ -199,6 +255,120 @@ header {
     .logo-name-style {font-size: 27px;}
     .meal-price {padding: 0px; margin-right: 25px;}
 }
+
+/**************************List of orders***********************/
+
+.order-name-cont {width: 171px;}
+.action-cont {width: 200px;}
+.amount-display {width: 200px;}
+.left-acc {    
+    background: green;
+    border: none;
+    width: 60px;
+    height: 25px;
+    color: white;
+    outline: none;
+}
+.right-dec {
+    background: red;
+    border: none;
+    width: 60px;
+    height: 25px;
+    color: white;
+    outline: none;
+}
+.complete-cont input {float: left;}
+#text {float: left; margin: 0px; margin-left: 10px; display: none;}
+.dashboard-style {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    margin-bottom: 12px;
+    color: #d04040;
+}
+.orders-new {list-style: none; padding-left: 0px;}
+.orders-new li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
+.orders-new li a {text-decoration: none; font-size: 14px; color: #504f02;}
+
+
+
+/*************************Order Details*******************************/
+
+.order-number-style {float: left; margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
+.theorder {float: left; margin-left: 20px; font-size: 20px; font-style: italic; font-weight: 600; color: #504f02;}
+.order-details-body {display: grid; width: 98%;}
+.order-details-text {margin: 15px 0px; color: #504f02;}
+.fetchname, .fetchamount, .updatestatus {color: #65b22b; background: #e8eae2; padding: 22px 15px;}
+.input-float {float: left; position: relative; bottom: 9px;}
+#textPend {
+    float: left;
+    position: relative;
+    bottom: 11px;
+    left: 50px;
+    color: red;
+    margin: 0px;
+}
+#text {
+    float: left;
+    position: relative;
+    bottom: 11px;
+    left: 50px;
+    color: green;
+    margin: 0px;
+    display: none;
+}
+.box-holder {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.box-holder input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 19px;
+    background-color: white;
+    border: 1px solid #bcb8b8;
+}
+.box-holder:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.box-holder input:checked ~ .checkmark {
+    background-color: green;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.box-holder input:checked ~ .checkmark:after {
+    display: block;
+}
+.box-holder .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 
 
 /**************************Site footer*********************/
