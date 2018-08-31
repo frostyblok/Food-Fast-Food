@@ -16,13 +16,8 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .col-12 {width: 100%;}
 .signup-page { background: #f9f5f5; float: left; width: 100%;padding: 60px 0px;}
 .container {width: 80%; margin: 0px auto;}
-<<<<<<< HEAD
-.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 50px; background: white;}
+.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 30px; background: white;}
 .login-text {color: green; text-align: center;}
-=======
-.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 40px; background: white;}
-.login-text {color: green;}
->>>>>>> develop
 .myform-login, .myform-signup {width: 100%; display: grid; justify-content: center;}
 .forgot-password {margin-bottom: 20px;}
 .forgot-password a, .signup-link a {color: #5b985b;}
