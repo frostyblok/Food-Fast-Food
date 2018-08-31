@@ -143,6 +143,298 @@ header {
 }
 
 
+/**********************Order histoty*******************/
+
+.order-history-text, .flex-container, .flex-body {float: left; width: 100%;}
+.order-history-text h4 {margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
+.flex-container {display: flex; flex-wrap: nowrap;}
+.flex-container > div {color: #504f02;}
+.order-cont {width: 227px;}
+.date-cont {width: 140px;}
+.status-cont {width: 155px;}
+.amount-cont {width: 101px;}
+
+.flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
+.flex-body li {display: flex; flex-wrap: nowrap; padding: 10px 0px;}
+.order-disp {width: 227px;}
+.order-disp a {color: #b5335d;}
+.date-disp {width: 140px;}
+.status-disp {width: 155px;}
+.amount-disp {width: 101px;}
+
+@media only screen and (min-width : 450px) and (max-width : 572px) {
+    .date-cont, .date-disp {display: none;}
+    .status-cont {width: 100px;}
+    .amount-cont, .amount-disp {width: 86px;}
+    .status-disp {width: 100px; margin-right: 14px;}
+    .order-disp {margin-right: 25px;}
+}
+@media only screen and (min-width : 573px) and (max-width : 704px) {
+    .date-cont, .date-disp {display: none;}
+    .order-cont {margin-right: 19px;}
+    .order-disp {margin-right: 45px;}
+    .status-disp {margin-right: 51px;}
+}
+@media only screen and (min-width : 320px) and (max-width : 395px) {
+    .date-cont, .date-disp, .amount-cont, .amount-disp, .status-cont, .status-disp {display: none;}
+}
+@media only screen and (min-width: 396px) and (max-width: 449px) {
+    .date-cont, .date-disp, .amount-cont, .amount-disp {display: none;}
+    .order-cont {margin-right: 44px;}
+    .order-disp {margin-right: 41px;}
+}
+
+
+
+/****************Order page**************************/
+.row-main {}
+.sidebar, .main-interface {float: left;}
+.sidebar-content {background: #f3f3f3; padding-top: 35px; box-shadow: 0px 5px 25px #cdd0cd;}
+.categories-style {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    margin-bottom: 12px;
+    color: #d04040;
+}
+.menu-history {list-style: none; padding-left: 0px;}
+.menu-history li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
+.menu-history li a {text-decoration: none; font-size: 14px; color: #504f02;}
+.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding: 35px 0px 35px 30px;}
+.search-food, .menu-list-title, .available-meal {float: left; width: 100%;}
+.search-food {margin-bottom: 30px;}
+.search-meal input[type="text"] {width: 479px; background: #d0cdcd;}
+.search-meal input[type="submit"] {width: 15.4%; font-size: 16px; color: #eae34c;}
+.menu-list-title h4 {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    color: #d04040;
+}
+.available-meal-list {padding: 0px; list-style: none;}
+.available-meal-list li {display: inline-block; width: 100%; padding: 25px 0px; border-bottom: 1px solid #e8e3e3;}
+.meal-image {float: left; margin-right: 4%;}
+.meal-image img {width: 170px;}
+.meal-name {float: left; margin-right: 23%; width: 91px;}
+.meal-name h4 {font-size: 20px;}
+.meal-price {float: left; padding-top: 40px;}
+.price {margin-right: 17px; font-style: italic;}
+.meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
+.meal-price a:hover {text-decoration: underline; }
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .logo-name-style {font-size: 27px;}
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name h4 {margin-bottom: 0px;}
+    .meal-price {padding-top: 21px;}
+}
+@media only screen and (min-width : 481px) and (max-width : 656px) {
+    .logo-name-style {font-size: 27px;}
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name {margin-right: 0px !important;}
+    .meal-price {margin-right: 130px; padding-top: 18px;}
+}
+@media only screen and (min-width : 656px) and (max-width : 776px) {
+    .logo-name-style {font-size: 27px;}
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name {margin-right: 0px !important;}
+    .meal-price {margin-right: 105px; padding-top: 0px;}
+}
+@media only screen and (min-width : 777px) and (max-width : 1110px) {
+    .logo-name-style {font-size: 27px;}
+    .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
+    .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
+    .menu-history {display: flex; padding-left: 7px;}
+    .menu-history li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .main-interface-content {padding: 20px 0px 0px 25px;}
+    .search-food {margin-bottom: 55px;}
+    .search-meal input[type="text"] {width: 89%;}
+    .search-meal input[type="submit"] {width: 35%; font-size: 14px; margin: 0px !important;}
+    .available-meal-list {display: grid; width: 100%; justify-content: center;}
+    .meal-name {margin-right: 0px !important;}
+}
+@media only screen and (min-width : 1111px) and (max-width : 1329px) {
+    .logo-name-style {font-size: 27px;}
+    .meal-price {padding: 0px; margin-right: 25px;}
+}
+
+/**************************List of orders***********************/
+
+.order-name-cont {width: 171px;}
+.action-cont {width: 200px;}
+.amount-display {width: 200px;}
+.left-acc {    
+    background: green;
+    border: none;
+    width: 60px;
+    height: 25px;
+    color: white;
+    outline: none;
+}
+.right-dec {
+    background: red;
+    border: none;
+    width: 60px;
+    height: 25px;
+    color: white;
+    outline: none;
+}
+.complete-cont input {float: left;}
+#text {float: left; margin: 0px; margin-left: 10px; display: none;}
+.dashboard-style {
+    margin: 0px;
+    padding-left: 15px;
+    font-size: 19px;
+    margin-bottom: 12px;
+    color: #d04040;
+}
+.orders-new {list-style: none; padding-left: 0px;}
+.orders-new li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
+.orders-new li a {text-decoration: none; font-size: 14px; color: #504f02;}
+
+@media only screen and (min-width : 320px) and (max-width : 426px) {
+    .orders-new {display: flex; padding-left: 7px;}
+    .orders-new li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .flex-container {display: none;}
+    .flex-body li {display: grid; width: 100%; border-bottom: 1px solid #bfbdbd;}
+    .flex-body li div {margin-bottom: 7px;}
+}
+@media only screen and (min-width : 427px) and (max-width : 1109px) {
+    .orders-new {display: flex; padding-left: 7px;}
+    .orders-new li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .flex-container {display: none;}
+    .flex-body li {display: grid; width: 100%; border-bottom: 1px solid #bfbdbd;}
+    .flex-body li div {margin-bottom: 7px;}
+}
+@media only screen and (min-width : 1112px) {
+    .order-cont {width: 28%;}
+    .order-name-cont {width: 22%;}
+    .action-cont {width: 25%;}
+}
+
+
+
+/*************************Order Details*******************************/
+
+.order-number-style {float: left; margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
+.theorder {float: left; margin-left: 20px; font-size: 20px; font-style: italic; font-weight: 600; color: #504f02;}
+.order-details-body {display: grid; width: 96%;}
+.order-details-text {margin: 15px 0px; color: #504f02;}
+.fetchname, .fetchamount, .updatestatus {color: #65b22b; background: #e8eae2; padding: 22px 15px;}
+.input-float {float: left; position: relative; bottom: 9px;}
+#textPend {
+    float: left;
+    position: relative;
+    bottom: 11px;
+    left: 50px;
+    color: red;
+    margin: 0px;
+}
+#text {
+    float: left;
+    position: relative;
+    bottom: 11px;
+    left: 50px;
+    color: green;
+    margin: 0px;
+    display: none;
+}
+.box-holder {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.box-holder input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 19px;
+    background-color: white;
+    border: 1px solid #bcb8b8;
+}
+.box-holder:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.box-holder input:checked ~ .checkmark {
+    background-color: green;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.box-holder input:checked ~ .checkmark:after {
+    display: block;
+}
+.box-holder .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@media only screen and (min-width : 320px) and (max-width : 509px) {
+    .order-history-text {margin-bottom: 20px;}
+    .order-number-style {margin-bottom: 7px !important;}
+    .theorder {margin-left: 0px; margin-right: 85px;}
+    .order-details-body {width: 94%;}
+    .fetchname, .fetchamount, .updatestatus {padding: 10px 8px;}
+    .checkmark {top: -4px;}
+    #textPend, #text {bottom: 17px;}
+}
+@media only screen and (min-width : 510px) and (max-width : 1110px) {
+    .order-history-text {margin-bottom: 20px;}
+    .order-number-style {margin-bottom: 7px !important;}
+    .order-details-body {width: 94%;}
+    .fetchname, .fetchamount, .updatestatus {padding: 10px 8px;}
+    .checkmark {top: -4px;}
+    #textPend, #text {bottom: 17px;}
+}
+
+
+
 /**************************Site footer*********************/
 footer {
     float: left;
