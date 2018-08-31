@@ -141,6 +141,7 @@ header {
 .meal-price a:hover {text-decoration: underline; }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {
+    .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
     .menu-history {display: flex; padding-left: 7px;}
@@ -154,6 +155,7 @@ header {
     .meal-price {padding-top: 21px;}
 }
 @media only screen and (min-width : 481px) and (max-width : 656px) {
+    .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
     .menu-history {display: flex; padding-left: 7px;}
@@ -167,6 +169,7 @@ header {
     .meal-price {margin-right: 130px; padding-top: 18px;}
 }
 @media only screen and (min-width : 656px) and (max-width : 776px) {
+    .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
     .menu-history {display: flex; padding-left: 7px;}
@@ -180,6 +183,7 @@ header {
     .meal-price {margin-right: 105px; padding-top: 0px;}
 }
 @media only screen and (min-width : 777px) and (max-width : 1110px) {
+    .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
     .menu-history {display: flex; padding-left: 7px;}
@@ -192,6 +196,7 @@ header {
     .meal-name {margin-right: 0px !important;}
 }
 @media only screen and (min-width : 1111px) and (max-width : 1329px) {
+    .logo-name-style {font-size: 27px;}
     .meal-price {padding: 0px; margin-right: 25px;}
 }
 
