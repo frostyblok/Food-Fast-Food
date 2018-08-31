@@ -312,6 +312,26 @@ header {
 .orders-new li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
 .orders-new li a {text-decoration: none; font-size: 14px; color: #504f02;}
 
+@media only screen and (min-width : 320px) and (max-width : 426px) {
+    .orders-new {display: flex; padding-left: 7px;}
+    .orders-new li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .flex-container {display: none;}
+    .flex-body li {display: grid; width: 100%; border-bottom: 1px solid #bfbdbd;}
+    .flex-body li div {margin-bottom: 7px;}
+}
+@media only screen and (min-width : 427px) and (max-width : 1109px) {
+    .orders-new {display: flex; padding-left: 7px;}
+    .orders-new li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
+    .flex-container {display: none;}
+    .flex-body li {display: grid; width: 100%; border-bottom: 1px solid #bfbdbd;}
+    .flex-body li div {margin-bottom: 7px;}
+}
+@media only screen and (min-width : 1112px) {
+    .order-cont {width: 28%;}
+    .order-name-cont {width: 22%;}
+    .action-cont {width: 25%;}
+}
+
 
 
 /*************************Order Details*******************************/
