@@ -121,6 +121,28 @@ header {
 .status-disp {width: 155px;}
 .amount-disp {width: 101px;}
 
+@media only screen and (min-width : 450px) and (max-width : 572px) {
+    .date-cont, .date-disp {display: none;}
+    .status-cont {width: 100px;}
+    .amount-cont, .amount-disp {width: 86px;}
+    .status-disp {width: 100px; margin-right: 14px;}
+    .order-disp {margin-right: 25px;}
+}
+@media only screen and (min-width : 573px) and (max-width : 704px) {
+    .date-cont, .date-disp {display: none;}
+    .order-cont {margin-right: 19px;}
+    .order-disp {margin-right: 45px;}
+    .status-disp {margin-right: 51px;}
+}
+@media only screen and (min-width : 320px) and (max-width : 395px) {
+    .date-cont, .date-disp, .amount-cont, .amount-disp, .status-cont, .status-disp {display: none;}
+}
+@media only screen and (min-width: 396px) and (max-width: 449px) {
+    .date-cont, .date-disp, .amount-cont, .amount-disp {display: none;}
+    .order-cont {margin-right: 44px;}
+    .order-disp {margin-right: 41px;}
+}
+
 
 
 /****************Order page**************************/
