@@ -69,7 +69,7 @@ input[type="submit"] {
 header {
     float: left;
     width: 100%;
-    padding: 20px 0px;
+    padding: 9px 0px;
     box-shadow: 0px 5px 26px #9a9999;
 }
 .logo-name {display: flex; float: left;}
@@ -77,12 +77,8 @@ header {
 #logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}
 .logo-name-style {color: #d04040;}
 .fast-color {color: green;}
-<<<<<<< HEAD
 .login-signup, .logout {float: right; margin-top: 35px;}  /********/
-=======
-.login-signup, .logout {float: right; margin-top: 36px;}
->>>>>>> develop
-.login_link, .signup_link, .logout_link {
+.login_link, .signup_link, .logout_link, .admin_link {
     margin-left: 15px;
     padding: 8px 27px;
     background: #d04040;
@@ -91,7 +87,7 @@ header {
     text-decoration: none;
     font-weight: 500;
 }
-.login_link:hover, .signup_link:hover {
+.login_link:hover, .signup_link:hover, .admin_link:hover {
     background-color: beige;
     color: green
 
@@ -99,6 +95,7 @@ header {
 
 .effective {
     background-image: linear-gradient(to right, #be1417, #e6acad);
+    padding: 90px 0px;
     /*background-image: url(img/rea.jpg);
     background-repeat: no-repeat;
     background-size: 100%;*/
@@ -130,7 +127,9 @@ header {
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
 
-<<<<<<< HEAD
+@media only screen and (min-width : 320px) and (max-width : 454px) {
+    .signup_link, .login_link {position: relative; bottom: 24px;}
+}
 @media only screen and (min-width : 320px) and (max-width : 741px) {
     .logo-name-style {
         font-size: 26px;
@@ -143,179 +142,6 @@ header {
     .order-food, .recieve-food, .enjoy-food {margin-right: 0px; padding-top: 0px; text-align: center;}
 }
 
-
-=======
-/**********************Order histoty*******************/
-
-.order-history-text, .flex-container, .flex-body {float: left; width: 100%;}
-.order-history-text h4 {margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
-.flex-container {display: flex; flex-wrap: nowrap;}
-.flex-container > div {color: #504f02;}
-.order-cont {width: 227px;}
-.date-cont {width: 140px;}
-.status-cont {width: 155px;}
-.amount-cont {width: 101px;}
-
-.flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
-.flex-body li {display: flex; flex-wrap: nowrap; padding: 10px 0px;}
-.order-disp {width: 227px;}
-.order-disp a {color: #b5335d;}
-.date-disp {width: 140px;}
-.status-disp {width: 155px;}
-.amount-disp {width: 101px;}
-
-
-
-/****************Order page**************************/
-.row-main {}
-.sidebar, .main-interface {float: left;}
-.sidebar-content {background: #f3f3f3; padding-top: 35px; box-shadow: 0px 5px 25px #cdd0cd;}
-.categories-style {
-    margin: 0px;
-    padding-left: 15px;
-    font-size: 19px;
-    margin-bottom: 12px;
-    color: #d04040;
-}
-.menu-history {list-style: none; padding-left: 0px;}
-.menu-history li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
-.menu-history li a {text-decoration: none; font-size: 14px; color: #504f02;}
-.main-interface-content {float: left; width: 100%; background: #f3f3f3; box-shadow: 0px 5px 23px #cdd0cd; padding: 35px 0px 35px 30px;}
-.search-food, .menu-list-title, .available-meal {float: left; width: 100%;}
-.search-food {margin-bottom: 30px;}
-.search-meal input[type="text"] {width: 479px; background: #d0cdcd;}
-.search-meal input[type="submit"] {width: 100px; font-size: 16px; color: #eae34c;}
-.menu-list-title h4 {
-    margin: 0px;
-    padding-left: 15px;
-    font-size: 19px;
-    color: #d04040;
-}
-.available-meal-list {padding: 0px; list-style: none;}
-.available-meal-list li {display: inline-block; width: 100%; padding: 25px 0px; border-bottom: 1px solid #e8e3e3;}
-.meal-image {float: left; margin-right: 4%;}
-.meal-image img {width: 170px;}
-.meal-name {float: left; margin-right: 23%; width: 91px;}
-.meal-name h4 {font-size: 20px;}
-.meal-price {float: left; padding-top: 40px;}
-.price {margin-right: 17px; font-style: italic;}
-.meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
-.meal-price a:hover {text-decoration: underline; }
-
-/**************************List of orders***********************/
-
-.order-name-cont {width: 171px;}
-.action-cont {width: 200px;}
-.amount-display {width: 200px;}
-.left-acc {    
-    background: green;
-    border: none;
-    width: 60px;
-    height: 25px;
-    color: white;
-    outline: none;
-}
-.right-dec {
-    background: red;
-    border: none;
-    width: 60px;
-    height: 25px;
-    color: white;
-    outline: none;
-}
-.complete-cont input {float: left;}
-#text {float: left; margin: 0px; margin-left: 10px; display: none;}
-.dashboard-style {
-    margin: 0px;
-    padding-left: 15px;
-    font-size: 19px;
-    margin-bottom: 12px;
-    color: #d04040;
-}
-.orders-new {list-style: none; padding-left: 0px;}
-.orders-new li {border-bottom: 1px solid #e6dede; padding: 17px 0px 20px 16px;}
-.orders-new li a {text-decoration: none; font-size: 14px; color: #504f02;}
-
-
-
-/*************************Order Details*******************************/
-
-.order-number-style {float: left; margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
-.theorder {float: left; margin-left: 20px; font-size: 20px; font-style: italic; font-weight: 600; color: #504f02;}
-.order-details-body {display: grid; width: 98%;}
-.order-details-text {margin: 15px 0px; color: #504f02;}
-.fetchname, .fetchamount, .updatestatus {color: #65b22b; background: #e8eae2; padding: 22px 15px;}
-.input-float {float: left; position: relative; bottom: 9px;}
-#textPend {
-    float: left;
-    position: relative;
-    bottom: 11px;
-    left: 50px;
-    color: red;
-    margin: 0px;
-}
-#text {
-    float: left;
-    position: relative;
-    bottom: 11px;
-    left: 50px;
-    color: green;
-    margin: 0px;
-    display: none;
-}
-.box-holder {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.box-holder input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 19px;
-    width: 19px;
-    background-color: white;
-    border: 1px solid #bcb8b8;
-}
-.box-holder:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-.box-holder input:checked ~ .checkmark {
-    background-color: green;
-}
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-.box-holder input:checked ~ .checkmark:after {
-    display: block;
-}
-.box-holder .checkmark:after {
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
->>>>>>> develop
 
 /**************************Site footer*********************/
 footer {
