@@ -1,0 +1,33 @@
+{
+  "name": "food-fast-food",
+  "version": "1.0.0",
+  "description": "Fast-Food-Fast​ is a food delivery service app for a restaurant.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel-watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostyblok/Food-Fast-Food.git"
+  },
+  "author": "Fakorede Oluwakunle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frostyblok/Food-Fast-Food/issues"
+  },
+  "homepage": "https://github.com/frostyblok/Food-Fast-Food#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^2.0.7",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
