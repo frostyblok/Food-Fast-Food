@@ -67,8 +67,37 @@ class OrderController {
     };
     Order.push(newOrder);
     return res.status(201).json({
-      message: 'you have successfully Registered this business',
+      message: 'you have successfully Registered this Order',
       yourOrder: Order[Order.length - 1],
+    });
+  }
+
+  /**
+   * @description - Updates a user's Order profile
+   *
+   * @param  {Object} req - request
+   *
+   * @param  {object} res - response
+   *
+   * @return {object} - status code and  message
+   */
+  static updateOrder(req, res) {
+    const {
+      status,
+    } = req.body;
+    let updatedOrder;
+    for (let i = 0; i < Order.length; i += 1) {
+      if (Order[i].id === parseInt(req.params.id, 10)) {
+        Order[i].status = status;
+        updatedOrder = Order[i];
+        return res.status(200).json({
+          message: 'You have successfully updated your Order',
+          updatedOrder,
+        });
+      }
+    }
+    return res.status(400).json({
+      message: 'You are currently making a bad request',
     });
   }
 }
