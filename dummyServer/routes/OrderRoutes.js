@@ -1,10 +1,11 @@
 import express from 'express';
 import Order from '../controllers/OrderControllers';
 
-const orderRouter = express.Router();
+const router = express.Router();
 
-const { getAllOrders } = Order;
+const { getAllOrders, getOneOrder } = Order;
 
-orderRouter.route('/').get(getAllOrders);
+router.get('/', getAllOrders);
+router.get('/:id', getOneOrder);
 
-export default orderRouter;
+export default router;
