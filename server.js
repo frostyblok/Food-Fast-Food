@@ -10,10 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/orders', OrderRoutes);
 
-const logger = (req, res) => {
-  res.status(200).json('Welcome to Fast-Food-Fast API');
-}
-
-app.get('/', logger);
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to Fast-Food-Fast API');
+});
 
 app.listen(8000, () => console.log('Server running on localhost/8000'));
