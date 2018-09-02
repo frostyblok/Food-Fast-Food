@@ -1,9 +1,10 @@
 import express from 'express';
+import Order from '../controllers/OrderControllers';
 
 const orderRouter = express.Router();
 
-orderRouter.route('/').get((req, res) => {
-  res.status(200).json('Admin list of orders');
-});
+const { getAllOrders } = Order;
+
+orderRouter.route('/').get(getAllOrders);
 
 export default orderRouter;
