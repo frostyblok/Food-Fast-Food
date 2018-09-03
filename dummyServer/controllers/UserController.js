@@ -1,5 +1,8 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import Users from '../dummyModels/UserModels';
+
+const pass = 'succesful';
 
 /**
  *
@@ -44,9 +47,13 @@ class UsersController {
       password: bcrypt.hashSync(password, 10),
     };
     Users.push(newUser);
+
+    // Assign token for new user for 1 hour
+    const token = jwt.sign(newUser, pass, { expiresIn: '1hr' });
+    // Success message
     return res.status(201).json({
       message: 'you have successfully Registered this user',
-      newUser: Users[Users.length - 1],
+      token,
     });
   }
 
@@ -71,9 +78,14 @@ class UsersController {
             message: 'password provided does not match username',
           });
         }
-        const valueName = Users[i].userName;
+        const valueName = Users[i];
+
+        // Assign token for logged in user for 1 hour
+        const token = jwt.sign(valueName, pass, { expiresIn: '1hr' });
+        // Succeess message
         return res.status(200).json({
-          message: `logged in successfully...Welcome, ${valueName}`,
+          message: 'logged in successfully...',
+          token,
         });
       }
     }

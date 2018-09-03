@@ -1,5 +1,8 @@
+// import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import Admin from '../dummyModels/AdminModel';
 
+const pass = 'successful';
 /**
  *
  *@class AdminController
@@ -44,9 +47,12 @@ class AdminController {
             message: 'password provided does not match username',
           });
         }
-        const valueName = Admin[i].name;
+        const valueName = Admin[i];
+        // Assign token for Admin for 6 hours
+        const token = jwt.sign(valueName, pass, { expiresIn: '6hr' });
         return res.status(200).json({
-          message: `logged in successfully...Welcome, ${valueName}`,
+          message: 'logged in successfully...',
+          token,
         });
       }
     }
