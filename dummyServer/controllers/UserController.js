@@ -22,6 +22,11 @@ class UsersController {
    * @return {object} - status code and  message
    */
   static getAllUsers(req, res) {
+    if (!Users) {
+      return res.status(400).send({
+        message: 'No user found',
+      });
+    }
     return res.status(200).send({
       status: 'Success',
       Users,
@@ -40,6 +45,12 @@ class UsersController {
     const {
       userName, email, password,
     } = req.body;
+    if (userName.trim() === '' || email.trim() === '' || password.trim() === '') {
+      return res.status(400).send({
+        message: 'Please fill in all fields',
+        error: true,
+      });
+    }
     const newUser = {
       id: Users.length + 1,
       userName,

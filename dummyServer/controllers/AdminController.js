@@ -21,6 +21,11 @@ class AdminController {
    * @return {object} - status code and  message
    */
   static getAllAdmin(req, res) {
+    if (!Admin) {
+      return res.status(400).send({
+        message: 'No Admin found',
+      });
+    }
     return res.status(200).send({
       status: 'Success',
       Admin,

@@ -17,6 +17,11 @@ class OrderController {
    * @return {object} - status code and  message
    */
   static getAllOrders(req, res) {
+    if (!Order) {
+      res.status(400).send({
+        message: 'No order found',
+      });
+    }
     return res.status(200).send({
       status: 'Success',
       Order,
@@ -36,13 +41,13 @@ class OrderController {
   static getOneOrder(req, res) {
     for (let i = 0; i < Order.length; i += 1) {
       if (Order[i].id === parseInt(req.params.id, 10)) {
-        return res.status(200).json({
+        return res.status(200).send({
           status: 'success',
           Order: Order[i],
         });
       }
     }
-    return res.status(400).json({
+    return res.status(400).send({
       message: 'No order with that id found',
     });
   }
@@ -66,7 +71,7 @@ class OrderController {
       status,
     };
     Order.push(newOrder);
-    return res.status(201).json({
+    return res.status(201).send({
       message: 'you have successfully Registered this Order',
       yourOrder: Order[Order.length - 1],
     });
@@ -90,13 +95,13 @@ class OrderController {
       if (Order[i].id === parseInt(req.params.id, 10)) {
         Order[i].status = status;
         updatedOrder = Order[i];
-        return res.status(200).json({
+        return res.status(200).send({
           message: 'You have successfully updated your Order',
           updatedOrder,
         });
       }
     }
-    return res.status(400).json({
+    return res.status(400).send({
       message: 'You are currently making a bad request',
     });
   }
