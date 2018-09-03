@@ -1,9 +1,9 @@
 const UserModel = [
   {
     id: 1,
-    userName: 'Banky Moon',
+    userName: 'BankyMoon',
     email: 'ab@c.com',
-    password: 123456,
+    password: 'sarriball',
   },
 ];
 
