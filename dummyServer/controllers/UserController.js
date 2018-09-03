@@ -49,6 +49,38 @@ class UsersController {
       newUser: Users[Users.length - 1],
     });
   }
+
+  /**
+   * @description - Logs a user in
+   *
+   * @param  {Object} req - request
+   *
+   * @param  {object} res - response
+   *
+   * @memberOf UserController
+   *
+   * @return {object} - status code and  message
+   */
+
+  static loginUser(req, res) {
+    const { userName, password } = req.body;
+    for (let i = 0; i < Users.length; i += 1) {
+      if (userName === Users[i].userName) {
+        if (password !== Users[i].password) {
+          return res.status(403).json({
+            message: 'password provided does not match username',
+          });
+        }
+        const valueName = Users[i].userName;
+        return res.status(200).json({
+          message: `logged in successfully...Welcome, ${valueName}`,
+        });
+      }
+    }
+    return res.status(401).json({
+      message: 'invalid credentials',
+    });
+  }
 }
 
 export default UsersController;
