@@ -52,7 +52,7 @@ describe('User', () => {
   it('it should get all users', (done) => {
     // HTTP GET -> ALL USERS
     chai.request(app)
-      .get('api/v1/auth/users')
+      .get('/api/v1/auth/users')
       .end((err, res) => {
         expect(res.status).to.equal(200);
         done();
