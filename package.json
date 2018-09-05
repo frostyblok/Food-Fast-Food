@@ -7,6 +7,7 @@
     "test": "mocha --exit --timeout 10000 --recursive --compilers js:babel-core/register ./test/*.js",
     "lint": "eslint",
     "dev": "babel-watch server.js",
+    "start": "babel-node server.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
   },
