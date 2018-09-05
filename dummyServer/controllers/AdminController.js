@@ -2,7 +2,7 @@
 import jwt from 'jsonwebtoken';
 import Admin from '../dummyModels/AdminModel';
 
-const pass = 'successful';
+// const pass = 'successful';
 /**
  *
  *@class AdminController
@@ -54,7 +54,7 @@ class AdminController {
         }
         const valueName = Admin[i];
         // Assign token for Admin for 6 hours
-        const token = jwt.sign(valueName, pass, { expiresIn: '6hr' });
+        const token = jwt.sign(valueName, process.env.pass, { expiresIn: '6hr' });
         return res.status(200).json({
           message: 'logged in successfully...',
           token,
