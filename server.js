@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 import OrderRouter from './dummyServer/routes/OrderRoutes';
 import UserRouter from './dummyServer/routes/UsersRoutes';
 import AdminRouter from './dummyServer/routes/AdminRoutes';
 
 const app = express();
+dotenv.config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import Users from '../dummyModels/UserModels';
 
-const pass = 'succesful';
+// const pass = 'succesful';
 
 /**
  *
@@ -60,7 +60,7 @@ class UsersController {
     Users.push(newUser);
 
     // Assign token for new user for 1 hour
-    const token = jwt.sign(newUser, pass, { expiresIn: '1hr' });
+    const token = jwt.sign(newUser, process.env.pass, { expiresIn: '1hr' });
     // Success message
     return res.status(201).json({
       message: 'you have successfully Registered this user',
@@ -92,7 +92,7 @@ class UsersController {
         const valueName = Users[i];
 
         // Assign token for logged in user for 1 hour
-        const token = jwt.sign(valueName, pass, { expiresIn: '1hr' });
+        const token = jwt.sign(valueName, process.env.pass, { expiresIn: '1hr' });
         // Succeess message
         return res.status(200).json({
           message: 'logged in successfully...',
