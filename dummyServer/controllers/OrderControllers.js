@@ -1,20 +1,15 @@
 import Order from '../dummyModels/OrderModels';
+
 /**
- *
  *@class OrderController
  *@classdesc creates an OrderController Class
  */
-
 class OrderController {
 /**
-   * @description - Gets all orders
-   *
-   * @param  {Object} req - request
-   *
-   * @param  {object} res - response
-   *
-   *
-   * @return {object} - status code and  message
+   *Gets all orders
+   *@param  {Object} req - request
+   *@param  {object} res - response
+   *@return {object} - status code and  message
    */
   static getAllOrders(req, res) {
     if (!Order) {
@@ -29,14 +24,10 @@ class OrderController {
   }
 
   /**
-   * @description - Gets one order
-   *
-   * @param  {Object} req - request
-   *
-   * @param  {object} res - response
-   *
-   *
-   * @return {object} - status code and  message
+   *Gets one order
+   *@param  {Object} req - request
+   *@param  {object} res - response
+   *@return {object} - status code and  message
    */
   static getOneOrder(req, res) {
     for (let i = 0; i < Order.length; i += 1) {
@@ -53,12 +44,10 @@ class OrderController {
   }
 
   /**
-   * Place a new order
-   *
-   * @static
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @return {object} Success message when an order is placed
+   *Place a new order
+   *@param {object} req - The request object
+   *@param {object} res - The response object
+   *@return {object} Success message when an order is placed
    */
   static placeOrder(req, res) {
     const {
@@ -78,13 +67,10 @@ class OrderController {
   }
 
   /**
-   * @description - Updates a user's Order profile
-   *
-   * @param  {Object} req - request
-   *
-   * @param  {object} res - response
-   *
-   * @return {object} - status code and  message
+   *Updates a user's Order profile
+   *@param  {Object} req - request
+   *@param  {object} res - response
+   *@return {object} - status code and  message
    */
   static updateOrder(req, res) {
     const {
@@ -103,6 +89,23 @@ class OrderController {
     }
     return res.status(400).send({
       message: 'You are currently making a bad request',
+    });
+  }
+
+  /**
+   *Updates a user's Order profile
+   *@param  {Object} req - request
+   *@param  {object} res - response
+   *@return {object} - status code and  message
+   */
+  static cancelOrder(req, res) {
+    for (let i = 0; i < Order.length; i += 1) {
+      if (Order[i].id === parseInt(req.params.id, 10)) {
+        Order.splice(i, 1);
+      }
+    }
+    return res.status(200).send({
+      message: 'Order cancelled succesfully',
     });
   }
 }
