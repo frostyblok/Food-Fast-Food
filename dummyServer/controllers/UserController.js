@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import Users from '../dummyModels/UserModels';
 
-// const pass = 'succesful';
 
 /**
  *
@@ -13,12 +12,8 @@ import Users from '../dummyModels/UserModels';
 class UsersController {
   /**
    * @description - Gets all orders
-   *
    * @param  {Object} req - request
-   *
    * @param  {object} res - response
-   *
-   *
    * @return {object} - status code and  message
    */
   static getAllUsers(req, res) {
@@ -43,19 +38,14 @@ class UsersController {
    */
   static createUser(req, res) {
     const {
-      userName, email, password,
+      userName, email, password, address,
     } = req.body;
-    if (userName.trim() === '' || email.trim() === '' || password.trim() === '') {
-      return res.status(400).send({
-        message: 'Please fill in all fields',
-        error: true,
-      });
-    }
     const newUser = {
       id: Users.length + 1,
       userName,
       email,
       password: bcrypt.hashSync(password, 10),
+      address,
     };
     Users.push(newUser);
 
@@ -70,13 +60,8 @@ class UsersController {
 
   /**
    * @description - Logs a user in
-   *
    * @param  {Object} req - request
-   *
    * @param  {object} res - response
-   *
-   * @memberOf UserController
-   *
    * @return {object} - status code and  message
    */
 

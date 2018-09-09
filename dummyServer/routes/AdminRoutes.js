@@ -1,11 +1,12 @@
 import express from 'express';
 import Admin from '../controllers/AdminController';
+import { validateAdminSignin } from '../middleware/Validation';
 
 const adminRouter = express.Router();
 
 const { getAllAdmin, loginAdmin } = Admin;
 
 adminRouter.get('/admin', getAllAdmin);
-adminRouter.post('/admin', loginAdmin);
+adminRouter.post('/admin', validateAdminSignin, loginAdmin);
 
 export default adminRouter;
