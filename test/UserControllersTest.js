@@ -19,6 +19,7 @@ describe('User', () => {
       userName: 'BankyMoon',
       email: 'ab@c.com',
       password: 'sarriball',
+      address: 'Ikotun, Lagos',
     };
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -27,6 +28,101 @@ describe('User', () => {
         expect(res.body).to.have.property('message')
           .eql('you have successfully Registered this user');
         expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should register a new user', (done) => {
+    // HTTP POST -> REGISTER A NEW USER
+    const newUser = {
+      userName: 'ClintDaDrunk',
+      email: 'clint@yahoo.com',
+      password: '274683947',
+      address: 'Ikeja, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('you have successfully Registered this user');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should not register a new user with empty input field(s)', (done) => {
+    // HTTP POST -> REGISTER A NEW USER
+    const newUser = {
+      userName: '',
+      email: 'clint@yahoo.com',
+      password: '274683947',
+      address: 'Ikeja, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Please fill in all fields');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with empty input field(s)', (done) => {
+    // HTTP POST -> REGISTER A NEW USER
+    const newUser = {
+      userName: '',
+      email: '',
+      password: '',
+      address: '',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Please fill in all fields');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with invalid email address', (done) => {
+    // HTTP POST -> REGISTER A NEW USER
+    const newUser = {
+      userName: 'ShaworoIde',
+      email: 'shawaroidemode.com',
+      password: '843507497',
+      address: 'Okota, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Please enter a valid email');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with weak password', (done) => {
+    // HTTP POST -> REGISTER A NEW USER
+    const newUser = {
+      userName: 'Kaycee',
+      email: 'kc@yahoo.com',
+      password: 'gdh43',
+      address: 'Alagbole, Ogun State',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Password must at least be 6 characters long');
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -45,6 +141,40 @@ describe('User', () => {
           .eql('logged in successfully...');
         expect(res.body).to.have.property('token');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not login a user with incorrect password', (done) => {
+    // HTTP POST -> LOGIN A USER
+    const newUser = {
+      userName: 'SarafeWatata',
+      password: 'sarriball',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('password provided does not match username');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+
+  it('it should not login an unknown user', (done) => {
+    // HTTP POST -> LOGIN A USER
+    const newUser = {
+      userName: 'trespasser',
+      password: 'whocallyou3455',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('invalid credentials');
+        expect(res.status).to.equal(401);
         done();
       });
   });

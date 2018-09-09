@@ -5,9 +5,6 @@ import app from '../server';
 chai.use(chaiHttp);
 const { expect } = chai;
 
-// let authTokenLogin;
-// let authTokenSignup;
-
 
 /* global it, describe */
 
@@ -97,6 +94,17 @@ describe('Orders', () => {
         expect(res.body).to.have.property('message')
           .eql('You are currently making a bad request');
         expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('it should cancel an order', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    chai.request(app)
+      .delete('/api/v1/orders/1')
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order cancelled succesfully');
+        expect(res.status).to.equal(200);
         done();
       });
   });
