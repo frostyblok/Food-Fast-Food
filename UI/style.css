@@ -1,6 +1,5 @@
 body {margin: 0px; font-family: 'Muli', sans-serif;}
 section {float: left; width: 100%; padding: 50px 0px;}
-.support-col {width: 31% !important;}
 [class*="col-"] {float: left; padding: 15px;}
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -14,9 +13,14 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
-.signup-page { background: #f9f5f5; float: left; width: 100%;padding: 60px 0px;}
+.signup-page {background: #f5f9f7; float: left; width: 100%;padding: 49px 0px;}
+.login-page {background: #f5f9f7; float: left; width: 100%;padding: 111px 0px;}
 .container {width: 80%; margin: 0px auto;}
-.login-card {box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 30px; background: white;}
+.fff-text {float: left;}
+.fff-style {color: green; font-size: 42px; margin: 0px; margin-top: 45px; margin-bottom: 5px;}
+.coll-red {color: #d04040;}
+.fff-style-min {color: #d04040; margin: 0px; font-weight: 200; text-transform: capitalize; font-family: 'Montserrat', sans-serif;}
+.login-card {float: right; width: 389px; box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 30px; background: white;}
 .login-text {color: green; text-align: center;}
 .myform-login, .myform-signup {width: 100%; display: grid; justify-content: center;}
 .forgot-password {margin-bottom: 20px;}
