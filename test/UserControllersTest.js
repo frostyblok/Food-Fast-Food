@@ -156,8 +156,8 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('password provided does not match username');
-        expect(res.status).to.equal(403);
+          .eql('Username or Password is incorrect');
+        expect(res.status).to.equal(401);
         done();
       });
   });
@@ -173,7 +173,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('invalid credentials');
+          .eql('Username or Password is incorrect');
         expect(res.status).to.equal(401);
         done();
       });
