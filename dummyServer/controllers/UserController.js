@@ -17,14 +17,14 @@ class UsersController {
    * @return {object} - status code and  message
    */
   static getAllUsers(req, res) {
-    if (!Users) {
-      return res.status(400).send({
-        message: 'No user found',
+    if (Users) {
+      return res.status(200).send({
+        status: 'Success',
+        Users,
       });
     }
-    return res.status(200).send({
-      status: 'Success',
-      Users,
+    return res.status(400).send({
+      message: 'No user found',
     });
   }
 
@@ -68,17 +68,10 @@ class UsersController {
   static loginUser(req, res) {
     const { userName, password } = req.body;
     for (let i = 0; i < Users.length; i += 1) {
-      if (userName === Users[i].userName) {
-        if (password !== Users[i].password) {
-          return res.status(403).json({
-            message: 'password provided does not match username',
-          });
-        }
+      if (userName === Users[i].userName && (password === Users[i].password)) {
         const valueName = Users[i];
-
         // Assign token for logged in user for 1 hour
         const token = jwt.sign(valueName, process.env.pass, { expiresIn: '1hr' });
-        // Succeess message
         return res.status(200).json({
           message: 'logged in successfully...',
           token,
@@ -86,7 +79,7 @@ class UsersController {
       }
     }
     return res.status(401).json({
-      message: 'invalid credentials',
+      message: 'Username or Password is incorrect',
     });
   }
 }
