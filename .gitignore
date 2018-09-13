@@ -1,2 +1,6 @@
 ## Node modeules
 /node_modules
+## Nyc ouput
+.nyc_output
+## Dotenv
+.env
