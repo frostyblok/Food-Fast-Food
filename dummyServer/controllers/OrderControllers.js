@@ -44,7 +44,7 @@ class OrderController {
   }
 
   /**
-   *Place a new order
+   *Places a new order
    *@param {object} req - The request object
    *@param {object} res - The response object
    *@return {object} Success message when an order is placed
@@ -93,10 +93,10 @@ class OrderController {
   }
 
   /**
-   *Updates a user's Order profile
+   *deletes a user's Order profile
    *@param  {Object} req - request
    *@param  {object} res - response
-   *@return {object} - status code and  message
+   *@return {void} - status code and  message
    */
   static cancelOrder(req, res) {
     for (let i = 0; i < Order.length; i += 1) {
