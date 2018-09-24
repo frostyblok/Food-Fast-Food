@@ -13,13 +13,13 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
-.signup-page {background: #f5f9f7; float: left; width: 100%;padding: 33px 0px;}
-.login-page {background: #f5f9f7; float: left; width: 100%;padding: 84px 0px;}
+.signup-page {background: #f5f9f7; float: left; width: 100%;padding: 49px 0px;}
+.login-page {background: #f5f9f7; float: left; width: 100%;padding: 111px 0px;}
 .container {width: 80%; margin: 0px auto;}
-.sign-text {float: left;}
-.sign-style {color: green; font-size: 42px; margin: 0px; margin-top: 45px; margin-bottom: 5px;}
+.fff-text {float: left;}
+.fff-style {color: green; font-size: 42px; margin: 0px; margin-top: 45px; margin-bottom: 5px;}
 .coll-red {color: #d04040;}
-.sign-style-min {color: #d04040; margin: 0px; font-weight: 200; text-transform: capitalize; font-family: 'Montserrat', sans-serif;}
+.fff-style-min {color: #d04040; margin: 0px; font-weight: 200; text-transform: capitalize; font-family: 'Montserrat', sans-serif;}
 .login-card {float: right; width: 389px; box-shadow: 1px 2px 5px 3px #d2cbcb; padding-bottom: 30px; background: white;}
 .login-text {color: green; text-align: center;}
 .myform-login, .myform-signup {width: 100%; display: grid; justify-content: center;}
@@ -40,7 +40,7 @@ input[type="submit"] {
     height: 50px;
     border: none;
     color: white;
-    background: #39593e;
+    background: #d04040;
     cursor: pointer;
     font-size: 20px;
 }
@@ -85,7 +85,7 @@ header {
 .login-link, .signup-link, .logout-link, .admin-link {
     margin-left: 15px;
     padding: 8px 27px;
-    background: #39593e;
+    background: #194c22;
     color: white;
     border-radius: 20px;
     text-decoration: none;
@@ -101,9 +101,9 @@ header {
 .effective {
     background-image: linear-gradient(to right, #be1417, #e6acad);
     padding: 90px 0px;
-    background-image: url(./img/food3.jpg);
-    background-size: 100%;
+    /*background-image: url(img/rea.jpg);
     background-repeat: no-repeat;
+    background-size: 100%;*/
 }
 .effect-text-style {    color: white;
     margin-bottom: 9px;}
@@ -126,7 +126,8 @@ header {
 .order-food {margin-right: 15%;} 
 .recieve-food {margin-right: 15%; padding-top: 24px;}
 .enjoy-food {padding-top: 31px;}
-.paradigm-style {list-style: none; padding: 0px;}                                         
+.paradigm-style {list-style: none; padding: 0px;}
+.paradigm-style li {}                                          
 .paradigm-style li h4 {font-size: 20px; margin-bottom: 0px;}
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
@@ -191,6 +192,7 @@ header {
 
 
 /****************Order page**************************/
+.row-main {}
 .sidebar, .main-interface {float: left;}
 .sidebar-content {background: #f3f3f3; padding-top: 35px; box-shadow: 0px 5px 25px #cdd0cd;}
 .categories-style {
@@ -207,7 +209,7 @@ header {
 .search-food, .menu-list-title, .available-meal {float: left; width: 100%;}
 .search-food {margin-bottom: 30px;}
 .search-meal input[type="text"] {width: 479px; background: #d0cdcd;}
-.search-meal input[type="submit"] {width: 15.4%; font-size: 16px; color: white;}
+.search-meal input[type="submit"] {width: 15.4%; font-size: 16px; color: #eae34c;}
 .menu-list-title h4 {
     margin: 0px;
     padding-left: 15px;
@@ -222,16 +224,8 @@ header {
 .meal-name h4 {font-size: 20px;}
 .meal-price {float: left; padding-top: 40px;}
 .price {margin-right: 17px; font-style: italic;}
-.meal-price a {
-    text-decoration: none;    
-    padding: 7px 5px;
-    background: #39593e;
-    color: white;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 13px;
-}
+.meal-price a {text-decoration: none; color: #cc2929; font-size: 15px;}
+.meal-price a:hover {text-decoration: underline; }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {
     .logo-name-style {font-size: 27px;}
@@ -307,7 +301,7 @@ header {
     outline: none;
 }
 .right-dec {
-    background: #bf3939;
+    background: red;
     border: none;
     width: 60px;
     height: 25px;
@@ -362,7 +356,7 @@ header {
     position: relative;
     bottom: 11px;
     left: 50px;
-    color: #8e7c7c;;
+    color: red;
     margin: 0px;
 }
 #text {
@@ -437,7 +431,7 @@ header {
     margin-right: 15px;
 }
 .deleteOrder {
-    background: #bf3939;
+    background: red;
     border: none;
     width: 82px;
     height: 35px;
@@ -476,8 +470,3 @@ footer {
     color: #dadaca;
 }
 .copyright {text-align: center; font-size: 16px;}
-
-/*******************Error page**********************/
-
-.error-page {background: #469446;}
-.error-page-description {background: #c8c1c1;}

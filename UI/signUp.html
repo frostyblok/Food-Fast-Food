@@ -5,38 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SignUp Page</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Muli:200i,400" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
 </head>
 <body>
 	<section class="signup-page">
 		<div class="container">
-			<div class="fff-text">
-				<h1 class="fff-style">WELCOME TO<br><span class="coll-red"> FOOD</span> FAST<br>FOOD</h1>
-				<h3 class="fff-style-min">SignUp now and get your food delivered to you <br>anywhere in nigeria</h3>
+			<div class="center-font-logo"><i id="logo" class="fa fa-cutlery"></i></div>
+			<div class="sign-text">
+				<h1 class="sign-style">WELCOME TO<br><span class="coll-red"> FOOD</span> FAST<br>FOOD</h1>
+				<h3 class="sign-style-min">Sign Up now and get your food delivered to you <br>anywhere in nigeria</h3>
 			</div>
 			<div class="login-card">
 				<h1 class="login-text">Sign Up</h1>
 				<div class="form">
 					<form class="myform-signup" method="link" action="order.html">
 						<div class="input-field">
-							<input type="text" name="username" placeholder="Username">
+							<input type="text" name="username" placeholder="Username" required>
 						</div>
 						<div class="input-field">
-							<input type="text" name="email" placeholder="Email">
+							<input type="text" name="email" placeholder="Email" required>
 						</div>
 						<div class="input-field">
-							<input type="password" name="password" placeholder="Enter Password">
+							<input type="password" name="password" placeholder="Enter Password" required>
 						</div>
 						<div class="input-field">
-							<input type="text" name="address" placeholder="Enter address">
+							<input type="text" name="address" placeholder="Enter address" required>
 						</div>
 						<div class="input-field-bttn">
 							<input type="submit" name="login" value="SIGN UP">
 						</div>
-						<div class="signup-link">
-							<p>Already have an account? <a href="#">Login Here</a></p>
+						<div id="signup-link">
+							<p>Already have an account? <a href="login.html">Login Here</a></p>
 						</div>
 					</form>
 				</div>
