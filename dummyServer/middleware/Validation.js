@@ -13,13 +13,14 @@ export const validateSignup = (req, res, next) => {
     password,
     address,
   } = req.body;
-  if (userName.trim() === '' || email.trim() === '' || password.trim() === '' || address.trim() === '') {
+  const emailChecker = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  if (userName.match(/^\s*$/g) || email.match(/^\s*$/g) || password.match(/^\s*$/g) || address.match(/^\s*$/g)) {
     return res.status(400).send({
+      status: 'Error',
       message: 'Please fill in all fields',
-      error: true,
     });
   }
-  if (!email || email.search('.com') === -1 || email.search('@') === -1) {
+  if (!email || !emailChecker.test(email)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please enter a valid email',
@@ -46,7 +47,7 @@ export const validateSignin = (req, res, next) => {
     userName,
     password,
   } = req.body;
-  if (userName.trim() === '' || password.trim() === '') {
+  if (userName.match(/^\s*$/g) || password.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please fill in all fields',
@@ -73,7 +74,7 @@ export const validateAdminSignin = (req, res, next) => {
     userName,
     password,
   } = req.body;
-  if (userName.trim() === '' || password.trim() === '') {
+  if (userName.match(/^\s*$/g) || password.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please fill in all fields',
