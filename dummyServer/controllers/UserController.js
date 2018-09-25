@@ -1,9 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import Users from '../dummyModels/UserModels';
 
-dotenv.config();
 
 const UsersController = {
   /**
@@ -45,7 +43,7 @@ const UsersController = {
     Users.push(newUser);
 
     // Assign token for new user for 1 hour
-    const token = jwt.sign(newUser, process.env.PASS, { expiresIn: '1hr' });
+    const token = jwt.sign(newUser, process.env.SECRET_KEY, { expiresIn: '1hr' });
     return res.status(201).json({
       message: 'you have successfully Registered this user',
       token,
@@ -65,7 +63,7 @@ const UsersController = {
       if (userName === Users[i].userName && (password === Users[i].password)) {
         const valueName = Users[i];
         // Assign token for logged in user for 1 hour
-        const token = jwt.sign(valueName, process.env.PASS, { expiresIn: '1hr' });
+        const token = jwt.sign(valueName, process.env.SECRET_KEY, { expiresIn: '1hr' });
         return res.status(200).json({
           message: 'logged in successfully...',
           token,
