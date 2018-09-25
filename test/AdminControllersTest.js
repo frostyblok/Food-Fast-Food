@@ -79,4 +79,14 @@ describe('Admin', () => {
         done();
       });
   });
+  it('It should get all admin', (done) => {
+    chai.request(app)
+      .get('/api/v1/auth/admin')
+      .end((err, res) => {
+        expect(res.body).to.have.property('status')
+          .eql('Success');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
 });

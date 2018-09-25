@@ -9,11 +9,6 @@ const AdminController = {
    *@return {object} - status code and  message
    */
   getAllAdmin(req, res) {
-    if (!Admin) {
-      return res.status(400).json({
-        message: 'No Admin found',
-      });
-    }
     return res.status(200).json({
       status: 'Success',
       Admin,

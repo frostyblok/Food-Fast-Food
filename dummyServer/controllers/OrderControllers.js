@@ -8,11 +8,6 @@ const OrderController = {
    *@return {object} - status code and  message
    */
   getAllOrders(req, res) {
-    if (!Orders) {
-      res.status(400).json({
-        message: 'No order found',
-      });
-    }
     return res.status(200).json({
       status: 'Success',
       Orders,
@@ -92,12 +87,17 @@ const OrderController = {
    *@return {void} - status code and  message
    */
   cancelOrder(req, res) {
-    const order = Orders.findIndex(data => data.id === parseInt(req.params.id, 10));
+    const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
     if (order) {
-      Orders.splice(order, 1);
+      Orders.splice(order.id, 1);
+      return res.status(200).json({
+        status: 'Success',
+        message: 'Order cancelled succesfully',
+      });
     }
-    return res.status(200).json({
-      message: 'Order cancelled succesfully',
+    return res.status(400).json({
+      status: 'Error',
+      message: 'You are making a bad request',
     });
   },
 };
