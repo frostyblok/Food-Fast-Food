@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import Admin from '../dummyModels/AdminModel';
 
-
 const AdminController = {
   /**
    *@description - Gets all Admin
