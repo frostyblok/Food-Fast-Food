@@ -1,7 +1,9 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 import Users from '../dummyModels/UserModels';
 
+dotenv.config();
 
 const UsersController = {
   /**

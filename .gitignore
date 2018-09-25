@@ -2,5 +2,5 @@
 /node_modules
 ## Nyc ouput
 .nyc_output
-## Dotenv
+## ENV File
 .env
