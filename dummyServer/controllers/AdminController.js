@@ -1,5 +1,9 @@
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 import Admin from '../dummyModels/AdminModel';
+
+
+dotenv.config();
 
 
 const AdminController = {
