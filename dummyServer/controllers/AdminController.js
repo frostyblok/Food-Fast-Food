@@ -1,9 +1,5 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import Admin from '../dummyModels/AdminModel';
-
-
-dotenv.config();
 
 
 const AdminController = {
@@ -37,7 +33,7 @@ const AdminController = {
       if (userName === Admin[i].userName && (password === Admin[i].password)) {
         const valueName = Admin[i];
         // Assign token for Admin for 6 hours
-        const token = jwt.sign(valueName, process.env.PASS, { expiresIn: '6hr' });
+        const token = jwt.sign(valueName, process.env.SECRET_KEY, { expiresIn: '6hr' });
         return res.status(200).json({
           message: 'logged in successfully...',
           token,
