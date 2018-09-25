@@ -2,6 +2,8 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 
+/* eslint linebreak-style: 0 */
+
 chai.use(chaiHttp);
 const { expect } = chai;
 
