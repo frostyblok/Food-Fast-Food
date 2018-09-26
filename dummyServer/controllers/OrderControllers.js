@@ -1,27 +1,18 @@
-import Order from '../dummyModels/OrderModels';
+import Orders from '../dummyModels/OrderModels';
 
-/**
- *@class OrderController
- *@classdesc creates an OrderController Class
- */
-class OrderController {
+const OrderController = {
 /**
    *Gets all orders
    *@param  {Object} req - request
    *@param  {object} res - response
    *@return {object} - status code and  message
    */
-  static getAllOrders(req, res) {
-    if (!Order) {
-      res.status(400).send({
-        message: 'No order found',
-      });
-    }
-    return res.status(200).send({
+  getAllOrders(req, res) {
+    return res.status(200).json({
       status: 'Success',
-      Order,
+      Orders,
     });
-  }
+  },
 
   /**
    *Gets one order
@@ -29,42 +20,41 @@ class OrderController {
    *@param  {object} res - response
    *@return {object} - status code and  message
    */
-  static getOneOrder(req, res) {
-    for (let i = 0; i < Order.length; i += 1) {
-      if (Order[i].id === parseInt(req.params.id, 10)) {
-        return res.status(200).send({
-          status: 'success',
-          Order: Order[i],
-        });
-      }
+  getOneOrder(req, res) {
+    const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
+    if (order) {
+      return res.status(200).json({
+        status: 'success',
+        Order: order,
+      });
     }
-    return res.status(400).send({
+    return res.status(400).json({
       message: 'No order with that id found',
     });
-  }
+  },
 
   /**
-   *Place a new order
+   *Places a new order
    *@param {object} req - The request object
    *@param {object} res - The response object
    *@return {object} Success message when an order is placed
    */
-  static placeOrder(req, res) {
+  placeOrder(req, res) {
     const {
       orderName, amount, status,
     } = req.body;
     const newOrder = {
-      id: Order.length + 1,
+      id: Orders.length + 1,
       orderName,
       amount,
       status,
     };
-    Order.push(newOrder);
-    return res.status(201).send({
+    Orders.push(newOrder);
+    return res.status(201).json({
       message: 'you have successfully Registered this Order',
-      yourOrder: Order[Order.length - 1],
+      yourOrder: Orders[Orders.length - 1],
     });
-  }
+  },
 
   /**
    *Updates a user's Order profile
@@ -72,42 +62,44 @@ class OrderController {
    *@param  {object} res - response
    *@return {object} - status code and  message
    */
-  static updateOrder(req, res) {
+  updateOrder(req, res) {
     const {
       status,
     } = req.body;
-    let updatedOrder;
-    for (let i = 0; i < Order.length; i += 1) {
-      if (Order[i].id === parseInt(req.params.id, 10)) {
-        Order[i].status = status;
-        updatedOrder = Order[i];
-        return res.status(200).send({
-          message: 'You have successfully updated your Order',
-          updatedOrder,
-        });
-      }
+    const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
+    if (order) {
+      order.status = status;
+      const updatedOrder = order.status;
+      return res.status(200).json({
+        message: 'You have successfully updated your Order',
+        updatedOrder,
+      });
     }
-    return res.status(400).send({
+    return res.status(400).json({
       message: 'You are currently making a bad request',
     });
-  }
+  },
 
   /**
-   *Updates a user's Order profile
+   *deletes a user's Order profile
    *@param  {Object} req - request
    *@param  {object} res - response
-   *@return {object} - status code and  message
+   *@return {void} - status code and  message
    */
-  static cancelOrder(req, res) {
-    for (let i = 0; i < Order.length; i += 1) {
-      if (Order[i].id === parseInt(req.params.id, 10)) {
-        Order.splice(i, 1);
-      }
+  cancelOrder(req, res) {
+    const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
+    if (order) {
+      Orders.splice(order.id, 1);
+      return res.status(200).json({
+        status: 'Success',
+        message: 'Order cancelled succesfully',
+      });
     }
-    return res.status(200).send({
-      message: 'Order cancelled succesfully',
+    return res.status(400).json({
+      status: 'Error',
+      message: 'You are making a bad request',
     });
-  }
-}
+  },
+};
 
 export default OrderController;

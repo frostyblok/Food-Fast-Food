@@ -7,7 +7,7 @@ const UserModel = [
     address: 'Ikotun, Lagos',
   },
   {
-    id: 1,
+    id: 2,
     userName: 'SarafeWatata',
     email: 'sarafe@yahoo.com',
     password: 'iamlovingprogramming',

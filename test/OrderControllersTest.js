@@ -2,6 +2,8 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
 
+/* eslint linebreak-style: 0 */
+
 chai.use(chaiHttp);
 const { expect } = chai;
 
@@ -39,15 +41,8 @@ describe('Orders', () => {
   });
 
   it('it should fetch a specific order', (done) => {
-    // HTTP POST -> GET A SPECIFIC ORDER;
-    const order = {
-      orderName: 'Jollof Rice',
-      amount: 600,
-      status: 'pending',
-    };
     chai.request(app)
       .get('/api/v1/orders/1')
-      .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('status')
           .eql('success');
@@ -105,6 +100,16 @@ describe('Orders', () => {
         expect(res.body).to.have.property('message')
           .eql('Order cancelled succesfully');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('it should not cancel an unknown order', (done) => {
+    chai.request(app)
+      .delete('/api/v1/orders/6')
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are making a bad request');
+        expect(res.status).to.equal(400);
         done();
       });
   });

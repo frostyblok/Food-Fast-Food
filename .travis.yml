@@ -3,6 +3,6 @@ node_js:
 - 8.10.0
 install: npm install
 env:
-- pass=j924oiwjfdskjhgh
+- SECRET_KEY=839745FJKSDJKPLDFJFOIWRSFD
 script: npm test
 after_success: npm run coveralls
