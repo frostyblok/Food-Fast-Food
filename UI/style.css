@@ -27,7 +27,7 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .forgot-password a, .signup-link a {color: #5b985b;}
 .input-field-bttn {margin: 10px 0px;}
 input[type="text"], input[type="password"] {
-	width: 341px;
+    width: 341px;
     height: 50px;
     margin-bottom: 26px;
     border: none;
@@ -156,6 +156,7 @@ header {
 .order-history-text h4 {margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
 .flex-container {display: flex; flex-wrap: nowrap;}
 .flex-container > div {color: #504f02;}
+.flex-container-text-style {margin: 0px;}
 .order-cont {width: 100px !important;}
 .date-cont {width: 140px;}
 .food-hist-cont {width: 140px;}
@@ -504,5 +505,6 @@ footer {
 
 /*******************Error page**********************/
 
-.error-page {background: #469446;}
-.error-page-description {background: #c8c1c1;}
+.error-page {background: #6e966e;}
+.error-error {font-size: 50px;}
+.error-page-description {background: #ebebeb;}
