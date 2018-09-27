@@ -29,6 +29,7 @@ const OrderController = {
       });
     }
     return res.status(400).json({
+      status: 'Error',
       message: 'No order with that id found',
     });
   },
@@ -41,18 +42,18 @@ const OrderController = {
    */
   placeOrder(req, res) {
     const {
-      orderName, amount, status,
+      orderName, amount,
     } = req.body;
     const newOrder = {
       id: Orders.length + 1,
       orderName,
       amount,
-      status,
+      status: 'New',
     };
     Orders.push(newOrder);
     return res.status(201).json({
-      message: 'you have successfully Registered this Order',
-      yourOrder: Orders[Orders.length - 1],
+      message: 'you have successfully placed this Order',
+      yourOrder: newOrder,
     });
   },
 
@@ -68,14 +69,19 @@ const OrderController = {
     } = req.body;
     const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
     if (order) {
-      order.status = status;
-      const updatedOrder = order.status;
+      if (status.toString().toLowerCase() === 'processing' || status.toString().toLowerCase() === 'cancelled' || status.toString().toLowerCase() === 'completed') {
+        order.status = status;
+        return res.status(200).json({
+          message: 'You have successfully updated the Order',
+          order,
+        });
+      }
       return res.status(200).json({
-        message: 'You have successfully updated your Order',
-        updatedOrder,
+        message: 'You have not updated the Order',
       });
     }
     return res.status(400).json({
+      status: 'Error',
       message: 'You are currently making a bad request',
     });
   },
@@ -86,13 +92,13 @@ const OrderController = {
    *@param  {object} res - response
    *@return {void} - status code and  message
    */
-  cancelOrder(req, res) {
+  deleteOrder(req, res) {
     const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
     if (order) {
       Orders.splice(order.id, 1);
       return res.status(200).json({
         status: 'Success',
-        message: 'Order cancelled succesfully',
+        message: 'Order deleted succesfully',
       });
     }
     return res.status(400).json({
