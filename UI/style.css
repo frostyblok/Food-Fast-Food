@@ -478,6 +478,7 @@ header {
 /******************Food menu************************/
 .add-new-food {display: grid; justify-content: center; margin-bottom: 60px;}
 .add-food-name, .add-food-price, .add-food-image {color: #504f02;}
+.add-food-image {margin-bottom: 25px;}
 .add-food-name input {border: 1px solid green; display: block;}
 .add-food-price input {border: 1px solid green; display: block;}
 .add-food-image input {border: 1px solid green; display: block;}
