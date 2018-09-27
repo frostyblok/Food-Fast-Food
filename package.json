@@ -1,6 +1,10 @@
 {
   "name": "food-fast-food",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.2.0"
+  },
   "description": "Fast-Food-Fast​ is a food delivery service app for a restaurant.",
   "main": "index.js",
   "scripts": {
