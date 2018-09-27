@@ -81,7 +81,7 @@ header {
 #logo {font-size: 48px; color: #d04040; position: relative; top: 14px; margin-right: 15px;}
 .logo-name-style {color: #d04040;}
 .fast-color {color: green;}
-.login-signup, .logout {float: right; margin-top: 35px;}  /********/
+.login-signup, .logout {float: right; margin-top: 35px; margin-bottom: 8px;}  /********/
 .login-link, .signup-link, .logout-link, .admin-link {
     margin-left: 15px;
     padding: 8px 27px;
@@ -131,6 +131,9 @@ header {
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
 
+#signup-link p {color: green;}
+#signup-link p a {color: #333369;}
+
 @media only screen and (min-width : 320px) and (max-width : 454px) {
     .signup_link, .login_link {position: relative; bottom: 24px;}
 }
@@ -153,17 +156,19 @@ header {
 .order-history-text h4 {margin: 0px; font-size: 19px; margin-bottom: 40px; color: #d04040;}
 .flex-container {display: flex; flex-wrap: nowrap;}
 .flex-container > div {color: #504f02;}
-.order-cont {width: 227px !important;}
+.order-cont {width: 100px !important;}
 .date-cont {width: 140px;}
-.status-cont {width: 155px;}
+.food-hist-cont {width: 140px;}
+.status-cont {width: 130px;}
 .amount-cont {width: 101px;}
 
 .flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
 .flex-body li {display: flex; flex-wrap: nowrap; padding: 10px 0px;}
-.order-disp {width: 227px;}
+.order-disp {width: 100px;}
 .order-disp a {color: #b5335d;}
+.order-name-disp {width: 140px;}
 .date-disp {width: 140px;}
-.status-disp {width: 155px;}
+.status-disp {width: 130px;}
 .amount-disp {width: 101px;}
 
 @media only screen and (min-width : 450px) and (max-width : 572px) {
@@ -174,16 +179,16 @@ header {
     .order-disp {margin-right: 25px;}
 }
 @media only screen and (min-width : 573px) and (max-width : 704px) {
-    .date-cont, .date-disp {display: none;}
+    /*.date-cont, .date-disp {display: none;}*/
     .order-cont {margin-right: 19px;}
     .order-disp {margin-right: 45px;}
     .status-disp {margin-right: 51px;}
 }
 @media only screen and (min-width : 320px) and (max-width : 395px) {
-    .date-cont, .date-disp, .amount-cont, .amount-disp, .status-cont, .status-disp {display: none;}
-}
+    /*.date-cont, .date-disp, .amount-cont, .amount-disp, .status-cont, .status-disp {display: none;}
+*/}
 @media only screen and (min-width: 396px) and (max-width: 449px) {
-    .date-cont, .date-disp, .amount-cont, .amount-disp {display: none;}
+ /*   .date-cont, .date-disp, .amount-cont, .amount-disp {display: none;}*/
     .order-cont {margin-right: 44px;}
     .order-disp {margin-right: 41px;}
 }
@@ -296,8 +301,10 @@ header {
 /**************************List of orders***********************/
 
 .order-name-cont {width: 171px;}
-.action-cont {width: 200px;}
-.amount-display {width: 200px;}
+.action-cont {width: 143px !important;}
+.customer-cont {width: 143px;}
+.amount-display {width: 143px;}
+.action-customer {width: 143px;}
 .left-acc {    
     background: green;
     border: none;
@@ -466,6 +473,24 @@ header {
     .button-action {padding-top: 10px;}
 }
 
+
+
+/******************Food menu************************/
+.add-new-food {display: grid; justify-content: center; margin-bottom: 60px;}
+.add-food-name, .add-food-price, .add-food-image {color: #504f02;}
+.add-food-image {margin-bottom: 25px;}
+.add-food-name input {border: 1px solid green; display: block;}
+.add-food-price input {border: 1px solid green; display: block;}
+.add-food-image input {border: 1px solid green; display: block;}
+.add-food-button input {display: block; margin: auto;}
+.admin-food-edit {
+    border-radius: 4px !important;
+    text-decoration: none;
+}
+.admin-food-delete {
+    background: #d04040 !important;
+    border-radius: 4px !important;
+}
 
 
 /**************************Site footer*********************/
