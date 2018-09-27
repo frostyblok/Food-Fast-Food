@@ -1,6 +1,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
+import UserModel from '../dummyServer/dummyModels/UserModels';
+/* eslint linebreak-style: 0 */
 
 chai.use(chaiHttp);
 const { expect } = chai;
@@ -185,6 +187,7 @@ describe('User', () => {
       .get('/api/v1/auth/users')
       .end((err, res) => {
         expect(res.status).to.equal(200);
+        expect(UserModel).to.have.length(4);
         done();
       });
   });

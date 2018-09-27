@@ -40,6 +40,8 @@ const OrderController = {
    *@param {object} res - The response object
    *@return {object} Success message when an order is placed
    */
+  /* eslint linebreak-style: 0 */
+
   placeOrder(req, res) {
     const {
       orderName, amount,
