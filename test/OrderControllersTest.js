@@ -17,7 +17,6 @@ describe('Orders', () => {
     const newOrder = {
       orderName: 'Jollof Rice',
       amount: 600,
-      status: 'pending',
     };
     chai.request(app)
       .post('/api/v1/orders')
@@ -26,6 +25,23 @@ describe('Orders', () => {
         expect(res.body).to.have.property('message')
           .eql('you have successfully placed this Order');
         expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should not place an order with empty input fields', (done) => {
+    // HTTP POST -> PLACE AN ORDER
+    const newOrder = {
+      orderName: '',
+      amount: '',
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('orderName or amount can not be empty');
+        expect(res.status).to.equal(400);
         done();
       });
   });
