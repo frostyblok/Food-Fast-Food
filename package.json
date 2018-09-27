@@ -10,6 +10,8 @@
   "scripts": {
     "test": "mocha --exit --timeout 10000 --recursive --compilers js:babel-core/register ./test/*.js",
     "lint": "eslint",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
     "dev": "babel-watch server.js",
     "start": "babel-node server.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
