@@ -24,7 +24,7 @@ describe('Orders', () => {
       .send(newOrder)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('you have successfully Registered this Order');
+          .eql('you have successfully placed this Order');
         expect(res.status).to.equal(201);
         done();
       });
@@ -71,7 +71,55 @@ describe('Orders', () => {
       .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('You have successfully updated your Order');
+          .eql('You have successfully updated the Order');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should test if order status is correctly updated', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    const order = {
+      status: 'complet',
+    };
+    chai.request(app)
+      .put('/api/v1/orders/1')
+      .send(order)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You have not updated the Order');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should test if order status is correctly updated', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    const order = {
+      status: 'hwfhdfdfas',
+    };
+    chai.request(app)
+      .put('/api/v1/orders/1')
+      .send(order)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You have not updated the Order');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should test if order status is correctly updated', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    const order = {
+      status: '',
+    };
+    chai.request(app)
+      .put('/api/v1/orders/1')
+      .send(order)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You have not updated the Order');
         expect(res.status).to.equal(200);
         done();
       });
@@ -98,7 +146,7 @@ describe('Orders', () => {
       .delete('/api/v1/orders/1')
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Order cancelled succesfully');
+          .eql('Order deleted succesfully');
         expect(res.status).to.equal(200);
         done();
       });

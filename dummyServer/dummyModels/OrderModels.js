@@ -1,21 +1,22 @@
+/* eslint linebreak-style: 0 */
 const OrderModel = [
   {
     id: 1,
     orderName: 'Jollof Rice',
     amount: 600,
-    status: 'pending',
+    status: 'Processing',
   },
   {
     id: 2,
     orderName: 'Fried Rice',
     amount: 500,
-    status: 'completed',
+    status: 'Completed',
   },
   {
     id: 3,
     orderName: 'Hamburger',
     amount: 1500,
-    status: 'pending',
+    status: 'Cancelled',
   },
 ];
 
