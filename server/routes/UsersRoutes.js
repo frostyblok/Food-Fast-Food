@@ -1,5 +1,6 @@
+/* eslint linebreak-style: 0 */
 import express from 'express';
-import Users from '../controllers/UserController';
+import Users from '../dummyControllers/UserController';
 import { validateSignup, validateSignin } from '../middleware/Validation';
 
 /* eslint linebreak-style: 0 */

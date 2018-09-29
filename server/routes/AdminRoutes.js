@@ -1,5 +1,5 @@
 import express from 'express';
-import Admin from '../controllers/AdminController';
+import Admin from '../dummyControllers/AdminController';
 import { validateAdminSignin } from '../middleware/Validation';
 
 const adminRouter = express.Router();

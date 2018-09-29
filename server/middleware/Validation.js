@@ -1,3 +1,4 @@
+/* eslint linebreak-style: 0 */
 
 /**
  * @description - Checks that a user signs up with right details

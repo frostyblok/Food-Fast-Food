@@ -2,9 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
-import OrderRouter from './dummyServer/routes/OrderRoutes';
-import UserRouter from './dummyServer/routes/UsersRoutes';
-import AdminRouter from './dummyServer/routes/AdminRoutes';
+import OrderRouter from './server/routes/OrderRoutes';
+import UserRouter from './server/routes/UsersRoutes';
+import AdminRouter from './server/routes/AdminRoutes';
 
 /* eslint linebreak-style: 0 */
 

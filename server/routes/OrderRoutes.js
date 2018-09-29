@@ -1,5 +1,5 @@
 import express from 'express';
-import Order from '../controllers/OrderControllers';
+import Order from '../dummyControllers/OrderControllers';
 import { validateOrder } from '../middleware/Validation';
 
 /* eslint linebreak-style: 0 */
