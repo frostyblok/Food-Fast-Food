@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
-import UserModel from '../dummyServer/dummyModels/UserModels';
+import UserModel from '../server/dummyModels/UserModels';
 /* eslint linebreak-style: 0 */
 
 chai.use(chaiHttp);
