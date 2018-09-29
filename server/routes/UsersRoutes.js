@@ -3,6 +3,8 @@ import express from 'express';
 import Users from '../dummyControllers/UserController';
 import { validateSignup, validateSignin } from '../middleware/Validation';
 
+/* eslint linebreak-style: 0 */
+
 const userRouter = express.Router();
 
 const {

@@ -7,6 +7,8 @@
  * @param {Object} next - Call back function
  * @return {object} - status code and error message
  */
+/* eslint linebreak-style: 0 */
+
 export const validateSignup = (req, res, next) => {
   const {
     userName,
@@ -14,7 +16,7 @@ export const validateSignup = (req, res, next) => {
     password,
     address,
   } = req.body;
-  const emailChecker = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  const emailChecker = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   if (userName.match(/^\s*$/g) || email.match(/^\s*$/g) || password.match(/^\s*$/g) || address.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
@@ -85,6 +87,20 @@ export const validateAdminSignin = (req, res, next) => {
     return res.status(400).send({
       status: 'Error',
       message: 'Password must at least be 6 characters long',
+    });
+  }
+  return next();
+};
+
+export const validateOrder = (req, res, next) => {
+  const {
+    orderName,
+    amount,
+  } = req.body;
+  if (orderName.match(/^\s*$/g) || amount.toString().match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'orderName or amount can not be empty',
     });
   }
   return next();
