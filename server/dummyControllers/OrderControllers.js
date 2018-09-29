@@ -1,5 +1,5 @@
 import Orders from '../dummyModels/OrderModels';
-
+/* eslint linebreak-style: 0 */
 const OrderController = {
 /**
    *Gets all orders

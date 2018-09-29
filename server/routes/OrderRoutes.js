@@ -1,5 +1,5 @@
 import express from 'express';
-import Order from '../controllers/OrderControllers';
+import Order from '../dummyControllers/OrderControllers';
 
 /* eslint linebreak-style: 0 */
 

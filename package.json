@@ -12,6 +12,7 @@
     "lint": "eslint",
     "dev": "babel-watch server.js",
     "start": "babel-node server.js",
+    "migrate": "cd server && babel-node models/tables.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
   },
@@ -34,6 +35,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.0",
+    "make-runnable": "^1.3.6",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1"
   },
