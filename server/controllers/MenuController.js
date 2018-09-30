@@ -3,7 +3,7 @@ import db from '../models/database';
 /* eslint linebreak-style: 0 */
 const Menu = {
   /**
-    *Gets all orders
+    *Gets all menus
     *@param  {Object} req - request
     *@param  {object} res - response
     *@return {object} - status code and  message
@@ -26,7 +26,7 @@ const Menu = {
       });
   },
   /**
-    *Gets all orders
+    *Gets all menus
     *@param  {Object} req - request
     *@param  {object} res - response
     *@return {object} - status code and  message
@@ -35,8 +35,8 @@ const Menu = {
     const selectQuery = 'SELECT * FROM menu WHERE id = $1';
     const params = [req.params.id];
     db.query(selectQuery, params)
-      .then((order) => {
-        if (!order.rows[0]) {
+      .then((menu) => {
+        if (!menu.rows[0]) {
           res.status(404).json({
             status: 'Error',
             message: 'Menu does not exit',
@@ -44,7 +44,7 @@ const Menu = {
         }
         res.status(200).json({
           status: 'Success',
-          order: order.rows[0],
+          menu: menu.rows[0],
         });
       })
       .catch((err) => {
@@ -56,50 +56,50 @@ const Menu = {
       });
   },
   addMenu(req, res) {
-    const insertQuery = 'INSERT INTO orders(food_name, food_price, status, created_at) VALUES($1, $2, $3, $4) returning *';
+    const insertQuery = 'INSERT INTO menu(menu_name, menu_price, menu_image, created_at) VALUES($1, $2, $3, $4) returning *';
     const params = [
-      req.body.food_name,
-      req.body.food_price,
-      'New',
+      req.body.menu_name,
+      req.body.menu_price,
+      req.body.menu_image,
       new Date(),
     ];
     db.query(insertQuery, params)
-      .then((orders) => {
+      .then((menus) => {
         res.status(201).json({
           status: 'Success',
-          message: 'Order successfully placed',
-          order: orders.rows[0],
+          message: 'Menu successfully added',
+          menu: menus.rows[0],
         });
       })
       .catch((err) => {
         res.status(400).json({
           status: 'Error',
-          message: 'Could not place order at this time',
+          message: 'Could not add new menu at this time',
           err,
         });
       });
   },
   editMenu(req, res) {
     const { id } = req.params;
-    const { status } = req.body;
-    const findQuery = 'SELECT * FROM orders WHERE id = $1';
+    const { menu_name, menu_price, menu_image } = req.body;
+    const findQuery = 'SELECT * FROM menu WHERE id = $1';
     let params = [id];
     db.query(findQuery, params)
-      .then((order) => {
-        const updateQuery = 'UPDATE orders SET status = $1 WHERE id = $2';
-        params = [status, order.rows[0].id];
+      .then((menu) => {
+        const updateQuery = 'UPDATE menu SET menu_name = $1, menu_price = $2, menu_image = $3 WHERE id = $4';
+        params = [menu_name, menu_price, menu_image, menu.rows[0].id];
         db.query(updateQuery, params)
-          .then((newOrder) => {
+          .then((newMenu) => {
             res.status(200).json({
               status: 'Success',
-              message: 'Order updated successfully',
-              orderUpdated: newOrder.rowCount,
+              message: 'Menu updated successfully',
+              menuUpdated: newMenu.rowCount,
             });
           })
           .catch((err) => {
             res.status(400).json({
               status: 'Error',
-              message: 'Could not update order',
+              message: 'Could not update menu',
               err,
             });
           });
@@ -107,26 +107,26 @@ const Menu = {
       .catch((err) => {
         res.status(404).json({
           status: 'Error',
-          message: 'No order with that id found',
+          message: 'Menu does not exit',
           err,
         });
       });
   },
   deleteMenu(req, res) {
-    const deleteQuery = 'DELETE FROM orders WHERE id = $1 returning *';
+    const deleteQuery = 'DELETE FROM menu WHERE id = $1 returning *';
     const params = [req.params.id];
     db.query(deleteQuery, params)
-      .then((order) => {
-        if (!order.rows[0]) {
+      .then((menu) => {
+        if (!menu.rows[0]) {
           res.status(404).json({
             status: 'Error',
-            message: 'No order with the id found',
+            message: 'No menu with the id found',
           });
         }
         res.status(200).json({
           status: 'Success',
-          message: 'Order successfully deleted',
-          deletedOrder: order.rows[0],
+          message: 'Menu successfully deleted',
+          deletedMenu: menu.rows[0],
         });
       })
       .catch((err) => {
