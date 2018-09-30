@@ -15,8 +15,8 @@ describe('Orders', () => {
   it('it should place an order', (done) => {
     // HTTP POST -> PLACE AN ORDER
     const newOrder = {
-      orderName: 'Jollof Rice',
-      amount: 600,
+      food_name: 'Jollof Rice',
+      food_price: 600,
     };
     chai.request(app)
       .post('/api/v1/orders')

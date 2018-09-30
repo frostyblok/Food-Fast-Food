@@ -1,26 +1,26 @@
 import db from '../models/database';
 /* eslint linebreak-style: 0 */
 
-const OrderController = {
+const Orders = {
   /**
      *Gets all orders
      *@param  {Object} req - request
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  getAllOrders(req, res) {
-    const selectAllOrders = 'SELECT * FROM orders';
-    db.query(selectAllOrders)
+  selectAllOrders(req, res) {
+    const query = 'SELECT * FROM orders';
+    db.query(query)
       .then((orders) => {
         res.status(200).json({
           status: 'Succes',
-          orders,
+          allOrders: orders.rows,
         });
       })
       .catch((err) => {
-        res.status(400).json({
+        res.status(404).json({
           status: 'Error',
-          message: 'Could not fetch all orders',
+          message: 'Could not fetch orders',
           err,
         });
       });
@@ -32,18 +32,20 @@ const OrderController = {
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  getOneOrder(req, res) {
-    const selectOneOrder = 'SELECT * FROM reflections WHERE id = $1';
+  selectOneOrder(req, res) {
+    const queryText = 'SELECT * FROM orders WHERE id = $1';
     const params = [req.params.id];
-    db.query(selectOneOrder, params)
+    db.query(queryText, params)
       .then((order) => {
         res.status(200).json({
           status: 'Success',
-          order: row[0],
-        })
+          order: order.rows[0],
+        });
+      })
       .catch((err) => {
-        res.status(400).json({
+        res.status(404).json({
           status: 'Error',
+          message: 'Order not found',
           err,
         });
       });
@@ -55,31 +57,29 @@ const OrderController = {
      *@param {object} res - The response object
      *@return {object} Success message when an order is placed
      */
-  placeOrder(req, res) {
-    const queryText = `INSERT INTO orders(order_id, food_name, food_price, status, created_at) VALUES($1, $2, $3, $4) returning *`;
-    const { order_id, food_name, food_price, } = req.body;
+  createOrder(req, res) {
+    const insertQuery = 'INSERT INTO orders(food_name, food_price, status, created_at) VALUES($1, $2, $3, $4) returning *';
     const params = [
-      order_id,
-      food_name,
-      food_price,
+      req.body.food_name,
+      req.body.food_price,
       'New',
       new Date(),
     ];
-    db.query(queryText, params)
-    .then((order) => {
-      res.status(200).json({
-        status: 'Success',
-        message: 'Order successfully placed',
-        order,
+    db.query(insertQuery, params)
+      .then((orders) => {
+        res.status(201).json({
+          status: 'Success',
+          message: 'Order successfully placed',
+          order: orders.rows[0],
+        });
+      })
+      .catch((err) => {
+        res.status(400).json({
+          status: 'Error',
+          message: 'Could not place order at this time',
+          err,
+        });
       });
-    })
-    .catch((err) => {
-      res.status(200).json({
-        status: 'Error',
-        message: 'Could not place order at this time',
-        err,
-      });
-    });
   },
 
   /**
@@ -88,27 +88,44 @@ const OrderController = {
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  updateOrder(req, res) {
-    const {
-      status,
-    } = req.body;
-    const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
-    if (order) {
-      if (status.toString().toLowerCase() === 'processing' || status.toString().toLowerCase() === 'cancelled' || status.toString().toLowerCase() === 'completed') {
-        order.status = status;
-        return res.status(200).json({
-          message: 'You have successfully updated the Order',
-          order,
-        });
-      }
-      return res.status(200).json({
-        message: 'You have not updated the Order',
+  updateOneOrder(req, res) {
+    const { id } = req.params;
+    const { status } = req.body;
+    if (!status.toString().toLowerCase() === 'processing' || !status.toString().toLowerCase() === 'cancelled' || !status.toString().toLowerCase() === 'completed') {
+      res.status(400).json({
+        status: 'Error',
+        message: 'The command will not update your status',
       });
     }
-    return res.status(400).json({
-      status: 'Error',
-      message: 'You are currently making a bad request',
-    });
+    const findQuery = 'SELECT * FROM orders WHERE id = $1';
+    let params = [id];
+    db.query(findQuery, params)
+      .then((order) => {
+        const updateQuery = 'UPDATE orders SET status = $1 WHERE id = $2';
+        params = [status, order.rows[0].id];
+        db.query(updateQuery, params)
+          .then((newOrder) => {
+            res.status(200).json({
+              status: 'Success',
+              message: 'Order updated successfully',
+              orderUpdated: newOrder.rowCount,
+            });
+          })
+          .catch((err) => {
+            res.status(400).json({
+              status: 'Error',
+              message: 'Could not update order',
+              err,
+            });
+          });
+      })
+      .catch((err) => {
+        res.status(404).json({
+          status: 'Error',
+          message: 'No order with that id found',
+          err,
+        });
+      });
   },
 
   /**
@@ -117,20 +134,25 @@ const OrderController = {
      *@param  {object} res - response
      *@return {void} - status code and  message
      */
-  deleteOrder(req, res) {
-    const order = Orders.find(data => data.id === parseInt(req.params.id, 10));
-    if (order) {
-      Orders.splice(order.id, 1);
-      return res.status(200).json({
-        status: 'Success',
-        message: 'Order deleted succesfully',
+  deleteOneOrder(req, res) {
+    const deleteQuery = 'DELETE FROM orders WHERE id = $1 returning *';
+    const params = [req.params.id];
+    db.query(deleteQuery, params)
+      .then((order) => {
+        res.status(200).json({
+          status: 'Success',
+          message: 'Order successfully deleted',
+          deletedOrder: order.rows[0],
+        });
+      })
+      .catch((err) => {
+        res.status(404).json({
+          status: 'Error',
+          message: 'No order with that id found',
+          err,
+        });
       });
-    }
-    return res.status(400).json({
-      status: 'Error',
-      message: 'You are making a bad request',
-    });
   },
 };
 
-export default OrderController;
+export default Orders;

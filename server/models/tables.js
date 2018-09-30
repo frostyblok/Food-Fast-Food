@@ -1,5 +1,6 @@
 import { Client } from 'pg';
 import dotenv from 'dotenv';
+/* eslint linebreak-style: 0 */
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ const createTable = () => {
 
   );
   CREATE TABLE IF NOT EXISTS menu (
-    menu_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     menu_name VARCHAR (100) UNIQUE NOT NULL,
     menu_price int NOT NULL,
     menu_image VARCHAR (255) NOT NULL,
@@ -34,15 +35,11 @@ const createTable = () => {
 
   );
   CREATE TABLE IF NOT EXISTS orders (
-    order_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     food_name VARCHAR (100) UNIQUE NOT NULL,
     food_price int NOT NULL,
     status VARCHAR (100) NOT NULL,
-    user_id INT NOT NULL,
-    food_id INT NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-    FOREIGN KEY (food_id) REFERENCES menu (menu_id) ON DELETE CASCADE
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 
   );
   `;
