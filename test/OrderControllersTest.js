@@ -11,9 +11,11 @@ const { expect } = chai;
 /* global it, describe */
 
 // Test for POST requests
+
+const id = 1;
+const incorrectId = 800;
 describe('Orders', () => {
   it('it should place an order', (done) => {
-    // HTTP POST -> PLACE AN ORDER
     const newOrder = {
       food_name: 'Jollof Rice',
       food_price: 600,
@@ -23,7 +25,7 @@ describe('Orders', () => {
       .send(newOrder)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('you have successfully placed this Order');
+          .eql('Order successfully placed');
         expect(res.status).to.equal(201);
         done();
       });
@@ -32,8 +34,8 @@ describe('Orders', () => {
   it('it should not place an order with empty input fields', (done) => {
     // HTTP POST -> PLACE AN ORDER
     const newOrder = {
-      orderName: '',
-      amount: '',
+      food_name: '',
+      food_price: '',
     };
     chai.request(app)
       .post('/api/v1/orders')
@@ -58,10 +60,10 @@ describe('Orders', () => {
 
   it('it should fetch a specific order', (done) => {
     chai.request(app)
-      .get('/api/v1/orders/1')
+      .get(`/api/v1/orders/${id}`)
       .end((err, res) => {
         expect(res.body).to.have.property('status')
-          .eql('success');
+          .eql('Success');
         expect(res.status).to.equal(200);
         done();
       });
@@ -70,9 +72,11 @@ describe('Orders', () => {
   it('it should not fetch a specific order that does not exit', (done) => {
     // HTTP GET -> GET A SPECIFIC ORDER;
     chai.request(app)
-      .get('/api/v1/orders/7')
+      .get(`/api/v1/orders/${incorrectId}`)
       .end((err, res) => {
-        expect(res.status).to.equal(400);
+        expect(res.status).to.equal(404);
+        expect(res.body).to.have.property('message')
+          .eql('No order found');
         done();
       });
   });
@@ -83,63 +87,16 @@ describe('Orders', () => {
       status: 'completed',
     };
     chai.request(app)
-      .put('/api/v1/orders/1')
+      .put(`/api/v1/orders/${id}`)
       .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('You have successfully updated the Order');
+          .eql('Order updated successfully');
         expect(res.status).to.equal(200);
         done();
       });
   });
 
-  it('it should test if order status is correctly updated', (done) => {
-    // HTTP POST -> LOGIN ADMIN
-    const order = {
-      status: 'complet',
-    };
-    chai.request(app)
-      .put('/api/v1/orders/1')
-      .send(order)
-      .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('You have not updated the Order');
-        expect(res.status).to.equal(200);
-        done();
-      });
-  });
-
-  it('it should test if order status is correctly updated', (done) => {
-    // HTTP POST -> LOGIN ADMIN
-    const order = {
-      status: 'hwfhdfdfas',
-    };
-    chai.request(app)
-      .put('/api/v1/orders/1')
-      .send(order)
-      .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('You have not updated the Order');
-        expect(res.status).to.equal(200);
-        done();
-      });
-  });
-
-  it('it should test if order status is correctly updated', (done) => {
-    // HTTP POST -> LOGIN ADMIN
-    const order = {
-      status: '',
-    };
-    chai.request(app)
-      .put('/api/v1/orders/1')
-      .send(order)
-      .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('You have not updated the Order');
-        expect(res.status).to.equal(200);
-        done();
-      });
-  });
 
   it('it should not update an unknown order', (done) => {
     // HTTP PUT -> UPDATE ORDER;
@@ -147,33 +104,33 @@ describe('Orders', () => {
       status: 'completed',
     };
     chai.request(app)
-      .put('/api/v1/orders/5')
+      .put(`/api/v1/orders/${incorrectId}`)
       .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('You are currently making a bad request');
-        expect(res.status).to.equal(400);
+          .eql('No order with that id found');
+        expect(res.status).to.equal(404);
         done();
       });
   });
-  it('it should cancel an order', (done) => {
+  it('it should delete an order', (done) => {
     // HTTP POST -> LOGIN ADMIN
     chai.request(app)
-      .delete('/api/v1/orders/1')
+      .delete(`/api/v1/orders/${id}`)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Order deleted succesfully');
+          .eql('Order successfully deleted');
         expect(res.status).to.equal(200);
         done();
       });
   });
-  it('it should not cancel an unknown order', (done) => {
+  it('it should not delete an unknown order', (done) => {
     chai.request(app)
-      .delete('/api/v1/orders/6')
+      .delete(`/api/v1/orders/${incorrectId}`)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('You are making a bad request');
-        expect(res.status).to.equal(400);
+          .eql('No order with the id found');
+        expect(res.status).to.equal(404);
         done();
       });
   });
