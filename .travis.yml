@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - 8.10.0
 install: npm install
+services:
+  - postgresql
 env:
 - SECRET_KEY=839745FJKSDJKPLDFJFOIWRSFD
 script: npm test
