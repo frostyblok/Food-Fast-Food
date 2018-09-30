@@ -105,3 +105,18 @@ export const validateOrder = (req, res, next) => {
   }
   return next();
 };
+
+export const validateMenu = (req, res, next) => {
+  const {
+    menu_name,
+    menu_price,
+    menu_image,
+  } = req.body;
+  if (menu_name.match(/^\s*$/g) || menu_price.toString().match(/^\s*$/g) || menu_image.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Menu name, price and image can not be empty',
+    });
+  }
+  return next();
+};
