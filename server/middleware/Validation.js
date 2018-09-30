@@ -94,10 +94,10 @@ export const validateAdminSignin = (req, res, next) => {
 
 export const validateOrder = (req, res, next) => {
   const {
-    orderName,
-    amount,
+    food_name,
+    food_price,
   } = req.body;
-  if (orderName.match(/^\s*$/g) || amount.toString().match(/^\s*$/g)) {
+  if (food_name.match(/^\s*$/g) || food_price.toString().match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'orderName or amount can not be empty',

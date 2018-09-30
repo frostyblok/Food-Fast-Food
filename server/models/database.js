@@ -9,7 +9,11 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-const database = {
+pool.on('connect', () => {
+  console.log('Connection to database successful');
+});
+
+const db = {
   query(queryText, params) {
     return new Promise((resolve, reject) => {
       pool.query(queryText, params)
@@ -24,4 +28,4 @@ const database = {
 };
 
 
-export default database;
+export default db;
