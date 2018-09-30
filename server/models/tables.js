@@ -36,7 +36,7 @@ const createTable = () => {
   );
   CREATE TABLE IF NOT EXISTS orders (
     id SERIAL PRIMARY KEY,
-    food_name VARCHAR (100) UNIQUE NOT NULL,
+    food_name VARCHAR (100) NOT NULL,
     food_price int NOT NULL,
     status VARCHAR (100) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

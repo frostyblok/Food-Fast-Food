@@ -5,8 +5,15 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+let sslValue;
+if (process.env === 'production') {
+  sslValue = true;
+} else {
+  sslValue = false;
+}
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL, ssl: sslValue,
 });
 
 pool.on('connect', () => {

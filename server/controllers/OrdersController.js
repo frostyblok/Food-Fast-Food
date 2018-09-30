@@ -37,15 +37,21 @@ const Orders = {
     const params = [req.params.id];
     db.query(queryText, params)
       .then((order) => {
+        if (!order.rows[0]) {
+          res.status(404).json({
+            status: 'Error',
+            message: 'No order found',
+          });
+        }
         res.status(200).json({
           status: 'Success',
           order: order.rows[0],
         });
       })
       .catch((err) => {
-        res.status(404).json({
+        res.status(500).json({
           status: 'Error',
-          message: 'Order not found',
+          message: 'could not complete request at this time',
           err,
         });
       });
@@ -91,12 +97,6 @@ const Orders = {
   updateOneOrder(req, res) {
     const { id } = req.params;
     const { status } = req.body;
-    if (!status.toString().toLowerCase() === 'processing' || !status.toString().toLowerCase() === 'cancelled' || !status.toString().toLowerCase() === 'completed') {
-      res.status(400).json({
-        status: 'Error',
-        message: 'The command will not update your status',
-      });
-    }
     const findQuery = 'SELECT * FROM orders WHERE id = $1';
     let params = [id];
     db.query(findQuery, params)
@@ -139,6 +139,12 @@ const Orders = {
     const params = [req.params.id];
     db.query(deleteQuery, params)
       .then((order) => {
+        if (!order.rows[0]) {
+          res.status(404).json({
+            status: 'Error',
+            message: 'No order with the id found',
+          });
+        }
         res.status(200).json({
           status: 'Success',
           message: 'Order successfully deleted',
@@ -146,9 +152,9 @@ const Orders = {
         });
       })
       .catch((err) => {
-        res.status(404).json({
+        res.status(500).json({
           status: 'Error',
-          message: 'No order with that id found',
+          message: 'could not complete request at this time',
           err,
         });
       });
