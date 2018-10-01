@@ -19,7 +19,7 @@ const createTable = () => {
   DROP TABLE IF EXISTS orders CASCADE;
   CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    user_name VARCHAR (100) UNIQUE NOT NULL,
+    user_name VARCHAR (100) NOT NULL,
     email VARCHAR (255) UNIQUE NOT NULL,
     password VARCHAR (100) NOT NULL,
     address VARCHAR (255) NOT NULL,

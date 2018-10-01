@@ -16,9 +16,8 @@ const { expect } = chai;
 // Test for POST requests
 describe('User', () => {
   it('it should register a new user', (done) => {
-    // HTTP POST -> REGISTER A NEW USER
     const newUser = {
-      userName: 'BankyMoon',
+      user_name: 'BankyMoon',
       email: 'ab@c.com',
       password: 'sarriball',
       address: 'Ikotun, Lagos',
@@ -28,16 +27,15 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('you have successfully Registered this user');
+          .eql('User registered successfully');
         expect(res.status).to.equal(201);
         done();
       });
   });
 
   it('it should register a new user', (done) => {
-    // HTTP POST -> REGISTER A NEW USER
     const newUser = {
-      userName: 'ClintDaDrunk',
+      user_name: 'ClintDaDrunk',
       email: 'clint@yahoo.com',
       password: '274683947',
       address: 'Ikeja, Lagos',
@@ -47,16 +45,15 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('you have successfully Registered this user');
+          .eql('User registered successfully');
         expect(res.status).to.equal(201);
         done();
       });
   });
 
   it('it should not register a new user with empty input field(s)', (done) => {
-    // HTTP POST -> REGISTER A NEW USER
     const newUser = {
-      userName: '',
+      user_name: '',
       email: 'clint@yahoo.com',
       password: '274683947',
       address: 'Ikeja, Lagos',
@@ -73,9 +70,9 @@ describe('User', () => {
   });
 
   it('it should not register a new user with empty input field(s)', (done) => {
-    // HTTP POST -> REGISTER A NEW USER
+    
     const newUser = {
-      userName: '',
+      user_name: '',
       email: '',
       password: '',
       address: '',
@@ -94,7 +91,7 @@ describe('User', () => {
   it('it should not register a new user with invalid email address', (done) => {
     // HTTP POST -> REGISTER A NEW USER
     const newUser = {
-      userName: 'ShaworoIde',
+      user_name: 'ShaworoIde',
       email: 'shawaroidemode.com',
       password: '843507497',
       address: 'Okota, Lagos',
@@ -113,7 +110,7 @@ describe('User', () => {
   it('it should not register a new user with weak password', (done) => {
     // HTTP POST -> REGISTER A NEW USER
     const newUser = {
-      userName: 'Kaycee',
+      user_name: 'Kaycee',
       email: 'kc@yahoo.com',
       password: 'gdh43',
       address: 'Alagbole, Ogun State',
@@ -132,7 +129,7 @@ describe('User', () => {
   it('it should login a user', (done) => {
     // HTTP POST -> LOGIN A USER
     const newUser = {
-      userName: 'BankyMoon',
+      email: 'ab@c.com',
       password: 'sarriball',
     };
     chai.request(app)
@@ -140,7 +137,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('logged in successfully...');
+          .eql('User logged in successfully');
         expect(res.body).to.have.property('token');
         expect(res.status).to.equal(200);
         done();
@@ -150,7 +147,7 @@ describe('User', () => {
   it('it should not login a user with incorrect password', (done) => {
     // HTTP POST -> LOGIN A USER
     const newUser = {
-      userName: 'SarafeWatata',
+      email: 'clint@yahoo.com',
       password: 'sarriball',
     };
     chai.request(app)
@@ -158,7 +155,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Username or Password is incorrect');
+          .eql('Incorrect username or password');
         expect(res.status).to.equal(401);
         done();
       });
@@ -167,7 +164,7 @@ describe('User', () => {
   it('it should not login an unknown user', (done) => {
     // HTTP POST -> LOGIN A USER
     const newUser = {
-      userName: 'trespasser',
+      email: 'trespasser',
       password: 'whocallyou3455',
     };
     chai.request(app)
@@ -175,19 +172,8 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Username or Password is incorrect');
+          .eql('Incorrect username or password');
         expect(res.status).to.equal(401);
-        done();
-      });
-  });
-
-  it('it should get all users', (done) => {
-    // HTTP GET -> ALL USERS
-    chai.request(app)
-      .get('/api/v1/auth/users')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(UserModel).to.have.length(4);
         done();
       });
   });
