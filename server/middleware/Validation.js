@@ -74,10 +74,10 @@ export const validateSignin = (req, res, next) => {
  */
 export const validateAdminSignin = (req, res, next) => {
   const {
-    userName,
+    email,
     password,
   } = req.body;
-  if (userName.match(/^\s*$/g) || password.match(/^\s*$/g)) {
+  if (email.match(/^\s*$/g) || password.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please fill in all fields',
