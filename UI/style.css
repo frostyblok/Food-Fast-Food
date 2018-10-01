@@ -31,7 +31,7 @@ input[type="text"], input[type="password"] {
     height: 50px;
     margin-bottom: 26px;
     border: none;
-    background: whitesmoke;
+    background: #f1efef;
     padding-left: 15px;
     outline: none;
 }
@@ -443,6 +443,7 @@ header {
     outline: none;
     border-radius: 7px;
     margin-right: 15px;
+    cursor: pointer;
 }
 .deleteOrder {
     background: #bf3939;
@@ -452,6 +453,7 @@ header {
     color: white;
     outline: none;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 509px) {
