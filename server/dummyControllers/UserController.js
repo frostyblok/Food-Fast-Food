@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import Users from '../dummyModels/UserModels';
 
-
+/* eslint linebreak-style: 0 */
 const UsersController = {
   /**
    * @description - Gets all orders
