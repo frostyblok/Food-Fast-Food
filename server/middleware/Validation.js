@@ -11,13 +11,13 @@
 
 export const validateSignup = (req, res, next) => {
   const {
-    userName,
+    user_name,
     email,
     password,
     address,
   } = req.body;
   const emailChecker = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  if (userName.match(/^\s*$/g) || email.match(/^\s*$/g) || password.match(/^\s*$/g) || address.match(/^\s*$/g)) {
+  if (user_name.match(/^\s*$/g) || email.match(/^\s*$/g) || password.match(/^\s*$/g) || address.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please fill in all fields',
@@ -47,10 +47,10 @@ export const validateSignup = (req, res, next) => {
  */
 export const validateSignin = (req, res, next) => {
   const {
-    userName,
+    email,
     password,
   } = req.body;
-  if (userName.match(/^\s*$/g) || password.match(/^\s*$/g)) {
+  if (email.match(/^\s*$/g) || password.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please fill in all fields',

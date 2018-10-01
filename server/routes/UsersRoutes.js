@@ -1,6 +1,6 @@
 /* eslint linebreak-style: 0 */
 import express from 'express';
-import Users from '../dummyControllers/UserController';
+import Users from '../controllers/UserController';
 import { validateSignup, validateSignin } from '../middleware/Validation';
 
 /* eslint linebreak-style: 0 */
@@ -8,11 +8,10 @@ import { validateSignup, validateSignin } from '../middleware/Validation';
 const userRouter = express.Router();
 
 const {
-  createUser, getAllUsers, loginUser,
+  userLogin, userSignup,
 } = Users;
 
-userRouter.post('/signup', validateSignup, createUser);
-userRouter.post('/login', validateSignin, loginUser);
-userRouter.get('/users', getAllUsers);
+userRouter.post('/signup', validateSignup, userSignup);
+userRouter.post('/login', validateSignin, userLogin);
 
 export default userRouter;
