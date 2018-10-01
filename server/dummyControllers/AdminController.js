@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import Admin from '../dummyModels/AdminModel';
-
+/* eslint linebreak-style: 0 */
 const AdminController = {
   /**
    *@description - Gets all Admin

@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
-import UserModel from '../server/dummyModels/UserModels';
+
 /* eslint linebreak-style: 0 */
 
 chai.use(chaiHttp);
@@ -70,7 +70,6 @@ describe('User', () => {
   });
 
   it('it should not register a new user with empty input field(s)', (done) => {
-    
     const newUser = {
       user_name: '',
       email: '',
