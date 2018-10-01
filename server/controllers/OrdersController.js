@@ -64,8 +64,9 @@ const Orders = {
      *@return {object} Success message when an order is placed
      */
   createOrder(req, res) {
-    const insertQuery = 'INSERT INTO orders(food_name, food_price, status, created_at) VALUES($1, $2, $3, $4) returning *';
+    const insertQuery = 'INSERT INTO orders(user_id, food_name, food_price, status, created_at) VALUES($1, $2, $3, $4, $5) returning *';
     const params = [
+      req.decoded.id,
       req.body.food_name,
       req.body.food_price,
       'New',
@@ -155,6 +156,26 @@ const Orders = {
         res.status(500).json({
           status: 'Error',
           message: 'could not complete request at this time',
+          err,
+        });
+      });
+  },
+  orderHistory(req, res) {
+    const selectQuery = 'SELECT * FROM orders WHERE user_id = $1';
+    const params = [
+      req.params.id,
+    ];
+    db.query(selectQuery, params)
+      .then((orders) => {
+        res.status(200).json({
+          status: 'Success',
+          orders: orders.rows,
+        });
+      })
+      .catch((err) => {
+        res.status(400).json({
+          status: 'Error',
+          message: 'Could not fetch order',
           err,
         });
       });

@@ -24,17 +24,18 @@ const UsersController = {
           });
         }
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-        const insertQuery = 'INSERT INTO users(user_name, email, password, address, created_at) VALUES($1, $2, $3, $4, $5) returning *';
+        const insertQuery = 'INSERT INTO users(user_name, email, password, address, role) VALUES($1, $2, $3, $4, $5) returning *';
         const values = [
           req.body.user_name,
           req.body.email,
           hashedPassword,
           req.body.address,
-          new Date(),
+          'user',
         ];
         db.query(insertQuery, values)
           .then((users) => {
             const newUser = {
+              id: users.rows[0].id,
               username: users.rows[0].user_name,
               email: users.rows[0].email,
               address: users.rows[0].address,
@@ -90,6 +91,7 @@ const UsersController = {
           });
         }
         const valueName = {
+          id: users.rows[0].id,
           username: users.rows[0].user_name,
         };
         const token = jwt.sign(valueName, process.env.SECRET_KEY, { expiresIn: '1hr' });

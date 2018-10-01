@@ -77,7 +77,7 @@ export const validateAdminSignin = (req, res, next) => {
     email,
     password,
   } = req.body;
-  if (email.match(/^\s*$/g) || password.match(/^\s*$/g)) {
+  if (email.match(/^\s*$/g) || password.trim(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please fill in all fields',
