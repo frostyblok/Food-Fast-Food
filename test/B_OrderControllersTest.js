@@ -17,9 +17,24 @@ const incorrectId = 800;
 
 let authToken;
 const fakeAuth = 'fdkfjekdjkd';
+let adminAuth;
 
 
 describe('Orders', () => {
+  before((done) => {
+    const userDetails = {
+      email: 'andela@gmail.com',
+      password: 'andela2018',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(userDetails)
+      .end((err, res) => {
+        adminAuth = res.body.token;
+        done();
+      });
+  });
+
   before((done) => {
     const userDetails = {
       user_name: 'Thomas',
@@ -75,7 +90,7 @@ describe('Orders', () => {
     // HTTP GET -> FETCH ALL ORDERS;
     chai.request(app)
       .get('/api/v1/orders')
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.status).to.equal(200);
         done();
@@ -85,7 +100,7 @@ describe('Orders', () => {
   it('it should fetch a specific order', (done) => {
     chai.request(app)
       .get(`/api/v1/orders/${id}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.body).to.have.property('status')
           .eql('Success');
@@ -98,7 +113,7 @@ describe('Orders', () => {
     // HTTP GET -> GET A SPECIFIC ORDER;
     chai.request(app)
       .get(`/api/v1/orders/${incorrectId}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.status).to.equal(404);
         expect(res.body).to.have.property('message')
@@ -114,7 +129,7 @@ describe('Orders', () => {
     };
     chai.request(app)
       .put(`/api/v1/orders/${id}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
@@ -132,7 +147,7 @@ describe('Orders', () => {
     };
     chai.request(app)
       .put(`/api/v1/orders/${incorrectId}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
@@ -145,7 +160,7 @@ describe('Orders', () => {
     // HTTP POST -> LOGIN ADMIN
     chai.request(app)
       .delete(`/api/v1/orders/${id}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
           .eql('Order successfully deleted');
@@ -156,7 +171,7 @@ describe('Orders', () => {
   it('it should not delete an unknown order', (done) => {
     chai.request(app)
       .delete(`/api/v1/orders/${incorrectId}`)
-      .set('x-access-token', authToken)
+      .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
           .eql('No order with the id found');
@@ -166,7 +181,7 @@ describe('Orders', () => {
   });
   it('it should get the history of a user\'s orders history', (done) => {
     chai.request(app)
-      .get('/api/v1/orders/users/3/orders')
+      .get('/api/v1/users/3/orders')
       .set('x-access-token', authToken)
       .end((err, res) => {
         expect(res.body).to.have.property('status')
@@ -177,7 +192,7 @@ describe('Orders', () => {
   });
   it('it should not get the history of an unknown user\'s orders history', (done) => {
     chai.request(app)
-      .get('/api/v1/orders/users/500/orders')
+      .get('/api/v1/users/500/orders')
       .set('x-access-token', fakeAuth)
       .end((err, res) => {
         expect(res.body).to.have.property('message')

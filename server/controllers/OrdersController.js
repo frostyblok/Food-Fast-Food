@@ -163,7 +163,7 @@ const Orders = {
   orderHistory(req, res) {
     const selectQuery = 'SELECT * FROM orders WHERE user_id = $1';
     const params = [
-      req.params.id,
+      req.decoded.id,
     ];
     db.query(selectQuery, params)
       .then((orders) => {

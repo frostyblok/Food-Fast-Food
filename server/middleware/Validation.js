@@ -7,7 +7,6 @@
  * @param {Object} next - Call back function
  * @return {object} - status code and error message
  */
-/* eslint linebreak-style: 0 */
 
 export const validateSignup = (req, res, next) => {
   const {
@@ -103,6 +102,18 @@ export const validateOrder = (req, res, next) => {
       message: 'orderName or amount can not be empty',
     });
   }
+  if (Number.isNaN(Number(food_price))) {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid price, please enter a valid price',
+    });
+  }
+  if (typeof (food_name) !== 'string') {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid menu name',
+    });
+  }
   return next();
 };
 
@@ -116,6 +127,24 @@ export const validateMenu = (req, res, next) => {
     return res.status(400).send({
       status: 'Error',
       message: 'Menu name, price and image can not be empty',
+    });
+  }
+  if (Number.isNaN(Number(menu_price))) {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid price, please enter a valid price',
+    });
+  }
+  if (typeof (menu_name) !== 'string') {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid menu name',
+    });
+  }
+  if (typeof (menu_image) !== 'string') {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid image format',
     });
   }
   return next();
