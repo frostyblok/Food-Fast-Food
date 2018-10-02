@@ -69,6 +69,24 @@ describe('User', () => {
       });
   });
 
+  it('it should not register a new user with already existing email address', (done) => {
+    const newUser = {
+      user_name: 'John Delve',
+      email: 'oluwakunle@gmail.com',
+      password: '274683947',
+      address: 'Ikeja, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('User already exist');
+        expect(res.status).to.equal(409);
+        done();
+      });
+  });
+
   it('it should not register a new user with empty input field(s)', (done) => {
     const newUser = {
       user_name: '',
@@ -156,6 +174,40 @@ describe('User', () => {
         expect(res.body).to.have.property('message')
           .eql('Incorrect username or password');
         expect(res.status).to.equal(401);
+        done();
+      });
+  });
+
+  it('it should not login a user with with empty inputs', (done) => {
+    // HTTP POST -> LOGIN A USER
+    const newUser = {
+      email: '',
+      password: 'sarriball',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Please fill in all fields');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not login a user with with empty inputs', (done) => {
+    // HTTP POST -> LOGIN A USER
+    const newUser = {
+      email: '',
+      password: '',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Please fill in all fields');
+        expect(res.status).to.equal(400);
         done();
       });
   });
