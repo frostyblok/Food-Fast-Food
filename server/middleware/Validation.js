@@ -40,7 +40,7 @@ export const validateSignup = (req, res, next) => {
 /**
  * @description - Checks that a user signs in with right details
  * @param  {Object} req - request
- * @param  {object} res - response
+ * @param  {object} res - response 
  * @param {Object} next - Call back function
  * @return {object} - status code and error message
  */
