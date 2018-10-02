@@ -38,7 +38,7 @@ const UsersController = {
               id: users.rows[0].id,
               username: users.rows[0].user_name,
               email: users.rows[0].email,
-              address: users.rows[0].address,
+              role: users.rows[0].role,
             };
             const token = jwt.sign(newUser, process.env.SECRET_KEY, { expiresIn: '1hr' });
             res.status(201).json({
@@ -92,7 +92,7 @@ const UsersController = {
         }
         const valueName = {
           id: users.rows[0].id,
-          username: users.rows[0].user_name,
+          role: users.rows[0].role,
         };
         const token = jwt.sign(valueName, process.env.SECRET_KEY, { expiresIn: '1hr' });
         res.status(200).json({

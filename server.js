@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import OrderRouter from './server/routes/OrderRoutes';
 import UserRouter from './server/routes/UsersRoutes';
 import MenuRouter from './server/routes/MenuRoutes';
+import UserOrdersRouter from './server/routes/UserOrderRoutes';
 
 /* eslint linebreak-style: 0 */
 
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api/v1/orders', OrderRouter);
 app.use('/api/v1/menu', MenuRouter);
 app.use('/api/v1/auth', UserRouter);
+app.use('/api/v1/users', UserOrdersRouter);
 
 app.get('/', (req, res) => {
   res.status(200).json({

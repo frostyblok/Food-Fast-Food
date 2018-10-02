@@ -30,6 +30,8 @@ https://www.pivotaltracker.com/n/projects/2193723
 
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
+- [Html]()
+- [Css]()
 
 Food-Fast-Food is hosted on gh-pages and API endpoints on Heroku
 
