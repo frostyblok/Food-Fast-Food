@@ -64,33 +64,6 @@ export const validateSignin = (req, res, next) => {
   return next();
 };
 
-/**
- * @description - Checks that a admin signs up with right details
- * @param  {Object} req - request
- * @param  {object} res - response
- * @param {Object} next - Call back function
- * @return {object} - status code and error message
- */
-export const validateAdminSignin = (req, res, next) => {
-  const {
-    email,
-    password,
-  } = req.body;
-  if (email.match(/^\s*$/g) || password.trim(/^\s*$/g)) {
-    return res.status(400).send({
-      status: 'Error',
-      message: 'Please fill in all fields',
-    });
-  }
-  if (password.trim().length < 6) {
-    return res.status(400).send({
-      status: 'Error',
-      message: 'Password must at least be 6 characters long',
-    });
-  }
-  return next();
-};
-
 export const validateOrder = (req, res, next) => {
   const {
     food_name,

@@ -11,7 +11,7 @@ const { expect } = chai;
 /* global it, describe, before */
 
 let NewAuthToken;
-// const fakeAuth = 'fdkfjekdjkd';
+const fakeAuth = 'fdkfjekdjkd';
 let adminAuth;
 const id = 1;
 const incorrectId = 700;
@@ -91,6 +91,18 @@ describe('Menu', () => {
       });
   });
 
+  it('it should not get menu for user with fake authentication', (done) => {
+    chai.request(app)
+      .get('/api/v1/menu')
+      .set('x-access-token', fakeAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Authentication failed');
+        expect(res.status).to.equal(401);
+        done();
+      });
+  });
+
   it('it should fetch a specific menu', (done) => {
     chai.request(app)
       .get(`/api/v1/menu/${id}`)
@@ -99,6 +111,18 @@ describe('Menu', () => {
         expect(res.body).to.have.property('status')
           .eql('Success');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not get menu for user with fake authentication', (done) => {
+    chai.request(app)
+      .get(`/api/v1/menu/${id}`)
+      .set('x-access-token', fakeAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Authentication failed');
+        expect(res.status).to.equal(401);
         done();
       });
   });
