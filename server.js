@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import swaggerui from 'swagger-ui-express';
 
 import OrderRouter from './server/routes/OrderRoutes';
 import UserRouter from './server/routes/UsersRoutes';
@@ -20,6 +21,8 @@ app.use('/api/v1/orders', OrderRouter);
 app.use('/api/v1/menu', MenuRouter);
 app.use('/api/v1/auth', UserRouter);
 app.use('/api/v1/users', UserOrdersRouter);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
   res.status(200).json({
