@@ -178,23 +178,6 @@ describe('User', () => {
       });
   });
 
-  it('it should not login a user with incorrect password', (done) => {
-    // HTTP POST -> LOGIN A USER
-    const newUser = {
-      email: '',
-      password: '',
-    };
-    chai.request(app)
-      .post('/api/v1/auth/login')
-      .send(newUser)
-      .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
-        expect(res.status).to.equal(400);
-        done();
-      });
-  });
-
   it('it should not login a user with with empty inputs', (done) => {
     // HTTP POST -> LOGIN A USER
     const newUser = {
