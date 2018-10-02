@@ -11,7 +11,7 @@ const { expect } = chai;
 /* global it, describe, before */
 
 let NewAuthToken;
-// const fakeAuth = 'fdkfjekdjkd';
+const fakeAuth = 'fdkfjekdjkd';
 let adminAuth;
 const id = 1;
 const incorrectId = 700;
@@ -41,6 +41,24 @@ describe('Menu', () => {
       .send(userDetails)
       .end((err, res) => {
         NewAuthToken = res.body.token;
+        done();
+      });
+  });
+
+  it('it should not add a new menu', (done) => {
+    const newMenu = {
+      menu_name: 'Wheat yam',
+      menu_price: 1600,
+      menu_image: 'yam.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', NewAuthToken)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to access the route');
+        expect(res.status).to.equal(403);
         done();
       });
   });
@@ -81,12 +99,60 @@ describe('Menu', () => {
       });
   });
 
+  it('it should not allow menu with invalid menu price', (done) => {
+    const newOrder = {
+      menu_name: 'Moi Moi',
+      menu_price: '2dfdf0',
+      menu_image: 'yeoe.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid price, please enter a valid price');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow number as menu name', (done) => {
+    const newOrder = {
+      menu_name: 375342,
+      menu_price: 32455,
+      menu_image: 'yeoe.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid menu name');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should get all menu', (done) => {
     chai.request(app)
       .get('/api/v1/menu')
       .set('x-access-token', NewAuthToken)
       .end((err, res) => {
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not get menu for user with fake authentication', (done) => {
+    chai.request(app)
+      .get('/api/v1/menu')
+      .set('x-access-token', fakeAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Authentication failed');
+        expect(res.status).to.equal(401);
         done();
       });
   });
@@ -99,6 +165,18 @@ describe('Menu', () => {
         expect(res.body).to.have.property('status')
           .eql('Success');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not get menu for user with fake authentication', (done) => {
+    chai.request(app)
+      .get(`/api/v1/menu/${id}`)
+      .set('x-access-token', fakeAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Authentication failed');
+        expect(res.status).to.equal(401);
         done();
       });
   });
