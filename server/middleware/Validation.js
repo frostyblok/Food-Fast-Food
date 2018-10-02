@@ -40,7 +40,7 @@ export const validateSignup = (req, res, next) => {
 /**
  * @description - Checks that a user signs in with right details
  * @param  {Object} req - request
- * @param  {object} res - response
+ * @param  {object} res - response 
  * @param {Object} next - Call back function
  * @return {object} - status code and error message
  */
@@ -96,6 +96,12 @@ export const validateMenu = (req, res, next) => {
     menu_price,
     menu_image,
   } = req.body;
+  if (typeof (menu_name) !== 'string') {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid menu name',
+    });
+  }
   if (menu_name.match(/^\s*$/g) || menu_price.toString().match(/^\s*$/g) || menu_image.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',

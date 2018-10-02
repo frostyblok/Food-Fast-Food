@@ -45,6 +45,24 @@ describe('Menu', () => {
       });
   });
 
+  it('it should not add a new menu', (done) => {
+    const newMenu = {
+      menu_name: 'Wheat yam',
+      menu_price: 1600,
+      menu_image: 'yam.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', NewAuthToken)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to access the route');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+
   it('it should add a new menu', (done) => {
     const newMenu = {
       menu_name: 'Wheat yam',
@@ -76,6 +94,42 @@ describe('Menu', () => {
       .end((err, res) => {
         expect(res.body).to.have.property('message')
           .eql('Menu name, price and image can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu with invalid menu price', (done) => {
+    const newOrder = {
+      menu_name: 'Moi Moi',
+      menu_price: '2dfdf0',
+      menu_image: 'yeoe.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid price, please enter a valid price');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow number as menu name', (done) => {
+    const newOrder = {
+      menu_name: 375342,
+      menu_price: 32455,
+      menu_image: 'yeoe.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid menu name');
         expect(res.status).to.equal(400);
         done();
       });
