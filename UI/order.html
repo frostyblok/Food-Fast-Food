@@ -55,7 +55,14 @@
 								</div>
 								<div class="meal-price">
 									<span class="price">₦400.00</span>
-									<a href="#">ORDER NOW</a>
+									<a onclick="openModal()" href="#">ORDER NOW</a>
+								</div>
+								<div id="simpleModal">
+									<div class="modal-content">
+										<h3 class="modal-confirm">Confirm Order?</h3>
+										<a class="modal-button-yes" href="#">Yes</a>
+										<a onclick="closeModal()" id="modal-button-no" href="#">No</a>
+									</div>
 								</div>
 							</li>
 							<li>
@@ -67,7 +74,7 @@
 								</div>
 								<div class="meal-price">
 									<span class="price">₦600.00</span>
-									<a href="#">ORDER NOW</a>
+									<a onclick="openModal()" href="#">ORDER NOW</a>
 								</div>
 							</li>
 							<li>
@@ -79,7 +86,7 @@
 								</div>
 								<div class="meal-price">
 									<span class="price">₦2,400.00</span>
-									<a href="#">ORDER NOW</a>
+									<a onclick="openModal()" href="#">ORDER NOW</a>
 								</div>
 							</li>
 							<li>
@@ -91,7 +98,7 @@
 								</div>
 								<div class="meal-price">
 									<span class="price">₦1,500.00</span>
-									<a href="#">ORDER NOW</a>
+									<a onclick="openModal()" href="#">ORDER NOW</a>
 								</div>
 							</li>
 							<li>
@@ -103,7 +110,7 @@
 								</div>
 								<div class="meal-price">
 									<span class="price">₦1,800.00</span>
-									<a href="#">ORDER NOW</a>
+									<a onclick="openModal()" href="#">ORDER NOW</a>
 									
 								</div>
 							</li>
@@ -118,5 +125,6 @@
 			<h3 class="copyright">Copyright &copy; 2018 Fast-Food-Fast</h3>
 		</div>
 	</footer>
+	<script type="text/javascript" src="./Js/modal.js"></script>
 </body>
 </html>
