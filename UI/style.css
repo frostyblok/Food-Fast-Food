@@ -172,6 +172,8 @@ header {
 .status-disp {width: 130px;}
 .amount-disp {width: 101px;}
 
+
+
 @media only screen and (min-width : 450px) and (max-width : 572px) {
     .date-cont, .date-disp {display: none;}
     .status-cont {width: 100px;}
@@ -237,6 +239,48 @@ header {
     text-decoration: none;
     font-weight: 500;
     font-size: 13px;
+}
+#bttn-order {
+    text-decoration: none;    
+    padding: 7px 5px;
+    background: #39593e;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+#simpleModal {
+    display: none;
+    width: 20% !important;
+    background: #f7e3c9;
+    position: absolute;
+    z-index: 1;
+    padding: 37px 0px;
+    text-align: center;
+    box-shadow: 1px 1px 3px 2px #b3aaaa;
+    right: 231px;
+    border-radius: 20px;
+}
+.modal-content {}
+.modal-confirm {margin: 0px 0px 26px 0px;}
+.modal-button-yes {
+    border: 1px solid #39593e;
+    text-decoration: none;
+    padding: 3px 12px;
+    color: white;
+    background: #39593e;
+    margin-right: 11px;
+    border-radius: 9px;
+}
+#modal-button-no {
+    border: 1px solid #d04040;
+    text-decoration: none;
+    padding: 3px 12px;
+    background: #d04040;
+    color: white;
+    border-radius: 9px;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {
