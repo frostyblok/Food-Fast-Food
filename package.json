@@ -11,7 +11,7 @@
     "test": "npm run migrate && mocha --exit --timeout 10000 --compilers js:babel-core/register ./test/*.js",
     "lint": "eslint",
     "dev": "babel-watch server.js",
-    "start": "babel-node server.js && npx babel-node server/models/tables.js",
+    "start": "npx babel-node server/models/tables.js && babel-node server.js",
     "migrate": "npx babel-node server/models/tables.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
