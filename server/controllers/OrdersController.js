@@ -99,6 +99,13 @@ const Orders = {
   updateOneOrder(req, res) {
     const { id } = req.params;
     const { status } = req.body;
+    const newStatus = ['Processing', 'Completed', 'Cancelled'];
+    if (!newStatus.includes(status)) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'You have not updated the order',
+      });
+    }
     const findQuery = 'SELECT * FROM orders WHERE id = $1';
     let params = [id];
     db.query(findQuery, params)
@@ -174,7 +181,7 @@ const Orders = {
         });
       })
       .catch((err) => {
-        res.status(400).json({
+        res.status(404).json({
           status: 'Error',
           message: 'Could not fetch order',
           err,

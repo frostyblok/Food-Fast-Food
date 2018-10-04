@@ -45,7 +45,7 @@ describe('Menu', () => {
       });
   });
 
-  it('it should not add a new menu', (done) => {
+  it('it should not add a new menu for unknown admin', (done) => {
     const newMenu = {
       menu_name: 'Wheat yam',
       menu_price: 1600,
@@ -68,6 +68,78 @@ describe('Menu', () => {
       menu_name: 'Wheat yam',
       menu_price: 1600,
       menu_image: 'yam.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu successfully added');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should add a new menu', (done) => {
+    const newMenu = {
+      menu_name: 'Jollof Rice',
+      menu_price: 2600,
+      menu_image: 'rice.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu successfully added');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should add a new menu', (done) => {
+    const newMenu = {
+      menu_name: 'plantain Chips',
+      menu_price: 600,
+      menu_image: 'chips.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu successfully added');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should add a new menu', (done) => {
+    const newMenu = {
+      menu_name: 'Fried Rice',
+      menu_price: 4000,
+      menu_image: 'friedr.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu successfully added');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should add a new menu', (done) => {
+    const newMenu = {
+      menu_name: 'Beans Bread',
+      menu_price: 1000,
+      menu_image: 'beansbread.jpg',
     };
     chai.request(app)
       .post('/api/v1/menu')
@@ -117,7 +189,7 @@ describe('Menu', () => {
       });
   });
 
-  it('it should not allow number as menu name', (done) => {
+  it('it should not allow numbers as menu name', (done) => {
     const newOrder = {
       menu_name: 375342,
       menu_price: 32455,
@@ -211,6 +283,24 @@ describe('Menu', () => {
       });
   });
 
+  it('it should not update menu for an unknown admin', (done) => {
+    const newMenu = {
+      menu_name: 'Smoke Fish',
+      menu_price: 2000,
+      menu_image: 'smokefish.jpg',
+    };
+    chai.request(app)
+      .put(`/api/v1/menu/${id}`)
+      .set('x-access-token', NewAuthToken)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to access the route');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+
 
   it('it should not update an unknown menu', (done) => {
     const order = {
@@ -229,6 +319,7 @@ describe('Menu', () => {
         done();
       });
   });
+
   it('it should delete a menu', (done) => {
     // HTTP POST -> LOGIN ADMIN
     chai.request(app)
@@ -241,6 +332,20 @@ describe('Menu', () => {
         done();
       });
   });
+
+  it('it should not delete a menu for an unknown admin', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    chai.request(app)
+      .delete(`/api/v1/menu/${id}`)
+      .set('x-access-token', NewAuthToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to access the route');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+
   it('it should not delete an unknown menu', (done) => {
     chai.request(app)
       .delete(`/api/v1/menu/${incorrectId}`)

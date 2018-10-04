@@ -15,7 +15,7 @@ const authentication = (req, res, next) => {
       return next();
     });
   } else {
-    return res.status(401).send({
+    return res.status(403).send({
       message: 'Unauthorized Access! You are not allowed to access this page.',
     });
   }
