@@ -13,7 +13,7 @@ const { expect } = chai;
 let NewAuthToken;
 const fakeAuth = 'fdkfjekdjkd';
 let adminAuth;
-const id = 1;
+const id = 6;
 const incorrectId = 700;
 describe('Menu', () => {
   before((done) => {
