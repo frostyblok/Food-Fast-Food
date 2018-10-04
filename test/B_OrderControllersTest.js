@@ -69,6 +69,78 @@ describe('Orders', () => {
       });
   });
 
+  it('it should place an order', (done) => {
+    const newOrder = {
+      food_name: 'Pan Cake',
+      food_price: 3000,
+      quantity: 8,
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order successfully placed');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should place an order', (done) => {
+    const newOrder = {
+      food_name: 'Fried Rice',
+      food_price: 1600,
+      quantity: 1,
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order successfully placed');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should place an order', (done) => {
+    const newOrder = {
+      food_name: 'Plantain Chips',
+      food_price: 2000,
+      quantity: 4,
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order successfully placed');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should place an order', (done) => {
+    const newOrder = {
+      food_name: 'Beans Bread',
+      food_price: 1600,
+      quantity: 3,
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order successfully placed');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
   it('it should not place an order with empty input fields', (done) => {
     // HTTP POST -> PLACE AN ORDER
     const newOrder = {
@@ -137,6 +209,19 @@ describe('Orders', () => {
       });
   });
 
+  it('it should not fetch all orders for an unknown admin', (done) => {
+    // HTTP GET -> FETCH ALL ORDERS;
+    chai.request(app)
+      .get('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to access the route');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+
   it('it should fetch a specific order', (done) => {
     chai.request(app)
       .get(`/api/v1/orders/${id}`)
@@ -145,6 +230,18 @@ describe('Orders', () => {
         expect(res.body).to.have.property('status')
           .eql('Success');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not fetch a specific order for an unknown admin', (done) => {
+    chai.request(app)
+      .get(`/api/v1/orders/${id}`)
+      .set('x-access-token', authToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to access the route');
+        expect(res.status).to.equal(403);
         done();
       });
   });
@@ -165,7 +262,7 @@ describe('Orders', () => {
   it('it should update the status of an order', (done) => {
     // HTTP POST -> LOGIN ADMIN
     const order = {
-      status: 'completed',
+      status: 'Completed',
     };
     chai.request(app)
       .put(`/api/v1/orders/${id}`)
@@ -179,11 +276,28 @@ describe('Orders', () => {
       });
   });
 
+  it('it should not update an unknown status for an order', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    const order = {
+      status: 'fkdfl;sdf',
+    };
+    chai.request(app)
+      .put(`/api/v1/orders/${id}`)
+      .set('x-access-token', adminAuth)
+      .send(order)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You have not updated the order');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
 
   it('it should not update an unknown order', (done) => {
     // HTTP PUT -> UPDATE ORDER;
     const order = {
-      status: 'completed',
+      status: 'Completed',
     };
     chai.request(app)
       .put(`/api/v1/orders/${incorrectId}`)
@@ -230,6 +344,19 @@ describe('Orders', () => {
         done();
       });
   });
+
+  it('it should not get the history of a user\'s orders history', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/4/orders')
+      .set('x-access-token', authToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('You are not allowed to view this page');
+        expect(res.status).to.equal(403);
+        done();
+      });
+  });
+
   it('it should not get the history of an unknown user\'s orders history', (done) => {
     chai.request(app)
       .get('/api/v1/users/500/orders')
