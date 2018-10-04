@@ -1,3 +1,4 @@
+/* eslint linebreak-style: 0 */
 export default (req, res, next) => {
   const decodedId = parseInt(req.decoded.id, 10);
   const paramsId = parseInt(req.params.id, 10);

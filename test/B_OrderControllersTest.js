@@ -55,6 +55,7 @@ describe('Orders', () => {
     const newOrder = {
       food_name: 'Jollof Rice',
       food_price: 600,
+      quantity: 2,
     };
     chai.request(app)
       .post('/api/v1/orders')
@@ -73,6 +74,7 @@ describe('Orders', () => {
     const newOrder = {
       food_name: '',
       food_price: '',
+      quantity: '',
     };
     chai.request(app)
       .post('/api/v1/orders')
@@ -81,6 +83,44 @@ describe('Orders', () => {
       .end((err, res) => {
         expect(res.body).to.have.property('message')
           .eql('orderName or amount can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not place an order with invalid food price', (done) => {
+    // HTTP POST -> PLACE AN ORDER
+    const newOrder = {
+      food_name: 'Junk Box',
+      food_price: 'I love programming',
+      quantity: 2,
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid price, please enter a valid price');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not place an order with invalid food quantity', (done) => {
+    // HTTP POST -> PLACE AN ORDER
+    const newOrder = {
+      food_name: 'Junk Box',
+      food_price: 5000,
+      quantity: 'I will make it into Andela',
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid quantity, please enter a valid quantity');
         expect(res.status).to.equal(400);
         done();
       });
