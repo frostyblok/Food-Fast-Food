@@ -43,6 +43,7 @@ const createTable = () => {
     id SERIAL PRIMARY KEY,
     food_name VARCHAR (100) NOT NULL,
     food_price int NOT NULL,
+    quantity int NOT NULL,
     status VARCHAR (100) NOT NULL,
     user_id INT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

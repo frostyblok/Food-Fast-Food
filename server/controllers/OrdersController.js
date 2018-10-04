@@ -64,11 +64,12 @@ const Orders = {
      *@return {object} Success message when an order is placed
      */
   createOrder(req, res) {
-    const insertQuery = 'INSERT INTO orders(user_id, food_name, food_price, status, created_at) VALUES($1, $2, $3, $4, $5) returning *';
+    const insertQuery = 'INSERT INTO orders(user_id, food_name, food_price, quantity, status, created_at) VALUES($1, $2, $3, $4, $5, $6) returning *';
     const params = [
       req.decoded.id,
       req.body.food_name,
       req.body.food_price,
+      req.body.quantity,
       'New',
       new Date(),
     ];

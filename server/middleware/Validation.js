@@ -40,7 +40,7 @@ export const validateSignup = (req, res, next) => {
 /**
  * @description - Checks that a user signs in with right details
  * @param  {Object} req - request
- * @param  {object} res - response 
+ * @param  {object} res - response
  * @param {Object} next - Call back function
  * @return {object} - status code and error message
  */
@@ -68,8 +68,9 @@ export const validateOrder = (req, res, next) => {
   const {
     food_name,
     food_price,
+    quantity,
   } = req.body;
-  if (food_name.match(/^\s*$/g) || food_price.toString().match(/^\s*$/g)) {
+  if (food_name.match(/^\s*$/g) || food_price.toString().match(/^\s*$/g) || quantity.toString().match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'orderName or amount can not be empty',
@@ -79,6 +80,12 @@ export const validateOrder = (req, res, next) => {
     return res.status(400).json({
       status: 'Error',
       message: 'Invalid price, please enter a valid price',
+    });
+  }
+  if (Number.isNaN(Number(quantity))) {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Invalid quantity, please enter a valid quantity',
     });
   }
   if (typeof (food_name) !== 'string') {
