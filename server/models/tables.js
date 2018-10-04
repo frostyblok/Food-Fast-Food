@@ -57,14 +57,12 @@ const createTable = () => {
     address,
     role
   )
-
   VALUES (
     'Andela',
     'andela@gmail.com',
     '${adminPassword}',
     'Epic Tower',
     'admin'
-
   ); 
 
   INSERT INTO users (
@@ -73,17 +71,69 @@ const createTable = () => {
     password,
     address,
     role
-
   )
-
   VALUES (
     'Oluwakunle Fakorede',
     'oluwakunle@gmail.com',
     '${userPassword}',
     'Ikotun Lagos',
     'user'
-
   ); 
+
+  INSERT INTO menu (
+    menu_name,
+    menu_price,
+    menu_image
+  )
+  VALUES (
+    'Fried Plantain',
+    2000,
+    'friedplantain.jpg'
+  );
+
+  INSERT INTO menu (
+    menu_name,
+    menu_price,
+    menu_image
+  )
+  VALUES (
+    'chopped Fish',
+    1500,
+    'chopfish.jpg'
+  );
+
+  INSERT INTO menu (
+    menu_name,
+    menu_price,
+    menu_image
+  )
+  VALUES (
+    'Potato Beans',
+    2500,
+    'pobeans.jpg'
+  );
+
+  INSERT INTO menu (
+    menu_name,
+    menu_price,
+    menu_image
+  )
+  VALUES (
+    'Ofada Rice',
+    3500,
+    'ofdarice.jpg'
+  );
+
+  INSERT INTO menu (
+    menu_name,
+    menu_price,
+    menu_image
+  )
+  VALUES (
+    'Bannana Meal',
+    4500,
+    'bameals.jpg'
+  );
   `;
   clientString.query(query)
     .then((res) => {
