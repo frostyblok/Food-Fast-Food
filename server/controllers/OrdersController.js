@@ -8,12 +8,12 @@ const Orders = {
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  selectAllOrders(req, res) {
+  getAllOrders(req, res) {
     const query = 'SELECT * FROM orders';
     db.query(query)
       .then((orders) => {
         res.status(200).json({
-          status: 'Succes',
+          status: 'Success',
           allOrders: orders.rows,
         });
       })
@@ -32,7 +32,7 @@ const Orders = {
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  selectOneOrder(req, res) {
+  getOneOrder(req, res) {
     const queryText = 'SELECT * FROM orders WHERE id = $1';
     const params = [req.params.id];
     db.query(queryText, params)
@@ -51,7 +51,7 @@ const Orders = {
       .catch((err) => {
         res.status(500).json({
           status: 'Error',
-          message: 'could not complete request at this time',
+          message: 'Could not complete request at this time',
           err,
         });
       });
@@ -117,7 +117,7 @@ const Orders = {
             res.status(200).json({
               status: 'Success',
               message: 'Order updated successfully',
-              orderUpdated: newOrder.rowCount,
+              updatedOrder: newOrder.rows[0],
             });
           })
           .catch((err) => {
@@ -163,7 +163,7 @@ const Orders = {
       .catch((err) => {
         res.status(500).json({
           status: 'Error',
-          message: 'could not complete request at this time',
+          message: 'Could not complete request at this time',
           err,
         });
       });

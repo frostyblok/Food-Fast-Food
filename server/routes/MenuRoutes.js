@@ -1,8 +1,7 @@
 import express from 'express';
 import Menu from '../controllers/MenuController';
-import Authentication from '../middleware/authentication';
-import auth from '../middleware/adminAuth';
 import { validateMenu } from '../middleware/Validation';
+import Auth from '../middleware/Auth';
 
 /* eslint linebreak-style: 0 */
 const router = express.Router();
@@ -11,10 +10,12 @@ const {
   getAllMenu, getOneMenu, editMenu, deleteMenu, addMenu,
 } = Menu;
 
-router.get('/', Authentication, getAllMenu);
-router.get('/:id', Authentication, getOneMenu);
-router.post('/', Authentication, auth, validateMenu, addMenu);
-router.put('/:id', Authentication, auth, validateMenu, editMenu);
-router.delete('/:id', Authentication, auth, deleteMenu);
+const { adminAuthentication, authentication } = Auth;
+
+router.get('/', authentication, getAllMenu);
+router.get('/:id', authentication, getOneMenu);
+router.post('/', authentication, adminAuthentication, validateMenu, addMenu);
+router.put('/:id', authentication, adminAuthentication, validateMenu, editMenu);
+router.delete('/:id', authentication, adminAuthentication, deleteMenu);
 
 export default router;
