@@ -165,7 +165,115 @@ describe('Menu', () => {
       .send(newOrder)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Menu name, price and image can not be empty');
+          .eql('Menu name, menu price, and menu image can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu with empty input', (done) => {
+    const newOrder = {
+      menu_name: '',
+      menu_price: '34455',
+      menu_image: 'dfwe.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu name can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu with empty input', (done) => {
+    const newOrder = {
+      menu_name: 'Food',
+      menu_price: '',
+      menu_image: 'food.png',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu price can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu with empty input', (done) => {
+    const newOrder = {
+      menu_name: 'Food',
+      menu_price: '3355',
+      menu_image: '',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu image can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu long menu name', (done) => {
+    const newOrder = {
+      menu_name: 'Foodfkfjdkfljdf;dlfjdlfd',
+      menu_price: '3355',
+      menu_image: 'fdfdk',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Menu name too long');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu with extreme price', (done) => {
+    const newOrder = {
+      menu_name: 'Food',
+      menu_price: '33555584944555',
+      menu_image: 'dfdf.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('The price has exceeded the order\'s valuation');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not allow menu with too long image url', (done) => {
+    const newOrder = {
+      menu_name: 'Food',
+      menu_price: '335',
+      menu_image: 'dfdfjdfkdfjdfjdfkljdfkjdfkdjf.jpg',
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', adminAuth)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid image url');
         expect(res.status).to.equal(400);
         done();
       });
@@ -241,6 +349,18 @@ describe('Menu', () => {
       });
   });
 
+  it('it should not fetch a specific menu with unknow id', (done) => {
+    chai.request(app)
+      .get('/api/v1/menu/dfdlf')
+      .set('x-access-token', NewAuthToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('status')
+          .eql('Error');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should not get menu for user with fake authentication', (done) => {
     chai.request(app)
       .get(`/api/v1/menu/${id}`)
@@ -279,6 +399,24 @@ describe('Menu', () => {
         expect(res.body).to.have.property('message')
           .eql('Menu updated successfully');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not update a menu with invalid id', (done) => {
+    const newMenu = {
+      menu_name: 'Smoke Fish',
+      menu_price: 2000,
+      menu_image: 'smokefish.jpg',
+    };
+    chai.request(app)
+      .put('/api/v1/menu/dfdlwifd')
+      .set('x-access-token', adminAuth)
+      .send(newMenu)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid parameters');
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -329,6 +467,19 @@ describe('Menu', () => {
         expect(res.body).to.have.property('message')
           .eql('Menu successfully deleted');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should delete a menu', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    chai.request(app)
+      .delete('/api/v1/menu/hiqpaf')
+      .set('x-access-token', adminAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid parameters');
+        expect(res.status).to.equal(400);
         done();
       });
   });

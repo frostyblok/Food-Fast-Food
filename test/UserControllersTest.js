@@ -63,7 +63,79 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Username is required');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with empty input field(s)', (done) => {
+    const newUser = {
+      user_name: 'Clepmsy',
+      email: '',
+      password: '274683947',
+      address: 'Ikeja, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Email is required');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with empty input field(s)', (done) => {
+    const newUser = {
+      user_name: 'codejfdo',
+      email: 'clint@yahoo.com',
+      password: '',
+      address: 'Ikeja, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Password is required');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with empty input field(s)', (done) => {
+    const newUser = {
+      user_name: 'dfjdflad',
+      email: 'clint@yahoo.com',
+      password: '274683947',
+      address: '',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('User address is required');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not register a new user with empty input field(s)', (done) => {
+    const newUser = {
+      user_name: 'dafjkdlfsjklsdkldjlkdfkdfjd;fdkfkdfjkfdsfkdjfkdkfdjkfjdkfdkfjdkfjdklfjd',
+      email: 'clint@yahoo.com',
+      password: '274683947',
+      address: 'Ikeja, Lagos',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Username too long');
         expect(res.status).to.equal(400);
         done();
       });
@@ -99,7 +171,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('All fields are required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -124,7 +196,7 @@ describe('User', () => {
       });
   });
 
-  it('it should not register a new user with weak password', (done) => {
+  it('it should not register a new user with short password length', (done) => {
     // HTTP POST -> REGISTER A NEW USER
     const newUser = {
       user_name: 'Kaycee',
@@ -189,7 +261,24 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Email is required');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not login a user with with empty inputs', (done) => {
+    // HTTP POST -> LOGIN A USER
+    const newUser = {
+      email: 'aff@dfd.com',
+      password: '',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Password is required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -206,7 +295,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Email and password fields are required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -240,7 +329,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Email and password fields are required');
         expect(res.status).to.equal(400);
         done();
       });

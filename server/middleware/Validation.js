@@ -15,14 +15,38 @@ export const validateSignup = (req, res, next) => {
     password,
     address,
   } = req.body;
-  const emailChecker = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  if (user_name.match(/^\s*$/g) || email.match(/^\s*$/g) || password.match(/^\s*$/g) || address.match(/^\s*$/g)) {
+  const emailChecker = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; // Source---> https:emailregex.com
+  if (user_name.match(/^\s*$/g) && email.match(/^\s*$/g) && password.match(/^\s*$/g) && address.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
-      message: 'Please fill in all fields',
+      message: 'All fields are required',
     });
   }
-  if (!email || !emailChecker.test(email)) {
+  if (user_name.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Username is required',
+    });
+  }
+  if (email.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Email is required',
+    });
+  }
+  if (password.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Password is required',
+    });
+  }
+  if (address.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'User address is required',
+    });
+  }
+  if (!emailChecker.test(email)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Please enter a valid email',
@@ -32,6 +56,12 @@ export const validateSignup = (req, res, next) => {
     return res.status(400).send({
       status: 'Error',
       message: 'Password must at least be 6 characters long',
+    });
+  }
+  if (user_name.length > 15) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Username too long',
     });
   }
   return next();
@@ -49,10 +79,22 @@ export const validateSignin = (req, res, next) => {
     email,
     password,
   } = req.body;
-  if (email.match(/^\s*$/g) || password.match(/^\s*$/g)) {
+  if (email.match(/^\s*$/g) && password.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
-      message: 'Please fill in all fields',
+      message: 'Email and password fields are required',
+    });
+  }
+  if (email.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Email is required',
+    });
+  }
+  if (password.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Password is required',
     });
   }
   if (password.trim().length < 6) {
@@ -70,10 +112,28 @@ export const validateOrder = (req, res, next) => {
     food_price,
     quantity,
   } = req.body;
-  if (food_name.match(/^\s*$/g) || food_price.toString().match(/^\s*$/g) || quantity.toString().match(/^\s*$/g)) {
+  if (food_name.match(/^\s*$/g) && food_price.toString().match(/^\s*$/g) && quantity.toString().match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
-      message: 'orderName or amount can not be empty',
+      message: 'Order name, price, and quantity can not be empty',
+    });
+  }
+  if (food_name.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Order name can not be empty',
+    });
+  }
+  if (food_price.toString().match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Order price can not be empty',
+    });
+  }
+  if (quantity.toString().match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Order quantity can not be empty',
     });
   }
   if (Number.isNaN(Number(food_price))) {
@@ -86,12 +146,6 @@ export const validateOrder = (req, res, next) => {
     return res.status(400).json({
       status: 'Error',
       message: 'Invalid quantity, please enter a valid quantity',
-    });
-  }
-  if (typeof (food_name) !== 'string') {
-    return res.status(400).json({
-      status: 'Error',
-      message: 'Invalid menu name',
     });
   }
   return next();
@@ -109,10 +163,28 @@ export const validateMenu = (req, res, next) => {
       message: 'Invalid menu name',
     });
   }
-  if (menu_name.match(/^\s*$/g) || menu_price.toString().match(/^\s*$/g) || menu_image.match(/^\s*$/g)) {
+  if (menu_name.match(/^\s*$/g) && menu_price.toString().match(/^\s*$/g) && menu_image.match(/^\s*$/g)) {
+    return res.status(400).json({
+      status: 'Error',
+      message: 'Menu name, menu price, and menu image can not be empty',
+    });
+  }
+  if (menu_name.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
-      message: 'Menu name, price and image can not be empty',
+      message: 'Menu name can not be empty',
+    });
+  }
+  if (menu_price.toString().match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Menu price can not be empty',
+    });
+  }
+  if (menu_image.match(/^\s*$/g)) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Menu image can not be empty',
     });
   }
   if (Number.isNaN(Number(menu_price))) {
@@ -121,16 +193,22 @@ export const validateMenu = (req, res, next) => {
       message: 'Invalid price, please enter a valid price',
     });
   }
-  if (typeof (menu_name) !== 'string') {
-    return res.status(400).json({
+  if (menu_name.length > 15) {
+    return res.status(400).send({
       status: 'Error',
-      message: 'Invalid menu name',
+      message: 'Menu name too long',
     });
   }
-  if (typeof (menu_image) !== 'string') {
-    return res.status(400).json({
+  if (menu_price > 50000) {
+    return res.status(400).send({
       status: 'Error',
-      message: 'Invalid image format',
+      message: 'The price has exceeded the order\'s valuation',
+    });
+  }
+  if (menu_image.length > 30) {
+    return res.status(400).send({
+      status: 'Error',
+      message: 'Invalid image url',
     });
   }
   return next();

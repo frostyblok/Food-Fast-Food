@@ -8,12 +8,12 @@ const Orders = {
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  selectAllOrders(req, res) {
+  getAllOrders(req, res) {
     const query = 'SELECT * FROM orders';
     db.query(query)
       .then((orders) => {
         res.status(200).json({
-          status: 'Succes',
+          status: 'Success',
           allOrders: orders.rows,
         });
       })
@@ -32,9 +32,15 @@ const Orders = {
      *@param  {object} res - response
      *@return {object} - status code and  message
      */
-  selectOneOrder(req, res) {
+  getOneOrder(req, res) {
     const queryText = 'SELECT * FROM orders WHERE id = $1';
     const params = [req.params.id];
+    if (Number.isNaN(Number(req.params.id))) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'Invalid parameters',
+      });
+    }
     db.query(queryText, params)
       .then((order) => {
         if (!order.rows[0]) {
@@ -51,7 +57,7 @@ const Orders = {
       .catch((err) => {
         res.status(500).json({
           status: 'Error',
-          message: 'could not complete request at this time',
+          message: 'Could not complete request at this time',
           err,
         });
       });
@@ -99,6 +105,12 @@ const Orders = {
   updateOneOrder(req, res) {
     const { id } = req.params;
     const { status } = req.body;
+    if (Number.isNaN(Number(id))) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'Invalid parameters',
+      });
+    }
     const newStatus = ['Processing', 'Completed', 'Cancelled'];
     if (!newStatus.includes(status)) {
       res.status(400).json({
@@ -117,7 +129,7 @@ const Orders = {
             res.status(200).json({
               status: 'Success',
               message: 'Order updated successfully',
-              orderUpdated: newOrder.rowCount,
+              updatedOrder: newOrder.rows[0],
             });
           })
           .catch((err) => {
@@ -146,6 +158,12 @@ const Orders = {
   deleteOneOrder(req, res) {
     const deleteQuery = 'DELETE FROM orders WHERE id = $1 returning *';
     const params = [req.params.id];
+    if (Number.isNaN(Number(req.params.id))) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'Invalid parameters',
+      });
+    }
     db.query(deleteQuery, params)
       .then((order) => {
         if (!order.rows[0]) {
@@ -163,7 +181,7 @@ const Orders = {
       .catch((err) => {
         res.status(500).json({
           status: 'Error',
-          message: 'could not complete request at this time',
+          message: 'Could not complete request at this time',
           err,
         });
       });
