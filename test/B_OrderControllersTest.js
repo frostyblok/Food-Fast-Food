@@ -160,6 +160,25 @@ describe('Orders', () => {
       });
   });
 
+  it('it should not place an order with empty input fields', (done) => {
+    // HTTP POST -> PLACE AN ORDER
+    const newOrder = {
+      food_name: '',
+      food_price: '3999',
+      quantity: '2',
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order name can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should not place an order with invalid food price', (done) => {
     // HTTP POST -> PLACE AN ORDER
     const newOrder = {
@@ -174,6 +193,44 @@ describe('Orders', () => {
       .end((err, res) => {
         expect(res.body).to.have.property('message')
           .eql('Invalid price, please enter a valid price');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not place an order with empty input fields', (done) => {
+    // HTTP POST -> PLACE AN ORDER
+    const newOrder = {
+      food_name: 'Egusi',
+      food_price: '',
+      quantity: '2',
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order price can not be empty');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+  it('it should not place an order with empty input fields', (done) => {
+    // HTTP POST -> PLACE AN ORDER
+    const newOrder = {
+      food_name: 'adfl',
+      food_price: '5000',
+      quantity: '',
+    };
+    chai.request(app)
+      .post('/api/v1/orders')
+      .set('x-access-token', authToken)
+      .send(newOrder)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Order quantity can not be empty');
         expect(res.status).to.equal(400);
         done();
       });
@@ -234,6 +291,18 @@ describe('Orders', () => {
       });
   });
 
+  it('it should not fetch a specific order with invalid id', (done) => {
+    chai.request(app)
+      .get('/api/v1/orders/pqodf')
+      .set('x-access-token', adminAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('status')
+          .eql('Error');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should not fetch a specific order for an unknown admin', (done) => {
     chai.request(app)
       .get(`/api/v1/orders/${id}`)
@@ -272,6 +341,23 @@ describe('Orders', () => {
         expect(res.body).to.have.property('message')
           .eql('Order updated successfully');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not update the status of an order with an unknown id', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    const order = {
+      status: 'Completed',
+    };
+    chai.request(app)
+      .put('/api/v1/orders/vcvbbfb')
+      .set('x-access-token', adminAuth)
+      .send(order)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid parameters');
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -322,6 +408,20 @@ describe('Orders', () => {
         done();
       });
   });
+
+  it('it should not delete an order with an unknown id', (done) => {
+    // HTTP POST -> LOGIN ADMIN
+    chai.request(app)
+      .delete('/api/v1/orders/dfjkdfsd')
+      .set('x-access-token', adminAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('Invalid parameters');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should not delete an unknown order', (done) => {
     chai.request(app)
       .delete(`/api/v1/orders/${incorrectId}`)

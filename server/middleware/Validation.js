@@ -133,7 +133,7 @@ export const validateOrder = (req, res, next) => {
   if (quantity.toString().match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
-      message: 'order quantity can not be empty',
+      message: 'Order quantity can not be empty',
     });
   }
   if (Number.isNaN(Number(food_price))) {
@@ -146,12 +146,6 @@ export const validateOrder = (req, res, next) => {
     return res.status(400).json({
       status: 'Error',
       message: 'Invalid quantity, please enter a valid quantity',
-    });
-  }
-  if (typeof (food_name) !== 'string') {
-    return res.status(400).json({
-      status: 'Error',
-      message: 'Invalid menu name',
     });
   }
   return next();

@@ -35,6 +35,12 @@ const Orders = {
   getOneOrder(req, res) {
     const queryText = 'SELECT * FROM orders WHERE id = $1';
     const params = [req.params.id];
+    if (Number.isNaN(Number(req.params.id))) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'Invalid parameters',
+      });
+    }
     db.query(queryText, params)
       .then((order) => {
         if (!order.rows[0]) {
@@ -99,6 +105,12 @@ const Orders = {
   updateOneOrder(req, res) {
     const { id } = req.params;
     const { status } = req.body;
+    if (Number.isNaN(Number(id))) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'Invalid parameters',
+      });
+    }
     const newStatus = ['Processing', 'Completed', 'Cancelled'];
     if (!newStatus.includes(status)) {
       res.status(400).json({
@@ -146,6 +158,12 @@ const Orders = {
   deleteOneOrder(req, res) {
     const deleteQuery = 'DELETE FROM orders WHERE id = $1 returning *';
     const params = [req.params.id];
+    if (Number.isNaN(Number(req.params.id))) {
+      res.status(400).json({
+        status: 'Error',
+        message: 'Invalid parameters',
+      });
+    }
     db.query(deleteQuery, params)
       .then((order) => {
         if (!order.rows[0]) {
