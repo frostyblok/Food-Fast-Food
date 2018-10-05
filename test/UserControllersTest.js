@@ -63,7 +63,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Username is required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -99,7 +99,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('All fields are required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -189,7 +189,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Email is required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -206,7 +206,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Email and password fields are required');
         expect(res.status).to.equal(400);
         done();
       });
@@ -240,7 +240,7 @@ describe('User', () => {
       .send(newUser)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Please fill in all fields');
+          .eql('Email and password fields are required');
         expect(res.status).to.equal(400);
         done();
       });

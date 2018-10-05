@@ -165,7 +165,7 @@ describe('Menu', () => {
       .send(newOrder)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Menu name, price and image can not be empty');
+          .eql('Menu name, menu price, and menu image can not be empty');
         expect(res.status).to.equal(400);
         done();
       });

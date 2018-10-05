@@ -154,7 +154,7 @@ describe('Orders', () => {
       .send(newOrder)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('orderName or amount can not be empty');
+          .eql('Order name, price, and quantity can not be empty');
         expect(res.status).to.equal(400);
         done();
       });
