@@ -99,6 +99,7 @@ const UsersController = {
           status: 'Success',
           message: 'User logged in successfully',
           token,
+          role: users.rows[0].role,
         });
       })
       .catch((err) => {
