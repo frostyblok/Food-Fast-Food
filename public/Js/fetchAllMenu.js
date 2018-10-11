@@ -28,14 +28,7 @@ const loadMenu = (event) => {
            </div>
            <div class="meal-price">
              <span class="price">${meal.menu_price}</span>
-             <a onclick="openModal()" href="#">ORDER NOW</a>
-           </div>
-           <div id="simpleModal">
-             <div class="modal-content">
-               <h3 class="modal-confirm">Confirm Order?</h3>
-               <a class="modal-button-yes" href="confirmOrder.html">Yes</a>
-               <a onclick="closeModal()" id="modal-button-no" href="#">No</a>
-             </div>
+             <a id="order-now-btn" data-name="${meal.menu_name}" data-id="${meal.id} href="#">ORDER NOW</a>
            </div>
          </li>
        </ul>
