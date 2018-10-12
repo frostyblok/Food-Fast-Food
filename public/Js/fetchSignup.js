@@ -20,6 +20,8 @@ const userSignup = (event) => {
     .then(res => res.json())
     .then((data) => {
       if (data.status === 'Success') {
+        localStorage.setItem('food-fast-food:token', data.token);
+        localStorage.setItem('food-fast-food:id', data.id);
         window.location.href = 'order.html';
       }
     })

@@ -230,8 +230,10 @@ header {
 .meal-name h4 {font-size: 20px;}
 .meal-price {float: left; padding-top: 40px;}
 .price {margin-right: 17px; font-style: italic;}
-.meal-price a {
-    text-decoration: none;    
+#order-now-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;   
     padding: 7px 5px;
     background: #39593e;
     color: white;
@@ -559,14 +561,20 @@ header {
 .confirm-order-select {margin: 18px 0px;}
 .confirm-order-select h4 {color: #bf6565; margin: 0px}
 .complete-order-link {margin-bottom: 10px;}
-.complete-order-link a {
+.complete-order-link button {
+    border: none;
+    outline: none;
+    cursor: pointer;
     background: #39593e;
     color: white;
-    text-decoration: none;
     padding: 7px 5px;
     border-radius: 7px;
 }
 select.slect-style {width: 80px; margin-top: 7px;}
+
+/*******************Site modal************************/
+#confirm-order-error-modal {display: none;}
+#order-history-modal {display: none;}
 
 /**************************Site footer*********************/
 footer {

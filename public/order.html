@@ -29,7 +29,7 @@
 					<h4 class="categories-style">Categories</h4>
 					<ul class="menu-history">
 						<li><a href="#">Menu</a></li>
-						<li><a href="orderHistory.html">Order History</a></li>
+						<li><a id="order-history-fetch" href="orderHistory.html">Order History</a></li>
 					</ul>
 				</div>
 			</div>
@@ -45,76 +45,8 @@
 						<h4>Menu</h4>
 					</div>
 					<div class="available-meal">
-						<ul class="available-meal-list">
-							<li>
-								<div class="meal-image">
-									<img src="./img/jrice.jpg">
-								</div>
-								<div class="meal-name">
-									<h4>Jollof Rice</h4>
-								</div>
-								<div class="meal-price">
-									<span class="price">₦400.00</span>
-									<a onclick="openModal()" id="user-place-order" href="#">ORDER NOW</a>
-								</div>
-								<div id="simpleModal">
-									<div class="modal-content">
-										<h3 class="modal-confirm">Confirm Order?</h3>
-										<a class="modal-button-yes" href="confirmOrder.html">Yes</a>
-										<a onclick="closeModal()" id="modal-button-no" href="#">No</a>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="meal-image">
-									<img src="./img/frice.jpg">
-								</div>
-								<div class="meal-name">
-									<h4>Fried Rice</h4>
-								</div>
-								<div class="meal-price">
-									<span class="price">₦600.00</span>
-									<a onclick="openModal()" href="#">ORDER NOW</a>
-								</div>
-							</li>
-							<li>
-								<div class="meal-image">
-									<img src="./img/pizza.jpg">
-								</div>
-								<div class="meal-name">
-									<h4>Pizza</h4>
-								</div>
-								<div class="meal-price">
-									<span class="price">₦2,400.00</span>
-									<a onclick="openModal()" href="#">ORDER NOW</a>
-								</div>
-							</li>
-							<li>
-								<div class="meal-image">
-									<img src="./img/chips.jpg">
-								</div>
-								<div class="meal-name">
-									<h4>Chicken & Chips</h4>
-								</div>
-								<div class="meal-price">
-									<span class="price">₦1,500.00</span>
-									<a onclick="openModal()" href="#">ORDER NOW</a>
-								</div>
-							</li>
-							<li>
-								<div class="meal-image">
-									<img src="./img/burger.jpg">
-								</div>
-								<div class="meal-name">
-									<h4>Hamburger</h4>
-								</div>
-								<div class="meal-price">
-									<span class="price">₦1,800.00</span>
-									<a onclick="openModal()" href="#">ORDER NOW</a>
-									
-								</div>
-							</li>
-						</ul>
+							<ul class="available-meal-list">
+							</ul>
 					</div>
 				</div>
 			</div>
@@ -125,6 +57,8 @@
 			<h3 class="copyright">Copyright &copy; 2018 Fast-Food-Fast</h3>
 		</div>
 	</footer>
-	<script type="text/javascript" src="./Js/modal.js"></script>
+	<script type="text/javascript" src="./Js/fetchAllMenu.js"></script>
+	<script type="text/javascript" src="./Js/fetchPlaceOrder.js"></script>
+
 </body>
 </html>

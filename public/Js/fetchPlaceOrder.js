@@ -2,6 +2,10 @@ const baseUrl = 'https://food-fast-food.herokuapp.com/';
 
 const myToken = localStorage.getItem('food-fast-food:token');
 
+const htmlElementDisplay = (htmlId, displayStyle) => {
+  document.getElementById(htmlId).style.display = displayStyle;
+}
+
 document.getElementById('user-place-order').addEventListener('click', loadOneMenu);
 
 const loadOneMenu = (event) => {
@@ -17,41 +21,43 @@ const loadOneMenu = (event) => {
   })
     .then(res => res.json())
     .then((data) => {
-      const order = `
-        <div class="confirm-order-container">
+      if (data.status === 'Success') {
+        window.location.href = '../confirmOrder.html';
+        const order = `
           <h2 class="confirm-order-card-text">Confirm Order</h2>
-          <div class="confirm-order-img">
-            <h3 class="confirm-order-food-name">${data.menu_name}</h3>
-            <img src="${data.menu_image}">
+          <div class="confirm-order-container">
+            <div class="confirm-order-img">
+              <h3 class="confirm-order-food-name">${data.menu_name}</h3>
+              <img src="${data.menu_image}">
+            </div>
+            <div class="confirm-order-select">
+              <h4>Quantity:</h4>
+              <select class="slect-style" id="slect-style-${data.id}">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </div>
+            <div class="complete-order-link">
+              <button data-name="${data.menu_name}" data-price="${data.menu_price}" data-id="${data.id}" id="user-confirm-order" href="#">Complete Order</button>
+            </div>
           </div>
-          <div class="confirm-order-select">
-            <h4>Quantity:</h4>
-            <select class="slect-style" id="slect-style-${data.id}">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-            </select>
-          </div>
-          <div class="complete-order-link">
-            <a data-name="${data.menu_name}" data-price="${data.menu_price}" data-id="${data.id}" id="user-confirm-order" href="#">Complete Order</a>
-          </div>
-        </div>
-       `;
-      document.getElementById('confirm-order-card').innerHTML = order;
+         `;
+        document.getElementById('confirm-order-card').innerHTML = order;
+      } else {
+        htmlElementDisplay('confirm-order-error-modal', 'block');
+        htmlElementDisplay('confirm-order-card', 'none');
+      }
     }).catch((err) => {
       console.log(err);
     });
 };
-
-const htmlElementDisplay = (htmlId, displayStyle) => {
-  document.getElementById(htmlId).style.display = displayStyle;
-}
 
 document.getElementById('user-confirm-order').addEventListener('click', confirmOrder);
 
