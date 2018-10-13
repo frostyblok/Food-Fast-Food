@@ -1,7 +1,5 @@
 const baseUrl = 'https://food-fast-food.herokuapp.com/';
 
-document.getElementById('myform-login').addEventListener('submit', userLogin);
-
 const userLogin = (event) => {
   event.preventDefault();
   const userEmail = document.getElementById('email-login').value;
@@ -13,20 +11,26 @@ const userLogin = (event) => {
     },
     body: JSON.stringify({ email: userEmail, password: userPassword }),
   })
-    .then(res => res.json())
+    .then((res) => {
+      return res.json();
+    })
     .then((data) => {
       if (data.status === 'Success') {
         localStorage.setItem('food-fast-food:token', data.token);
         localStorage.setItem('food-fast-food:id', data.id);
-        if (data.role === 'user') {
-          window.location.href = '/order.html';
-        }
-        if (data.role === 'admin') {
-          window.location.href = './orderList.html';
-        }
+        console.log('token', data.token);
+        console.log('id', data.id);
+
+        // if (data.role === 'user') {
+        //   window.location.href = '/order.html';
+        // }
+        // if (data.role === 'admin') {
+        //   window.location.href = './orderList.html';
+        // }
       }
     })
     .catch((err) => {
       console.log(err);
     });
 };
+document.getElementById('myform-login').addEventListener('submit', userLogin);
