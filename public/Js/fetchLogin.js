@@ -1,19 +1,20 @@
 const baseUrl = 'https://food-fast-food.herokuapp.com/';
 
-document.getElementById('myform-login').addEventListener('submit', userLogin);
-
 const userLogin = (event) => {
   event.preventDefault();
   const userEmail = document.getElementById('email-login').value;
   const userPassword = document.getElementById('password-login').value;
   fetch(`${baseUrl}api/v1/auth/login`, {
     method: 'POST',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email: userEmail, password: userPassword }),
   })
-    .then(res => res.json())
+    .then((res) => {
+      return res.json();
+    })
     .then((data) => {
       if (data.status === 'Success') {
         localStorage.setItem('food-fast-food:token', data.token);
@@ -30,3 +31,4 @@ const userLogin = (event) => {
       console.log(err);
     });
 };
+document.getElementById('myform-login').addEventListener('submit', userLogin);
