@@ -1,11 +1,13 @@
-const baseUrl = 'https://food-fast-food.herokuapp.com/';
+const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
 window.onload = () => {
   const myToken = localStorage.getItem('food-fast-food:token');
-  fetch(`${baseUrl}api/v1/orders`, {
+  fetch(`${baseUrl$}api/v1/orders`, {
     method: 'GET',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
       'x-access-token': `${myToken}`,
     },
   })
