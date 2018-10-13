@@ -19,12 +19,15 @@ const userLogin = (event) => {
       if (data.status === 'Success') {
         localStorage.setItem('food-fast-food:token', data.token);
         localStorage.setItem('food-fast-food:id', data.id);
-        if (data.role === 'user') {
-          window.location.href = '/order.html';
-        }
-        if (data.role === 'admin') {
-          window.location.href = './orderList.html';
-        }
+        console.log('token', data.token);
+        console.log('id', data.id);
+
+        // if (data.role === 'user') {
+        //   window.location.href = '/order.html';
+        // }
+        // if (data.role === 'admin') {
+        //   window.location.href = './orderList.html';
+        // }
       }
     })
     .catch((err) => {
