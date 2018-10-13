@@ -6,7 +6,7 @@ const htmlElementDisplay = (htmlId, displayStyle) => {
   document.getElementById(htmlId).style.display = displayStyle;
 }
 
-document.getElementById('user-place-order').addEventListener('click', loadOneMenu);
+const orderBttn = document.getElementById('order-now-btn');
 
 const loadOneMenu = (event) => {
   event.preventDefault();
@@ -14,8 +14,10 @@ const loadOneMenu = (event) => {
   const id = orderButton.getAttribute('data-id');
   fetch(`${baseUrl}api/v1/orders${id}`, {
     method: 'GET',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
       'x-access-token': `${myToken}`,
     },
   })
@@ -58,8 +60,10 @@ const loadOneMenu = (event) => {
       console.log(err);
     });
 };
+orderBttn.onclick = loadOneMenu;
 
-document.getElementById('user-confirm-order').addEventListener('click', confirmOrder);
+const confirmOrderBttn = document.getElementById('user-confirm-order');
+confirmOrderBttn.onclick = confirmOrder;
 
 const confirmOrder = (event) => {
   event.preventDefault();
@@ -89,3 +93,4 @@ const confirmOrder = (event) => {
       console.log(err);
     });
 };
+

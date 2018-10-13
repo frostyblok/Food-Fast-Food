@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import path from 'path';
+import cors from 'cors';
 // import swaggerui from 'swagger-ui-express';
 
 import OrderRouter from './server/routes/OrderRoutes';
@@ -14,6 +15,7 @@ import UserOrdersRouter from './server/routes/UserOrderRoutes';
 const app = express();
 dotenv.config();
 
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -46,6 +46,7 @@ const UsersController = {
               message: 'User registered successfully',
               user: users.rows[0].user_name,
               token,
+              id: users.rows[0].id,
             });
           })
           .catch((err) => {
@@ -100,6 +101,7 @@ const UsersController = {
           message: 'User logged in successfully',
           token,
           role: users.rows[0].role,
+          id: users.rows[0].id,
         });
       })
       .catch((err) => {
