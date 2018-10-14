@@ -5,7 +5,6 @@ const myToken = localStorage.getItem('food-fast-food:token');
 const htmlElementDisplay = (htmlId, displayStyle) => {
   document.getElementById(htmlId).style.display = displayStyle;
 };
-
 // const orderBttn = document.getElementById('order-now-btn');
 
 // const loadOneMenu = (event) => {

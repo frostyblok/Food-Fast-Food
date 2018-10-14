@@ -6,6 +6,7 @@ const userLogin = (event) => {
   const userPassword = document.getElementById('password-login').value;
   fetch(`${baseUrl}api/v1/auth/login`, {
     method: 'POST',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
     },
