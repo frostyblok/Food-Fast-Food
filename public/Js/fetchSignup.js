@@ -8,11 +8,11 @@ const userSignup = (event) => {
   const userEmail = document.getElementById('email-signup').value;
   const userPassword = document.getElementById('password-signup').value;
   const userAddress = document.getElementById('address-signup').value;
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
   fetch(`${baseUrl}api/v1/auth/signup`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
     body: JSON.stringify({
       user_name: userName, email: userEmail, password: userPassword, address: userAddress,
     }),
@@ -22,7 +22,7 @@ const userSignup = (event) => {
       if (data.status === 'Success') {
         localStorage.setItem('food-fast-food:token', data.token);
         localStorage.setItem('food-fast-food:id', data.id);
-        window.location.href = 'order.html';
+        window.location.href = '/order.html';
       }
     })
     .catch((err) => {

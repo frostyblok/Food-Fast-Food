@@ -4,12 +4,11 @@ const userLogin = (event) => {
   event.preventDefault();
   const userEmail = document.getElementById('email-login').value;
   const userPassword = document.getElementById('password-login').value;
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
   fetch(`${baseUrl}api/v1/auth/login`, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
     body: JSON.stringify({ email: userEmail, password: userPassword }),
   })
     .then((res) => {
@@ -19,15 +18,15 @@ const userLogin = (event) => {
       if (data.status === 'Success') {
         localStorage.setItem('food-fast-food:token', data.token);
         localStorage.setItem('food-fast-food:id', data.id);
-        console.log('token', data.token);
-        console.log('id', data.id);
+        // console.log('token', data.token);
+        // console.log('id', data.id);
 
-        // if (data.role === 'user') {
-        //   window.location.href = '/order.html';
-        // }
-        // if (data.role === 'admin') {
-        //   window.location.href = './orderList.html';
-        // }
+        if (data.role === 'user') {
+          window.location.href = '/order.html';
+        }
+        if (data.role === 'admin') {
+          window.location.href = '/orderList.html';
+        }
       }
     })
     .catch((err) => {
