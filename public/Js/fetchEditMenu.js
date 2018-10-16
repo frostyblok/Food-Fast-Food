@@ -2,8 +2,10 @@
 const baseUrl = 'https://food-fast-food.herokuapp.com/';
 
 window.onload = () => {
+  let menuId = localStorage.getItem('adminMenu:id');
   const myToken = localStorage.getItem('food-fast-food:token');
   // const myToken = '';
+  // const menuId = 1;
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('x-access-token', myToken);
@@ -34,7 +36,7 @@ window.onload = () => {
       `;
         document.getElementById('available-meal-list').innerHTML += menu;
         const deleteBttn = document.getElementById('delete-now-btn');
-        const editBttn = document.getElementById('edit-now-btn');
+        const editBttn = document.getElementById('delete-now-btn');
         deleteBttn.addEventListener('click', deleteMenu);
         editBttn.addEventListener('click', editMenu);
       });
@@ -43,10 +45,34 @@ window.onload = () => {
       console.log(err);
     });
 
+  const updateMenu = (event) => {
+    event.preventDefault();
+    const menuName = document.getElementById('menu-food-name').value;
+    const menuPrice = document.getElementById('menu-food-price').value;
+    const menuImage = document.getElementById('menu-food-image').value;
+    const newPrice = parseInt(menuPrice, 10);
+    fetch(`${baseUrl}api/v1/menu/${menuId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ menu_name: menuName, menu_price: newPrice, menu_image: menuImage }),
+    })
+      .then(res => res.json())
+      .then((data) => {
+        if (data.status === 'Success') {
+          console.log('Worked');
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  document.getElementById('edit-food-form').addEventListener('submit', updateMenu);
+
   const deleteMenu = (event) => {
     const deleteButton = document.getElementById('delete-now-btn');
     const refId = deleteButton.getAttribute('data-id');
-    const menuId = parseInt(refId, 10);
+    menuId = parseInt(refId, 10);
     event.preventDefault();
     fetch(`${baseUrl}api/v1/menu/${menuId}`, {
       method: 'DELETE',
@@ -63,34 +89,10 @@ window.onload = () => {
       });
   };
 
-  const addMenu = (event) => {
-    event.preventDefault();
-    const menuName = document.getElementById('menu-food-name').value;
-    const menuPrice = document.getElementById('menu-food-price').value;
-    const menuImage = document.getElementById('menu-food-image').value;
-    const newPrice = parseInt(menuPrice, 10);
-    fetch(`${baseUrl}api/v1/menu`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ menu_name: menuName, menu_price: newPrice, menu_image: menuImage }),
-    })
-      .then(res => res.json())
-      .then((data) => {
-        if (data.status === 'Success') {
-          console.log('Worked');
-          window.location.reload(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  document.getElementById('add-food-form').addEventListener('submit', addMenu);
-
   const editMenu = (event) => {
     const editButton = document.getElementById('edit-now-btn');
     const refId = editButton.getAttribute('data-id');
-    const menuId = parseInt(refId, 10);
+    menuId = parseInt(refId, 10);
     localStorage.setItem('adminMenu:id', menuId);
     event.preventDefault();
     fetch(`${baseUrl}api/v1/menu/${menuId}`, {

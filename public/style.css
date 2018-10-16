@@ -225,12 +225,12 @@ header {
 .available-meal-list {padding: 0px; list-style: none;}
 .available-meal-list li {display: inline-block; width: 100%; padding: 25px 0px; border-bottom: 1px solid #e8e3e3;}
 .meal-image {float: left; margin-right: 4%;}
-.meal-image img {width: 170px;}
+.meal-image img {width: 170px; height: 127px;}
 .meal-name {float: left; margin-right: 23%; width: 91px;}
 .meal-name h4 {font-size: 20px;}
 .meal-price {float: left; padding-top: 40px;}
 .price {margin-right: 17px; font-style: italic;}
-#order-now-btn {
+#order-now-btn, #edit-now-btn, #delete-now-btn {
     border: none;
     outline: none;
     cursor: pointer;   
