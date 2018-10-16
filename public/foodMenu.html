@@ -38,21 +38,21 @@
 					<div class="order-history-text">
 						<h4>Add New Food</h4>
 						<div class="add-new-food">
-							<form class="add-food-form">
+							<form id="add-food-form" class="add-food-form">
 								<div class="add-food-name">
 									<label>Food Name:</label>
-									<input type="text" name="food-name">
+									<input type="text" id="menu-food-name" name="food-name">
 								</div>
 								<div class="add-food-price">
 									<label>Food Price:</label>
-									<input type="text" name="food-price">
+									<input type="text" id="menu-food-price" name="food-price">
 								</div>
 								<div class="add-food-image">
-									<label>Food Image:</label>
-									<input type="file" name="food-image" accept="image/*">
+									<label>Food Image URL:</label>
+									<input type="text" id="menu-food-image" name="food-image-url">
 								</div>
 								<div class="add-food-button">
-									<input type="submit" name="submit" value="Add Food">
+									<input type="submit" id="menu-food-add" name="submit" value="Add Food">
 								</div>
 							</form>
 						</div>
@@ -138,5 +138,6 @@
 			<h3 class="copyright">Copyright &copy; 2018 Fast-Food-Fast</h3>
 		</div>
 	</footer>
+	<script type="text/javascript" src="./Js/fetchAddMenu.js"></script>
 </body>
 </html>

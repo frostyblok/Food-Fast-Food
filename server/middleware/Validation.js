@@ -157,12 +157,6 @@ export const validateMenu = (req, res, next) => {
     menu_price,
     menu_image,
   } = req.body;
-  if (typeof (menu_name) !== 'string') {
-    return res.status(400).json({
-      status: 'Error',
-      message: 'Invalid menu name',
-    });
-  }
   if (menu_name.match(/^\s*$/g) && menu_price.toString().match(/^\s*$/g) && menu_image.match(/^\s*$/g)) {
     return res.status(400).json({
       status: 'Error',
