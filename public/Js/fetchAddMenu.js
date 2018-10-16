@@ -7,18 +7,18 @@ const addFood = (event) => {
   const menuName = document.getElementById('menu-food-name').value;
   const menuPrice = document.getElementById('menu-food-price').value;
   const menuImage = document.getElementById('menu-food-image').value;
-  const myMenu = menuName.toString();
-  console.log(myMenu);
-  console.log(menuPrice);
+  const newPrice = parseInt(menuPrice, 10);
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('x-access-token', myToken);
   fetch(`${baseUrl}api/v1/menu`, {
     method: 'POST',
     headers,
-    body: JSON.stringify({ mennu_name: myMenu, menu_price: menuPrice, menu_image: menuImage }),
+    body: JSON.stringify({ menu_name: menuName, menu_price: newPrice, menu_image: menuImage }),
   })
-    .then(res => res.json())
+    .then((res) => {
+      return res.json();
+    })
     .then((data) => {
       if (data.status === 'Success') {
         console.log('Worked');
