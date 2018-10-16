@@ -1,3 +1,4 @@
+/* global window, document, fetch, localStorage, Headers */
 const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
 window.onload = () => {

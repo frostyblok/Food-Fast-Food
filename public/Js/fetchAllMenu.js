@@ -1,3 +1,4 @@
+/* global window, document, fetch, localStorage, Headers */
 const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
 window.onload = () => {
@@ -25,8 +26,8 @@ window.onload = () => {
             <h4>${meal.menu_name}</h4>
           </div>
           <div class="meal-price">
-            <span class="price">${meal.menu_price}</span>
-            <button id="order-now-btn" data-name="${meal.menu_name}" data-id="${meal.id} href="#">ORDER NOW</button>
+            <span class="price">#${meal.menu_price}</span>
+            <button id="order-now-btn" data-name="${meal.menu_name}" data-id="${meal.id}>ORDER NOW</button>
           </div>
         </li>
       `;
@@ -49,9 +50,6 @@ window.onload = () => {
     const menuId = parseInt(refId, 10);
     localStorage.setItem('menu:id', menuId);
     event.preventDefault();
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', myToken);
     fetch(`${baseUrl$}api/v1/menu/${menuId}`, {
       method: 'GET',
       headers,

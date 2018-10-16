@@ -1,8 +1,9 @@
+/* global window, document, fetch, localStorage, Headers */
 const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
 window.onload = () => {
   const myToken = localStorage.getItem('food-fast-food:token');
-  const myToken = '';
+  // const myToken = '';
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('x-access-token', myToken);
@@ -18,9 +19,9 @@ window.onload = () => {
       allOrders.forEach((order) => {
         menu = `
         <li>
-          <div class="order-disp"><a id="complete-order" data-id="${order.id} href="completedOrders.html">${order.id}</a></div>
+          <div class="order-disp"><a id="complete-order" data-id="${order.id}">${order.id}</a></div>
           <div class="order-name-cont">${order.food_name}</div>
-          <div class="amount-display">${order.food_price}</div>
+          <div class="amount-display">₦${order.food_price}</div>
           <div class="action-customer">BankyMoon</div>
           <div class="action-address">Lekki, Lagos</div>
         <li>
@@ -44,9 +45,6 @@ window.onload = () => {
     const orderId = parseInt(refId, 10);
     localStorage.setItem('menu:id', orderId);
     event.preventDefault();
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', myToken);
     fetch(`${baseUrl$}api/v1/orders/${orderId}`, {
       method: 'GET',
       headers,
