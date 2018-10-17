@@ -1,8 +1,14 @@
+/* global window, document, fetch, localStorage, Headers */
 const baseUrl = 'https://food-fast-food.herokuapp.com/';
 window.onload = () => {
+  const logoutButton = document.querySelector('.logout-link');
+  logoutButton.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.href = '/index.html';
+  });
   const myToken = localStorage.getItem('food-fast-food:token');
   const id = localStorage.getItem('food-fast-food:id');
-  // const myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTM5NTU1NTA5LCJleHAiOjE1Mzk1NTkxMDl9.bR-lI8wmah51oq5cOZScyC6n4tWTyyHz0ivvhEOZ9Hc';
+  // const myToken = '';
   // const id = 1;
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');

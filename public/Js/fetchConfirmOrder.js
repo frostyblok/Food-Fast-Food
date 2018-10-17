@@ -2,6 +2,11 @@
 const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
 window.onload = () => {
+  const logoutButton = document.querySelector('.logout-link');
+  logoutButton.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.href = '/index.html';
+  });
   const myToken = localStorage.getItem('food-fast-food:token');
   const menuId = localStorage.getItem('menu:id');
   // const myToken = '';
