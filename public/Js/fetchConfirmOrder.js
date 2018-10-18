@@ -1,7 +1,16 @@
 /* global window, document, fetch, localStorage, Headers */
 const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
+const innerHtmlDisplay = (htmlId, output) => {
+  document.getElementById(htmlId).innerHTML = output;
+};
+const htmlElementDisplay = (htmlId, displayStyle) => {
+  document.getElementById(htmlId).style.display = displayStyle;
+};
+
 window.onload = () => {
+  htmlElementDisplay('main-modal', 'block');
+  innerHtmlDisplay('display-para', '<p>Loading Menu...</p>');
   const logoutButton = document.querySelector('.logout-link');
   logoutButton.addEventListener('click', () => {
     localStorage.clear();
@@ -10,7 +19,7 @@ window.onload = () => {
   const myToken = localStorage.getItem('food-fast-food:token');
   const menuId = localStorage.getItem('menu:id');
   // const myToken = '';
-  // const menuId = 1;
+  // const menuId = 2;
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('x-access-token', myToken);
@@ -21,12 +30,13 @@ window.onload = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.status === 'Success') {
+        htmlElementDisplay('main-modal', 'none');
         const order = `
-            <h2 class="confirm-order-card-text">Confirm Order</h2>
-            <div class="confirm-order-container">
+            <h2 id="confirm-card-text" class="confirm-order-card-text">Confirm Order</h2>
+            <div id="confirm-order-container" class="confirm-order-container">
               <div class="confirm-order-img">
                 <h3 class="confirm-order-food-name">${data.menu.menu_name}</h3>
-                <img src="${data.menu.menu_image}">
+                <img id="data-menu-image" src="${data.menu.menu_image}">
               </div>
               <div class="confirm-order-select">
                 <h4>Quantity:</h4>
@@ -40,6 +50,17 @@ window.onload = () => {
                   <option>7</option>
                   <option>8</option>
                   <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                  <option>20</option>
                 </select>
               </div>
               <div class="complete-order-link">
@@ -51,11 +72,9 @@ window.onload = () => {
         const confirmOrderBttn = document.getElementById('user-confirm-order');
         confirmOrderBttn.addEventListener('click', confirmOrder);
       }
-      // } else {
-      //   htmlElementDisplay('confirm-order-error-modal', 'block');
-      //   htmlElementDisplay('confirm-order-card', 'none');
-      // }
     }).catch((err) => {
+      htmlElementDisplay('main-modal', 'block');
+      innerHtmlDisplay('display-para', err.message);
       console.log(err);
     });
 
@@ -78,12 +97,18 @@ window.onload = () => {
       .then(res => res.json())
       .then((data) => {
         if (data.status === 'Success') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
           console.log('works');
-          // htmlElementDisplay('simpleModal', 'block');
         }
-        // htmlElementDisplay('simpleModal', 'block');
+        if (data.status === 'Error') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
+        }
       })
       .catch((err) => {
+        htmlElementDisplay('complete-modal', 'block');
+        innerHtmlDisplay('complete-display-para', err.message);
         console.log(err);
       });
   };
