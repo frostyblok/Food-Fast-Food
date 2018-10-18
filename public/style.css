@@ -572,10 +572,33 @@ header {
     border-radius: 7px;
 }
 select.slect-style {width: 80px; margin-top: 7px;}
+#data-menu-image {width: 230px; height: 194px;}
 
 /*******************Site modal************************/
 #confirm-order-error-modal {display: none;}
 #order-history-modal {display: none;}
+
+#main-modal {display: none; margin: 20px 0px;}
+#main-modal-content {
+    width: 50%;
+    margin: auto;
+    padding: 10px 10px;
+    background: #f17878;
+    color: white;
+}
+#display-para p {margin: 0px;}
+#closeBtn {float: right;}
+
+#complete-modal {display: none; margin: 20px 0px;}
+#complete-modal-content {
+    width: 50%;
+    margin: auto;
+    padding: 10px 10px;
+    background: #f17878;
+    color: white;
+}
+#complete-display-para p {margin: 0px;}
+#complete-closeBtn {float: right;}
 
 /**************************Site footer*********************/
 footer {

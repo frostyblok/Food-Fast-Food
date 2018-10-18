@@ -1,7 +1,16 @@
 /* global window, document, fetch, localStorage, Headers */
 const baseUrl = 'https://food-fast-food.herokuapp.com/';
 
+const innerHtmlDisplay = (htmlId, output) => {
+  document.getElementById(htmlId).innerHTML = output;
+};
+const htmlElementDisplay = (htmlId, displayStyle) => {
+  document.getElementById(htmlId).style.display = displayStyle;
+};
+
 window.onload = () => {
+  htmlElementDisplay('main-modal', 'block');
+  innerHtmlDisplay('display-para', '<p>Loading menu...</p>');
   const logoutButton = document.querySelector('.logout-link');
   logoutButton.addEventListener('click', () => {
     localStorage.clear();
@@ -18,33 +27,45 @@ window.onload = () => {
   })
     .then(res => res.json())
     .then((data) => {
-      let menu;
-      const { allMenu } = data;
-      console.log('menu', allMenu);
-      allMenu.forEach((meal) => {
-        menu = `
-        <li>
-          <div class="meal-image">
-            <img src="${meal.menu_image}">
-          </div>
-          <div class="meal-name">
-            <h4>${meal.menu_name}</h4>
-          </div>
-          <div class="meal-price">
-            <span class="price">₦${meal.menu_price}</span>
-            <a id="edit-now-btn" class="admin-food-edit" data-id="${meal.id}">Edit</a>
-            <button id="delete-now-btn" class="admin-food-delete" data-id="${meal.id}">Delete</button>
-          </div>
-        </li>
-      `;
-        document.getElementById('available-meal-list').innerHTML += menu;
-        const deleteBttn = document.getElementById('delete-now-btn');
-        const editBttn = document.getElementById('edit-now-btn');
-        deleteBttn.addEventListener('click', deleteMenu);
-        editBttn.addEventListener('click', editMenu);
-      });
+      if (data.status === 'Success') {
+        let menu;
+        const { allMenu } = data;
+        console.log('menu', allMenu);
+        allMenu.forEach((meal) => {
+          menu = `
+          <li>
+            <div class="meal-image">
+              <img src="${meal.menu_image}">
+            </div>
+            <div class="meal-name">
+              <h4>${meal.menu_name}</h4>
+            </div>
+            <div class="meal-price">
+              <span class="price">₦${meal.menu_price}</span>
+              <a id="edit-now-btn" class="admin-food-edit" data-id="${meal.id}">Edit</a>
+              <button id="delete-now-btn" class="admin-food-delete" data-id="${meal.id}">Delete</button>
+            </div>
+          </li>
+        `;
+          document.getElementById('available-meal-list').innerHTML += menu;
+          const deleteBttn = document.getElementById('delete-now-btn');
+          const editBttn = document.getElementById('edit-now-btn');
+          deleteBttn.addEventListener('click', deleteMenu);
+          editBttn.addEventListener('click', editMenu);
+        });
+      }
+      if (data.allMenu.length === 0) {
+        htmlElementDisplay('main-modal', 'block');
+        innerHtmlDisplay('display-para', '<p>There are no menu!</p>');
+      }
+      if (data.status === 'Error') {
+        htmlElementDisplay('main-modal', 'block');
+        innerHtmlDisplay('display-para', data.message);
+      }
     })
     .catch((err) => {
+      htmlElementDisplay('main-modal', 'block');
+      innerHtmlDisplay('display-para', err.message);
       console.log(err);
     });
 
@@ -60,10 +81,14 @@ window.onload = () => {
       .then(res => res.json())
       .then((data) => {
         if (data.status === 'Success') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
           console.log('Done!');
           window.location.reload(true);
         }
       }).catch((err) => {
+        htmlElementDisplay('main-modal', 'block');
+        innerHtmlDisplay('display-para', err.message);
         console.log(err);
       });
   };
@@ -82,11 +107,19 @@ window.onload = () => {
       .then(res => res.json())
       .then((data) => {
         if (data.status === 'Success') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
           console.log('Worked');
           window.location.reload(true);
         }
+        if (data.status === 'Error') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
+        }
       })
       .catch((err) => {
+        htmlElementDisplay('main-modal', 'block');
+        innerHtmlDisplay('display-para', err.message);
         console.log(err);
       });
   };
@@ -105,9 +138,13 @@ window.onload = () => {
       .then(res => res.json())
       .then((data) => {
         if (data.status === 'Success') {
+          htmlElementDisplay('main-modal', 'block');
+          innerHtmlDisplay('display-para', '<p>Loading...</p>');
           window.location.href = '/editFood.html';
         }
       }).catch((err) => {
+        htmlElementDisplay('main-modal', 'block');
+        innerHtmlDisplay('display-para', err.message);
         console.log(err);
       });
   };

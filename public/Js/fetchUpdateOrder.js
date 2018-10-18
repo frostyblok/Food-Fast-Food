@@ -1,7 +1,16 @@
 /* global window, document, fetch, localStorage, Headers */
 const baseUrl$ = 'https://food-fast-food.herokuapp.com/';
 
+const innerHtmlDisplay = (htmlId, output) => {
+  document.getElementById(htmlId).innerHTML = output;
+};
+const htmlElementDisplay = (htmlId, displayStyle) => {
+  document.getElementById(htmlId).style.display = displayStyle;
+};
+
 window.onload = () => {
+  htmlElementDisplay('main-modal', 'block');
+  innerHtmlDisplay('display-para', '<p>Loading Order...</p>');
   const logoutButton = document.querySelector('.logout-link');
   logoutButton.addEventListener('click', () => {
     localStorage.clear();
@@ -21,6 +30,7 @@ window.onload = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.status === 'Success') {
+        htmlElementDisplay('main-modal', 'none');
         const order = `
           <div class="order-history-text">
             <h4 class="order-number-style">Order Number:</h4>
@@ -58,11 +68,9 @@ window.onload = () => {
         confirmOrderBttn.addEventListener('click', updateOrder);
         goBackBttn.addEventListener('click', goBack);
       }
-      // } else {
-      //   htmlElementDisplay('confirm-order-error-modal', 'block');
-      //   htmlElementDisplay('confirm-order-card', 'none');
-      // }
     }).catch((err) => {
+      htmlElementDisplay('main-modal', 'block');
+      innerHtmlDisplay('display-para', err.message);
       console.log(err);
     });
 
@@ -83,12 +91,18 @@ window.onload = () => {
       .then(res => res.json())
       .then((data) => {
         if (data.status === 'Success') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
           console.log('done');
-          // htmlElementDisplay('simpleModal', 'block');
         }
-        // htmlElementDisplay('simpleModal', 'block');
+        if (data.status === 'Error') {
+          htmlElementDisplay('complete-modal', 'block');
+          innerHtmlDisplay('complete-display-para', data.message);
+        }
       })
       .catch((err) => {
+        htmlElementDisplay('complete-modal', 'block');
+        innerHtmlDisplay('complete-display-para', err.message);
         console.log(err);
       });
   };
