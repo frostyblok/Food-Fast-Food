@@ -331,6 +331,20 @@ describe('Menu', () => {
       });
   });
 
+  it('it should not fetch a specific menu with invalid params', (done) => {
+    chai.request(app)
+      .get('/api/v1/menu/7e.8')
+      .set('x-access-token', NewAuthToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('ID can only be a number');
+        expect(res.body).to.have.property('status')
+          .eql('Error');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should not fetch a specific menu with unknow id', (done) => {
     chai.request(app)
       .get('/api/v1/menu/dfdlf')
@@ -392,12 +406,12 @@ describe('Menu', () => {
       menu_image: 'smokefish.jpg',
     };
     chai.request(app)
-      .put('/api/v1/menu/dfdlwifd')
+      .put('/api/v1/menu/7.yt')
       .set('x-access-token', adminAuth)
       .send(newMenu)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Invalid parameters');
+          .eql('ID can only be a number');
         expect(res.status).to.equal(400);
         done();
       });
@@ -453,14 +467,14 @@ describe('Menu', () => {
       });
   });
 
-  it('it should delete a menu', (done) => {
+  it('it should not delete a menu with invalid params', (done) => {
     // HTTP POST -> LOGIN ADMIN
     chai.request(app)
-      .delete('/api/v1/menu/hiqpaf')
+      .delete('/api/v1/menu/0.677')
       .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Invalid parameters');
+          .eql('ID can only be a number');
         expect(res.status).to.equal(400);
         done();
       });

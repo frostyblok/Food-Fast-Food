@@ -291,6 +291,20 @@ describe('Orders', () => {
       });
   });
 
+  it('it should not fetch a specific order with invalid params', (done) => {
+    chai.request(app)
+      .get('/api/v1/orders/e.5')
+      .set('x-access-token', adminAuth)
+      .end((err, res) => {
+        expect(res.body).to.have.property('status')
+          .eql('Error');
+        expect(res.body).to.have.property('message')
+          .eql('ID can only be a number');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
   it('it should not fetch a specific order with invalid id', (done) => {
     chai.request(app)
       .get('/api/v1/orders/pqodf')
@@ -345,18 +359,18 @@ describe('Orders', () => {
       });
   });
 
-  it('it should not update the status of an order with an unknown id', (done) => {
+  it('it should not update the status of an order with invalid params', (done) => {
     // HTTP POST -> LOGIN ADMIN
     const order = {
       status: 'Completed',
     };
     chai.request(app)
-      .put('/api/v1/orders/vcvbbfb')
+      .put('/api/v1/orders/8.9')
       .set('x-access-token', adminAuth)
       .send(order)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Invalid parameters');
+          .eql('ID can only be a number');
         expect(res.status).to.equal(400);
         done();
       });
@@ -412,11 +426,11 @@ describe('Orders', () => {
   it('it should not delete an order with an unknown id', (done) => {
     // HTTP POST -> LOGIN ADMIN
     chai.request(app)
-      .delete('/api/v1/orders/dfjkdfsd')
+      .delete('/api/v1/orders/7r.5')
       .set('x-access-token', adminAuth)
       .end((err, res) => {
         expect(res.body).to.have.property('message')
-          .eql('Invalid parameters');
+          .eql('ID can only be a number');
         expect(res.status).to.equal(400);
         done();
       });
@@ -441,6 +455,20 @@ describe('Orders', () => {
         expect(res.body).to.have.property('status')
           .eql('Success');
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it('it should not get the history of a user\'s orders history with invalid params', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/3.t/orders')
+      .set('x-access-token', authToken)
+      .end((err, res) => {
+        expect(res.body).to.have.property('message')
+          .eql('ID can only be a number');
+        expect(res.body).to.have.property('status')
+          .eql('Error');
+        expect(res.status).to.equal(400);
         done();
       });
   });

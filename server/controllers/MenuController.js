@@ -33,12 +33,6 @@ const Menu = {
     */
   getOneMenu(req, res) {
     const selectQuery = 'SELECT * FROM menu WHERE id = $1';
-    if (Number.isNaN(Number(req.params.id))) {
-      res.status(400).json({
-        status: 'Error',
-        message: 'Invalid parameters',
-      });
-    }
     const params = [req.params.id];
     db.query(selectQuery, params)
       .then((menu) => {
@@ -88,12 +82,6 @@ const Menu = {
   editMenu(req, res) {
     const { id } = req.params;
     const { menu_name, menu_price, menu_image } = req.body;
-    if (Number.isNaN(Number(id))) {
-      res.status(400).json({
-        status: 'Error',
-        message: 'Invalid parameters',
-      });
-    }
     const findQuery = 'SELECT * FROM menu WHERE id = $1';
     let params = [id];
     db.query(findQuery, params)
@@ -127,12 +115,6 @@ const Menu = {
   deleteMenu(req, res) {
     const deleteQuery = 'DELETE FROM menu WHERE id = $1 returning *';
     const params = [req.params.id];
-    if (Number.isNaN(Number(req.params.id))) {
-      res.status(400).json({
-        status: 'Error',
-        message: 'Invalid parameters',
-      });
-    }
     db.query(deleteQuery, params)
       .then((menu) => {
         if (!menu.rows[0]) {

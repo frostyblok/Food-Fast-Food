@@ -2,6 +2,7 @@ import express from 'express';
 import Orders from '../controllers/OrdersController';
 import { validateOrder } from '../middleware/Validation';
 import Auth from '../middleware/Auth';
+import checkParams from '../middleware/CheckParams';
 
 
 /* eslint linebreak-style: 0 */
@@ -12,12 +13,13 @@ const {
   getAllOrders, getOneOrder, createOrder, updateOneOrder, deleteOneOrder,
 } = Orders;
 
+const { idChecker } = checkParams;
 const { authentication, adminAuthentication } = Auth;
 
 router.get('/', authentication, adminAuthentication, getAllOrders);
-router.get('/:id', authentication, adminAuthentication, getOneOrder);
+router.get('/:id', authentication, adminAuthentication, idChecker, getOneOrder);
 router.post('/', authentication, validateOrder, createOrder);
-router.put('/:id', authentication, adminAuthentication, updateOneOrder);
-router.delete('/:id', authentication, adminAuthentication, deleteOneOrder);
+router.put('/:id', authentication, adminAuthentication, idChecker, updateOneOrder);
+router.delete('/:id', authentication, adminAuthentication, idChecker, deleteOneOrder);
 
 export default router;
