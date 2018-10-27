@@ -47,7 +47,8 @@ input[type="submit"] {
 @media only screen and (min-width : 320px) and (max-width : 1069px)  {
     .support-col {display: none;}
     .signup-page {padding: 25px 0px !important;}
-    .login-card {width: 91%; display: grid; justify-content: center; padding-bottom: 6px;}
+    .login-card {width: 91%; display: grid; justify-content: center; padding-bottom: 6px; margin-top: 15px;}
+    .signup-card {padding: 0px 10px !important;}
     .form {display: grid; width: 100%; justify-content: center;}
     input[type="text"], input[type="password"] {
         width: 198px;
@@ -265,7 +266,6 @@ header {
     right: 231px;
     border-radius: 20px;
 }
-.modal-content {}
 .modal-confirm {margin: 0px 0px 26px 0px;}
 .modal-button-yes {
     border: 1px solid #39593e;
@@ -287,6 +287,7 @@ header {
 #complete-order {cursor: pointer;}
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {
+    .adjust-footer {position: relative !important;}
     .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
@@ -301,6 +302,7 @@ header {
     .meal-price {padding-top: 21px;}
 }
 @media only screen and (min-width : 481px) and (max-width : 656px) {
+    .adjust-footer {position: relative !important;}
     .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
@@ -315,6 +317,7 @@ header {
     .meal-price {margin-right: 130px; padding-top: 18px;}
 }
 @media only screen and (min-width : 656px) and (max-width : 776px) {
+    .adjust-footer {position: relative !important;}
     .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
@@ -329,6 +332,7 @@ header {
     .meal-price {margin-right: 105px; padding-top: 0px;}
 }
 @media only screen and (min-width : 777px) and (max-width : 1110px) {
+    .adjust-footer {position: relative !important;}
     .logo-name-style {font-size: 27px;}
     .sidebar {width: 100% !important; justify-content: center; padding: 0px !important;}
     .main-interface {width: 90% !important; justify-content: center; padding: 0px !important;}
@@ -342,6 +346,7 @@ header {
     .meal-name {margin-right: 0px !important;}
 }
 @media only screen and (min-width : 1111px) and (max-width : 1329px) {
+    .adjust-footer {position: relative !important;}
     .logo-name-style {font-size: 27px;}
     .meal-price {padding: 0px; margin-right: 25px;}
 }
@@ -383,6 +388,7 @@ header {
 .orders-new li a {text-decoration: none; font-size: 14px; color: #504f02;}
 
 @media only screen and (min-width : 320px) and (max-width : 426px) {
+    .adjust-footer {position: relative !important;}
     .orders-new {display: flex; padding-left: 7px;}
     .orders-new li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
     .flex-container {display: none;}
@@ -390,13 +396,15 @@ header {
     .flex-body li div {margin-bottom: 7px;}
 }
 @media only screen and (min-width : 427px) and (max-width : 1109px) {
+    .adjust-footer {position: relative !important;}
     .orders-new {display: flex; padding-left: 7px;}
     .orders-new li {padding: 17px 44px 22px 16px; border: 1px solid #e6dede;}
     .flex-container {display: none;}
     .flex-body li {display: grid; width: 100%; border-bottom: 1px solid #bfbdbd;}
     .flex-body li div {margin-bottom: 7px;}
 }
-@media only screen and (min-width : 1112px) {
+@media only screen and (min-width : 1112px) and (max-width : 1329px) {
+    .adjust-footer {position: relative !important;}
     .order-cont {width: 28%;}
     .order-name-cont {width: 22%;}
     .action-cont {width: 25%;}
@@ -574,6 +582,12 @@ header {
 select.slect-style {width: 80px; margin-top: 7px;}
 #data-menu-image {width: 230px; height: 194px;}
 
+@media only screen and (min-width : 320px) and (max-width : 1329px) {
+    .confirm-order-card {width: 85%;}
+    .confirm-order-food-name {margin: 0px !important; float: none; padding: 0px;}
+    #data-menu-image {width: 70%;}
+}
+
 /*******************Site modal************************/
 #confirm-order-error-modal {display: none;}
 #order-history-modal {display: none;}
@@ -607,6 +621,7 @@ footer {
     background: #c53f41;
     color: #dadaca;
 }
+.adjust-footer {position: absolute; bottom: 0;}
 .copyright {text-align: center; font-size: 16px;}
 
 /*******************Error page**********************/
