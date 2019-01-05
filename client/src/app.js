@@ -1,10 +1,18 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import './App.css';
+import Login from './components/LoginPage.jsx';
 
 class App extends Component {
   render() {
     return (
-      <h1>Fuck React!</h1>);
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Login} />
+        </Switch>
+      </BrowserRouter>
+    );
   }
 }
 
