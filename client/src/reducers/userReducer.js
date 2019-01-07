@@ -9,6 +9,14 @@ const userReuducer = (state = initState, action) => {
       return {
         ...state,
         user: action.payload,
+        type: action.type,
+        isAuthenticated: true
+      };
+    case 'SIGN_USER':
+      return {
+        ...state,
+        user: action.payload,
+        type: action.type,
         isAuthenticated: true
       }
     default: 

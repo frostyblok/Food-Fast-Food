@@ -6,6 +6,11 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index-bundle.js',
+    publicPath: '/'
+  },
+  devtool: 'cheap-module-source-map',
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -17,6 +22,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },

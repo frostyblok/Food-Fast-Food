@@ -2,14 +2,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
-import Login from './components/LoginPage.jsx';
+import LoginPage from './components/LoginPage.jsx';
+import SignupPage from './components/SignupPage.jsx';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Login} />
+          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/signup" component={SignupPage} />
         </Switch>
       </BrowserRouter>
     );

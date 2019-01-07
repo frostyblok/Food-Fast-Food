@@ -1,30 +1,31 @@
 import jwtDecode from 'jwt-decode';
-import { LOGIN_USER } from '../actions/types';
+import axios from 'axios';
+import { LOGIN_USER, SIGNUP_USER } from '../actions/types';
 import setStorage from '../helpers/setStorage';
-const baseUrl = 'https://food-fast-food.herokuapp.com/';
+// const baseUrl = 'https://food-fast-food.herokuapp.com';
+const baseUrl = 'http://localhost:8000';
 
-export const signinUser = (user, props)  => dispatch => {
-  console.log(user)
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  return fetch(`${baseUrl}api/v1/auth/login`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(user),
+const signinUserAction = (payload) => ({ type: LOGIN_USER, payload });
+const signupUserAction = (payload) => ({ type: SIGNUP_USER, payload });
+
+export const signinUser = (user)  => dispatch => {
+  return axios.post(`${baseUrl}/api/v1/auth/login`, {...user} )
+  .then(({data}) => {
+    setStorage('token', data.token);
+    const payload = jwtDecode(data.token);
+    dispatch(signinUserAction(payload));
   })
-  .then(res => res.json())
-  .then((data) => {
-    if (data.status === 'Success') {
-      setStorage('token', data.token);
-      const payload = jwtDecode(data.token);
-      dispatch({
-        type: LOGIN_USER,
-        payload
-      });
-      // toastr.success('Welcome');
-      props.history.push('/Home');
-    }
-    console.log(data);
+  .catch((error) => {
+    console.log(error);
+  });
+}
+
+export const signupUser = (user) => dispatch => {
+  return axios.post(`${baseUrl}/api/v1/auth/signup`, { ...user })
+  .then(({data}) => {
+    setStorage('token', data.token);
+    const payload = jwtDecode(data.token);
+    dispatch(signupUserAction(payload));
   })
   .catch((error) => {
     console.log(error);
