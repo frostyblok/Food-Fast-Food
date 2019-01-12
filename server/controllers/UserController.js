@@ -75,17 +75,17 @@ const UsersController = {
   userLogin(req, res) {
     const selectQuery = 'SELECT * FROM users WHERE email = $1';
     const params = [req.body.email];
-    db.query(selectQuery, params)
+    return db.query(selectQuery, params)
       .then((users) => {
         if (!users.rows[0]) {
-          res.status(401).json({
+          return res.status(401).json({
             status: 'Error',
             message: 'Incorrect username or password',
           });
         }
         const comparedpassword = bcrypt.compareSync(req.body.password, users.rows[0].password);
         if (!comparedpassword) {
-          res.status(401).json({
+          return res.status(401).json({
             status: 'Error',
             message: 'Incorrect username or password',
           });
@@ -96,7 +96,7 @@ const UsersController = {
           role: users.rows[0].role,
         };
         const token = jwt.sign(valueName, process.env.SECRET_KEY, { expiresIn: '1hr' });
-        res.status(200).json({
+        return res.status(200).json({
           status: 'Success',
           message: 'User logged in successfully',
           token,
@@ -105,7 +105,7 @@ const UsersController = {
         });
       })
       .catch((err) => {
-        res.status(500).json({
+        return res.status(500).json({
           status: 'Error',
           message: 'Could not complete request at this time',
           err,

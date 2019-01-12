@@ -1,17 +1,22 @@
 /* eslint-disable class-methods-use-this */
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LoginForm from './LoginForm.jsx';
-import { signinUser } from '../actions/userAction';
-import setStorage from '../helpers/setStorage';
+import LoginForm from '../forms/LoginForm.jsx';
+import { signinUser } from '../../actions/userAction';
+import { LOGIN_USER } from '../../actions/types.js';
 
-class Login extends Component {
+class LoginPage extends Component {
   state = {
     email: '',
     password: '',
   }
 
+  componentDidUpdate() {
+    const { currentUser, history } = this.props;
+    if(currentUser.type === LOGIN_USER) {
+      history.push('/');
+    }
+  }
   onChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -20,11 +25,11 @@ class Login extends Component {
   loginUser = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
+    const { signinUser } = this.props;
     const payload = { email, password };
-    this.props.signinUser(payload, this.props);
+    signinUser(payload);
   }
   render() {
-    console.log(this.props);
     return (
       <section className="login-page">
         <div className="container">
@@ -55,11 +60,9 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loginUser: state.userLogin
-  }
+const mapStateToProps = ({currentUser}) => {
+  return {currentUser}
 }
 
 
-export default connect(mapStateToProps, {signinUser})(Login);
+export default connect(mapStateToProps, {signinUser})(LoginPage);

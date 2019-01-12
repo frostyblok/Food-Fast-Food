@@ -1,6 +1,6 @@
 const initState = {
   user: {},
-  isAuthenticated: false
+  isAuthenticated: false,
 };
 
 const userReuducer = (state = initState, action) => {
@@ -9,8 +9,22 @@ const userReuducer = (state = initState, action) => {
       return {
         ...state,
         user: action.payload,
+        type: action.type,
         isAuthenticated: true
-      }
+      };
+    case 'SIGN_USER':
+      return {
+        ...state,
+        user: action.payload,
+        type: action.type,
+        isAuthenticated: true
+      };
+      case 'USER_ERROR':
+      return {
+        ...state,
+        type: action.type,
+        errors: action.error
+      };
     default: 
      return state;
   }

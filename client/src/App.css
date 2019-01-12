@@ -13,7 +13,7 @@ section {float: left; width: 100%; padding: 50px 0px;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
-.signup-page {background: #f5f9f7; float: left; width: 100%;padding: 33px 0px;}
+.signup-page {background: #f5f9f7; float: left; width: 100%;padding-top: 33px;padding-bottom: 218px;;}
 .login-page {background: #f5f9f7; float: left; width: 100%; padding-top: 84px;padding-bottom: 220px;}
 .container {width: 80%; margin: 0px auto;}
 .sign-text {float: left;}
@@ -100,9 +100,9 @@ header {
 }
 
 .effective {
-    background-image: linear-gradient(to right, #be1417, #e6acad);
+    /* background-image: linear-gradient(to right, #be1417, #e6acad); */
     padding: 90px 0px;
-    /* background-image: url(./img/food3.jpg); */
+    background-image: url(./assets/food3.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
 }
