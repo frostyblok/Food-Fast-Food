@@ -1,11 +1,12 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LoginForm from './LoginForm.jsx';
-import { signupUser } from '../actions/userAction';
-import SignupForm from './SignupForm.jsx';
+import LoginForm from '../forms/LoginForm.jsx';
+import { signupUser } from '../../actions/userAction';
+import SignupForm from '../forms/SignupForm.jsx';
+import { SIGNUP_USER } from '../../actions/types.js';
 
-class Login extends Component {
+class SignUpPage extends Component {
   state = {
     user_name: '',
     email: '',
@@ -15,8 +16,8 @@ class Login extends Component {
   componentDidUpdate() {
     const { currentUser, history } = this.props;
     console.log(this.props);
-    if (currentUser.type === 'SIGNUP_USER') {
-      history.push('/home');
+    if (currentUser.type === SIGNUP_USER) {
+      history.push('/');
     }
   }
 
@@ -67,4 +68,4 @@ const mapStateToProps = ({currentUser}) => {
 }
 
 
-export default connect(mapStateToProps, {signupUser})(Login);
+export default connect(mapStateToProps, {signupUser})(SignUpPage);

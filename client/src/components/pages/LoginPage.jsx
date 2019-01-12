@@ -1,9 +1,9 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LoginForm from './LoginForm.jsx';
-import { signinUser } from '../actions/userAction';
-import { LOGIN_USER } from '../actions/types.js';
+import LoginForm from '../forms/LoginForm.jsx';
+import { signinUser } from '../../actions/userAction';
+import { LOGIN_USER } from '../../actions/types.js';
 
 class LoginPage extends Component {
   state = {
@@ -14,7 +14,7 @@ class LoginPage extends Component {
   componentDidUpdate() {
     const { currentUser, history } = this.props;
     if(currentUser.type === LOGIN_USER) {
-      history.push('/home');
+      history.push('/');
     }
   }
   onChange = (event) => {

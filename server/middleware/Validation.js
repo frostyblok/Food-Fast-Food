@@ -81,7 +81,7 @@ export const validateSignin = (req, res, next) => {
   } = req.body;
   
 
-  if ((email && email.match(/^\s*$/g)) && (password && password.match(/^\s*$/g))) {
+  if (email.match(/^\s*$/g) && password.match(/^\s*$/g)) {
     return res.status(400).send({
       status: 'Error',
       message: 'Email and password fields are required',

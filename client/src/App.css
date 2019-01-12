@@ -100,9 +100,9 @@ header {
 }
 
 .effective {
-    background-image: linear-gradient(to right, #be1417, #e6acad);
+    /* background-image: linear-gradient(to right, #be1417, #e6acad); */
     padding: 90px 0px;
-    /* background-image: url(./img/food3.jpg); */
+    background-image: url(./assets/food3.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
 }

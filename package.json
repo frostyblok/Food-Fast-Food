@@ -10,13 +10,14 @@
   "scripts": {
     "start-react": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "test": "npm run migrate && mocha --exit --timeout 10000 --compilers js:babel-core/register ./test/*.js",
+    "test": "npm run migrate && mocha --exit --timeout 10000 --compilers js:@babel/register ./test/*.js",
     "lint": "eslint",
     "dev": "babel-watch server.js",
     "start": "npm run migrate && babel-node server.js",
     "migrate": "npx babel-node server/models/tables.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
+    "jest": "jest"
   },
   "repository": {
     "type": "git",
@@ -34,10 +35,12 @@
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
-    "babel-watch": "^2.0.7",
+    "babel-watch": "^2.0.8",
     "css-loader": "^2.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
@@ -84,14 +87,15 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": "./client/src",
-    "bail": true,
+    "collectCoverageFrom": [
+      "./client/src/**/*.{js,jsx}"
+    ],
+    "bail": false,
     "setupFiles": [
       "<rootDir>/client/__test__/__mock__/setupEnzyme.js"
     ],
     "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
-      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/client/__mocks__/filesMock.js"
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|gif)$": "identity-obj-proxy"
     }
   }
 }
