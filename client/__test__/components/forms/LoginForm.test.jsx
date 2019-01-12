@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BrowserRouter } from 'react-router-dom';
 import LoginForm from '../../../src/components/forms/LoginForm.jsx';
 
 let props;

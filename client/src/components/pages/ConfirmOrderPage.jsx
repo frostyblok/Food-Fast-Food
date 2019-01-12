@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class ConfirmOrderPage extends Component {
-  render() { 
-    return ( 
+  render() {
+    return (
     <section>
       <div className="container">
         <div id="complete-modal">
@@ -26,5 +26,4 @@ class ConfirmOrderPage extends Component {
      );
   }
 }
- 
 export default ConfirmOrderPage;

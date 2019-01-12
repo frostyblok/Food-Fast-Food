@@ -6,7 +6,7 @@ import { signupUser } from '../../actions/userAction';
 import SignupForm from '../forms/SignupForm.jsx';
 import { SIGNUP_USER } from '../../actions/types.js';
 
-class SignUpPage extends Component {
+export class SignUpPage extends Component {
   state = {
     user_name: '',
     email: '',
@@ -15,7 +15,6 @@ class SignUpPage extends Component {
   }
   componentDidUpdate() {
     const { currentUser, history } = this.props;
-    console.log(this.props);
     if (currentUser.type === SIGNUP_USER) {
       history.push('/');
     }

@@ -4,8 +4,8 @@ import delivery from '../../assets/delivery.jpg';
 import meal from '../../assets/meal.jpg';
 
 class HomePage extends Component {
-  render() { 
-    return ( 
+  render() {
+    return (
       <div>
         <section className="effective">
           <div className="container">
@@ -43,9 +43,9 @@ class HomePage extends Component {
             </div>
           </div>
         </section>
-       </div> 
+       </div>
      );
   }
 }
- 
+
 export default HomePage;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MenuForm = () => {
-  return ( 
+  return (
     <form id="add-food-form" className="add-food-form">
       <div className="add-food-name">
         <label>Food Name:</label>
