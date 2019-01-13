@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import MenuForm from '../forms/MenuForm.jsx';
 
 class EditFood extends Component {
-  render() { 
-    return ( 
+  render() {
+    return (
       <section className="row-main">
         <div className="container">
           <div className="col-2 sidebar">
@@ -51,5 +51,4 @@ class EditFood extends Component {
      );
   }
 }
- 
 export default EditFood;

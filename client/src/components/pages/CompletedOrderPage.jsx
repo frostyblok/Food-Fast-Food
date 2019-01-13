@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class CompletedOrderPage extends Component {
-  render() { 
-    return ( 
+  render() {
+    return (
     <section className="row-main">
       <div className="container">
         <div className="col-2 sidebar">
@@ -37,5 +37,4 @@ class CompletedOrderPage extends Component {
      );
   }
 }
- 
 export default CompletedOrderPage;

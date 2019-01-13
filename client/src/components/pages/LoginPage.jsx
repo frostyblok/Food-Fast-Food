@@ -5,7 +5,7 @@ import LoginForm from '../forms/LoginForm.jsx';
 import { signinUser } from '../../actions/userAction';
 import { LOGIN_USER } from '../../actions/types.js';
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   state = {
     email: '',
     password: '',

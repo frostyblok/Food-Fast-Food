@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class OrderList extends Component {
-  render() { 
-    return ( 
+  render() {
+    return (
     <section className="row-main">
       <div className="container">
         <div className="col-2 sidebar">
@@ -42,5 +42,4 @@ class OrderList extends Component {
     );
   }
 }
- 
 export default OrderList;

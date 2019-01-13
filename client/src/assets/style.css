@@ -111,23 +111,23 @@ header {
 .effect-texxt-style {color: white; font-style: italic; margin-top: 1px; font-family: 'Indie Flower', cursive;}
 
 .work-model {color: #be1417;}
-.how-works {    
+.how-works {
     text-align: center;
     float: left;
     width: 100%;
 }
-.works-text {margin-top: 0px; margin-bottom: 15px;;} 
+.works-text {margin-top: 0px; margin-bottom: 15px;;}
 .works-paradigm {
     float: left;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.order-food {margin-right: 15%;} 
+.order-food {margin-right: 15%;}
 .recieve-food {margin-right: 15%; padding-top: 24px;}
 .enjoy-food {padding-top: 31px;}
 .paradigm-style {list-style: none; padding: 0px;}
-.paradigm-style li {}                                          
+.paradigm-style li {}
 .paradigm-style li h4 {font-size: 20px; margin-bottom: 0px;}
 .paradigm-style li p {font-family: 'Indie Flower', cursive;}
 #font-opac {font-size: 110px; opacity: 0.7;}
@@ -292,7 +292,7 @@ header {
 .order-name-cont {width: 171px;}
 .action-cont {width: 200px;}
 .amount-display {width: 200px;}
-.left-acc {    
+.left-acc {
     background: green;
     border: none;
     width: 60px;

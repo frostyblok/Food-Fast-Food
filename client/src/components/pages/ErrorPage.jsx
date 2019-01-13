@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ErrorPage = () => {
-  return ( 
+  return (
     <div>
       <section className="error-page">
         <div className="container">

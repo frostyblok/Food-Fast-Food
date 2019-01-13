@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import SearchForm from '../forms/SearchForm.jsx';
 
 class OrderPage extends Component {
-  render() { 
-    return ( 
+  render() {
+    return (
       <section className="row-main">
       <div className="container">
         <div className="col-4 sidebar">
@@ -41,5 +41,4 @@ class OrderPage extends Component {
      );
   }
 }
- 
 export default OrderPage;
