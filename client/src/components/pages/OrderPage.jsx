@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
-import SearchForm from '../forms/SearchForm.jsx';
+import { connect } from 'react-redux';
+import { getAllMenu } from '../../actions/menuAction';
+import SideBar from '../common/SideBar.jsx';
+import MainBar from '../common/MainBar.jsx';
 
-class OrderPage extends Component {
+export class OrderPage extends Component {
+  componentDidMount() {
+    this.props.getAllMenu();
+  }
   render() {
+    const { menus } = this.props.menuList;
     return (
       <section className="row-main">
-      <div className="container">
-        <div className="col-4 sidebar">
-          <div className="sidebar-content">
-            <h4 className="categories-style">Categories</h4>
-            <ul className="menu-history">
-              <li><a href="#">Menu</a></li>
-              <li><a id="order-history-fetch" href="orderHistory.html">Order History</a></li>
-            </ul>
-          </div>
+        <div className="container">
+          <SideBar />
+          <MainBar menus={menus} />
         </div>
-        <div className="col-7 main-interface">
-          <div className="main-interface-content">
-            <div className="search-food">
-              <SearchForm />
-            </div>
-            <div className="menu-list-title">
-              <h4>Menu</h4>
-            </div>
-            <div id="available-meal" className="available-meal">
-                <div id="main-modal">
-                  <div id="main-modal-content">
-                    <span id="closeBtn">&times;</span>
-                    <div id="display-para">
-                    </div>
-                  </div>
-                </div>
-                <ul id="available-meal-list" className="available-meal-list">
-                </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
      );
   }
 }
-export default OrderPage;
+
+const mapStateToProps = ({menuList}) => {
+  return { 
+    menus: menuList.menu,
+    menuList
+   }
+}
+
+export default connect(mapStateToProps, { getAllMenu })(OrderPage);

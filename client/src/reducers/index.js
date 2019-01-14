@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import currentUser  from './userReducer';
+import menuList from './menuReducer';
 
 const rootReducer = combineReducers({
-  currentUser
+  currentUser,
+  menuList
 })
 
 export default rootReducer;

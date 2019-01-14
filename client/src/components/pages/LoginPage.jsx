@@ -14,7 +14,7 @@ export class LoginPage extends Component {
   componentDidUpdate() {
     const { currentUser, history } = this.props;
     if(currentUser.type === LOGIN_USER) {
-      history.push('/');
+      history.push('/order');
     }
   }
   onChange = (event) => {
