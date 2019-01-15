@@ -5,11 +5,15 @@ import MenuTitle from './MenuTitle.jsx';
 import Main from './Main.jsx';
 
 
-const MainBar = ({menus}) => {
+const MainBar = ({menus, onOrder, loader}) => {
   return ( 
     <Main>
       <SearchFood />
-      <MenuTitle menus={menus} />
+      <MenuTitle 
+        menus={menus}
+        onOrder={onOrder}
+        loader={loader}
+      />
     </Main>
   );
 }

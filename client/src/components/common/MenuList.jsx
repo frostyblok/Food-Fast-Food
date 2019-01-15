@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MenuList = (props) => {
-  const { meal } = props;
+  const { meal, onOrder } = props;
   return (
     <li>
       <div className="meal-image">
@@ -12,7 +12,7 @@ const MenuList = (props) => {
       </div>
       <div className="meal-price">
         <span className="price">#{meal.menu_price}</span>
-        <button id="order-now-btn" data-name="${meal.menu_name}" data-id="${meal.id}">ORDER NOW</button>
+        <button onClick={() => onOrder(meal.id)} id="order-now-btn">ORDER NOW</button>
       </div>
     </li>
   );

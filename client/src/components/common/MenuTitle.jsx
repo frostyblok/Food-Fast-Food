@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from './Spinner.jsx';
 import MenuList from './MenuList.jsx';
 
-const MenuTitle = ({menus}) => {
+const MenuTitle = ({menus, onOrder, loader}) => {
   return ( 
     <div>
       <div className="menu-list-title">
@@ -11,15 +11,18 @@ const MenuTitle = ({menus}) => {
       <div id="available-meal" className="available-meal">
           <div id="main-modal">
             <div id="main-modal-content">
-              <span id="closeBtn">&times;</span>
               <div id="display-para">
               </div>
             </div>
           </div>
           <ul id="available-meal-list" className="available-meal-list">
           {
-            !menus ? <Spinner /> : menus.map(menu => {
-              return <MenuList key={menu.id} meal={menu}/>
+            loader ? <Spinner /> : menus.map(menu => {
+              return <MenuList 
+                key={menu.id}
+                meal={menu}
+                onOrder={onOrder}
+              />
             })
           }
           </ul>

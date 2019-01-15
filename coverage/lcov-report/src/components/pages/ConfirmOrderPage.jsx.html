@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">9.09% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">9.09% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/11</span>
       </div>
     </div>
   </div>
@@ -71,10 +71,57 @@
 26
 27
 28
-29</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,41 +146,78 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import OneOrder from './OneOrder.jsx';
+import { getOneMenu } from '../../actions/menuAction';
+import { placeOrder } from '../../actions/orderAction';
+import Spinner from '../common/Spinner.jsx';
 &nbsp;
-class ConfirmOrderPage extends Component {
+export class ConfirmOrderPage extends Component {
+&nbsp;
+<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
+<span class="cstat-no" title="statement not covered" >    this.props.getOneMenu();</span>
+  }
+&nbsp;
+  onConfirmOrder = <span class="fstat-no" title="function not covered" >(f</span>ood_name, food_price, quantity) =&gt; {
+    const {placeOrder} = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    const payload = <span class="cstat-no" title="statement not covered" >{food_name, food_price, quantity};</span>
+<span class="cstat-no" title="statement not covered" >    console.log('My payload&gt;&gt;&gt;&gt;&gt;&gt;', payload);</span>
+<span class="cstat-no" title="statement not covered" >    placeOrder(payload);</span>
+  }
 <span class="fstat-no" title="function not covered" >  re</span>nder() {
+    const {menu} = <span class="cstat-no" title="statement not covered" >this.props.menuList;</span>
+<span class="cstat-no" title="statement not covered" >    console.log('This is menu&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;', this.props.menuList);</span>
+<span class="cstat-no" title="statement not covered" >    console.log('This is the real menu&gt;&gt;&gt;&gt;&gt;&gt;&gt;', menu);</span>
 <span class="cstat-no" title="statement not covered" >    return (</span>
-    &lt;section&gt;
-      &lt;div className="container"&gt;
-        &lt;div id="complete-modal"&gt;
-          &lt;div id="complete-modal-content"&gt;
-            &lt;span id="complete-closeBtn"&gt;&amp;times;&lt;/span&gt;
-            &lt;div id="complete-display-para"&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div id="confirm-order-card" className="confirm-order-card"&gt;
-          &lt;div id="main-modal"&gt;
-            &lt;div id="main-modal-content"&gt;
-              &lt;span id="closeBtn"&gt;&amp;times;&lt;/span&gt;
-              &lt;div id="display-para"&gt;
+      &lt;div&gt;
+        {!menu ? &lt;Spinner /&gt; : (&lt;section&gt;
+        &lt;div className="container"&gt;
+          &lt;div id="confirm-order-card" className="confirm-order-card"&gt;
+            &lt;div id="main-modal"&gt;
+              &lt;div id="main-modal-content"&gt;
+                &lt;div id="display-para"&gt;
+                  &lt;OneOrder 
+                    menu={menu}
+                    onConfirm={this.onConfirmOrder}
+                  /&gt;
+                &lt;/div&gt;
               &lt;/div&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
+      &lt;/section&gt;)}
       &lt;/div&gt;
-    &lt;/section&gt;
+      
+    
      );
   }
 }
-export default ConfirmOrderPage;</pre></td></tr>
+&nbsp;
+const mapStateToProps = <span class="fstat-no" title="function not covered" >({</span>menuList, placedOrder}) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    menuList,
+    placedOrder
+  }
+}
+&nbsp;
+export default connect(mapStateToProps, {getOneMenu, placeOrder})(ConfirmOrderPage);
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jan 14 2019 06:53:44 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 15 2019 13:02:40 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

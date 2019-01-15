@@ -553,9 +553,9 @@ header {
 /*********************Complete orders*******************/
 .confirm-order-card {
     width: 40%;
-    border: 1px solid #9a8686;
+    border: 1px solid #dcdbdb;
     padding: 18px;
-    box-shadow: 1px 1px 6px 3px grey;
+    box-shadow: 1px 1px 16px 3px #b5aeae;
     display: block;
     margin: auto;
 }
@@ -563,9 +563,11 @@ header {
 .confirm-order-food-name {
     margin: 0px;
     float: right;
-    margin-top: 73px;
+    margin-top: 35px;
     font-size: 23px;
-    padding-right: 30px;
+    padding-right: 77px;
+    color: #2e5a3b;
+    margin-bottom: 6px;
 }
 .confirm-order-select {margin: 18px 0px;}
 .confirm-order-select h4 {color: #bf6565; margin: 0px}
@@ -592,12 +594,11 @@ select.slect-style {width: 80px; margin-top: 7px;}
 #confirm-order-error-modal {display: none;}
 #order-history-modal {display: none;}
 
-#main-modal {display: none; margin: 20px 0px;}
+#main-modal {margin: 20px 0px;}
 #main-modal-content {
     width: 50%;
     margin: auto;
     padding: 10px 10px;
-    background: #f17878;
     color: white;
 }
 #display-para p {margin: 0px;}
@@ -608,7 +609,6 @@ select.slect-style {width: 80px; margin-top: 7px;}
     width: 50%;
     margin: auto;
     padding: 10px 10px;
-    background: #f17878;
     color: white;
 }
 #complete-display-para p {margin: 0px;}

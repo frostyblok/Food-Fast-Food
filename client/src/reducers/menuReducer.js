@@ -10,6 +10,11 @@ const menuReducer = (state = initState, action) => {
         type: action.type,
         menus: action.menu
       };
+    case 'GET_ONE_MENU': 
+    return {
+      type: action.type,
+      menu: action.menu
+    };
     case 'SET_STATUS':
     return {
       ...state,

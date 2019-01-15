@@ -29,9 +29,10 @@ class App extends Component {
           <Route path="/order-history" component={OrderHistory} />
           <Route path="/add-menu" component={AddFood} />
           <Route path="/edit-menu" component={EditFood} />
-          <Route path="/confirm-order" component={ConfirmOrderPage} />
+          <Route path="/menu/:id/confirm-order" component={ConfirmOrderPage} />
           <Route path="/completed-order" component={CompletedOrderPage} />
           <Route path="/error-page" component={ErrorPage} />
+
         </Switch>
       </BrowserRouter>
     );
