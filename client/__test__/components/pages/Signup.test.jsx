@@ -17,7 +17,7 @@ const setup = () => {
   return shallow(<SignUpPage {...props} />);
 }
 
-describe('Login page component', () => {
+describe('Signup page component', () => {
   const wrapper = setup();
   const action = wrapper.instance();
   it('should render component', () => {

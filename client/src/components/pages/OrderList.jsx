@@ -29,7 +29,6 @@ class OrderList extends Component {
             <ul id="flex-body" className="flex-body">
               <div id="main-modal">
                 <div id="main-modal-content">
-                  <span id="closeBtn">&times;</span>
                   <div id="display-para">
                   </div>
                 </div>

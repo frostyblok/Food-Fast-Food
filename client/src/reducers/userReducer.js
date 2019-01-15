@@ -1,6 +1,7 @@
 const initState = {
   user: {},
   isAuthenticated: false,
+  loader: false
 };
 
 const userReuducer = (state = initState, action) => {
@@ -19,12 +20,18 @@ const userReuducer = (state = initState, action) => {
         type: action.type,
         isAuthenticated: true
       };
-      case 'USER_ERROR':
-      return {
-        ...state,
-        type: action.type,
-        errors: action.error
-      };
+    case 'USER_ERROR':
+    return {
+      ...state,
+      type: action.type,
+      errors: action.error
+    };
+    case 'SET_STATUS':
+    return {
+      ...state,
+      type: action.type,
+      loader: action.status
+    };
     default: 
      return state;
   }

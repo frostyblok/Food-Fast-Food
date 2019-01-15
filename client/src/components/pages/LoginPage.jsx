@@ -14,7 +14,7 @@ export class LoginPage extends Component {
   componentDidUpdate() {
     const { currentUser, history } = this.props;
     if(currentUser.type === LOGIN_USER) {
-      history.push('/');
+      history.push('/order');
     }
   }
   onChange = (event) => {
@@ -43,7 +43,6 @@ export class LoginPage extends Component {
             <div className="form">
               <div id="main-modal">
                 <div id="main-modal-content">
-                  <span id="closeBtn">&times;</span>
                   <div id="display-para">
                   </div>
                 </div>

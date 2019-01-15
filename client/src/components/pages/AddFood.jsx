@@ -35,7 +35,6 @@ class AddFood extends Component {
                 <div className="available-meal">
                   <div id="main-modal">
                     <div id="main-modal-content">
-                      <span id="closeBtn">&times;</span>
                       <div id="display-para">
                       </div>
                     </div>

@@ -1,8 +1,9 @@
 import userReducer from '../../src/reducers/userReducer';
-import { LOGIN_USER, SIGNUP_USER, USER_ERROR } from '../../src/actions/types';
+import { LOGIN_USER, SIGNUP_USER, USER_ERROR, SET_STATUS } from '../../src/actions/types';
 
 let payload;
 const error = 'Request failed with status code 401';
+const status = true;
 
 describe('user reducer', () => {
   it('should add a login user', done => {
@@ -36,7 +37,16 @@ describe('user reducer', () => {
       undefined,
       { type: USER_ERROR, error }
     )).toEqual({ type: USER_ERROR, errors: error, user: {},
-      isAuthenticated: false});
+      isAuthenticated: false, loader: false});
+    done();
+  });
+
+  it('should set status', done => {
+    expect(userReducer(
+      undefined,
+      { type: SET_STATUS, status }
+    )).toEqual({ type: SET_STATUS, user: {},
+      isAuthenticated: false, loader: true});
     done();
   });
 });

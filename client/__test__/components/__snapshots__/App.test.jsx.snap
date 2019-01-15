@@ -57,7 +57,7 @@ ShallowWrapper {
         />
         <Route
           component={[Function]}
-          path="/confirm-order"
+          path="/menu/:id/confirm-order"
         />
         <Route
           component={[Function]}
@@ -115,7 +115,7 @@ ShallowWrapper {
           />,
           <Route
             component={[Function]}
-            path="/confirm-order"
+            path="/menu/:id/confirm-order"
           />,
           <Route
             component={[Function]}
@@ -244,7 +244,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/confirm-order",
+            "path": "/menu/:id/confirm-order",
           },
           "ref": null,
           "rendered": null,
@@ -325,7 +325,7 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
-            path="/confirm-order"
+            path="/menu/:id/confirm-order"
           />
           <Route
             component={[Function]}
@@ -383,7 +383,7 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
-              path="/confirm-order"
+              path="/menu/:id/confirm-order"
             />,
             <Route
               component={[Function]}
@@ -512,7 +512,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/confirm-order",
+              "path": "/menu/:id/confirm-order",
             },
             "ref": null,
             "rendered": null,
