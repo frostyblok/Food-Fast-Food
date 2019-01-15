@@ -7,12 +7,11 @@ import { loaderAction } from './userAction';
 const getAllMenuAction = (menu) => ({type: GET_MENU, menu});
 const getOneMenuAction = (menu) => ({type: GET_ONE_MENU, menu});
 export const menuError = (error) => ({ type: MENU_ERROR, error});
-const myToken = getStorage('token');
-const menu_id = getStorage('menu-id');
 
 
 export const getAllMenu = () => dispatch => {
   dispatch(loaderAction(true));
+  const myToken = getStorage('token');
   axios.defaults.headers.common['x-access-token'] = myToken;
   return axios.get(`${baseUrl}/api/v1/menu`)
   .then(({data: {allMenu}}) => {
@@ -28,10 +27,11 @@ export const getAllMenu = () => dispatch => {
 
 export const getOneMenu = () => dispatch => {
   dispatch(loaderAction(true));
+  const myToken = getStorage('token');
+  const menu_id = getStorage('menu-id');
   axios.defaults.headers.common['x-access-token'] = myToken;
   return axios.get(`${baseUrl}/api/v1/menu/${menu_id}`)
   .then(({data: {menu}}) => {
-    console.log(menu);
     dispatch(getOneMenuAction(menu));
     dispatch(loaderAction(false));
   })

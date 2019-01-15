@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>8/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">60% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>3/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>8/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -85,7 +85,51 @@
 40
 41
 42
-43</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -105,35 +149,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {getUserOrders} from '../../actions/orderAction';
 import SideBar from '../common/SideBar.jsx';
 import Main from '../common/Main.jsx';
+import FlexContainer from '../common/FlexContainer.jsx';
+import HistoryList from '../common/HistoryList.jsx';
+import Spinner from '../common/Spinner.jsx';
+import setStorage from '../../helpers/setStorage';
 &nbsp;
-class OrderHistory extends Component {
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+export class OrderHistory extends Component {
+  componentDidMount() {
+    const {getUserOrders} = this.props;
+    getUserOrders();
+  }
+
+  handleDelete = (id) =&gt; {
+    const {history} = this.props;
+    setStorage('order-id', id);
+    history.push(`/order/${id}/delete`);
+  }
+  render() {
+    const {loader, orders} = this.props;
+    return (
     &lt;section className="row-main"&gt;
       &lt;div className="container"&gt;
         &lt;SideBar /&gt;
@@ -141,41 +187,39 @@ class OrderHistory extends Component {
           &lt;div className="order-history-text"&gt;
             &lt;h4&gt;Order History&lt;/h4&gt;
           &lt;/div&gt;
-          &lt;div className="flex-container"&gt;
-            &lt;div className="order-cont"&gt;&lt;h4 className="flex-container-text-style"&gt;Order No&lt;/h4&gt;&lt;/div&gt;
-            &lt;div className="date-cont"&gt;&lt;h4 className="flex-container-text-style"&gt;Date&lt;br /&gt;
-            (dd-mm-yyyy)&lt;/h4&gt;&lt;/div&gt;
-            &lt;div className="food-hist-cont"&gt;&lt;h4 className="flex-container-text-style"&gt;Order Name&lt;/h4&gt;&lt;/div&gt;
-            &lt;div className="status-cont"&gt;&lt;h4 className="flex-container-text-style"&gt;Status&lt;/h4&gt;&lt;/div&gt;
-            &lt;div className="amount-cont"&gt;&lt;h4 className="flex-container-text-style"&gt;Amount&lt;/h4&gt;&lt;/div&gt;
-          &lt;/div&gt;
+          &lt;FlexContainer /&gt;
           &lt;ul id="flex-body" className="flex-body"&gt;
-            &lt;div id="main-modal"&gt;
-              &lt;div id="main-modal-content"&gt;
-                &lt;div id="display-para"&gt;
-                &lt;/div&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
+            {
+              !loader &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >orders </span>? (<span class="branch-0 cbranch-no" title="branch not covered" >orders.map(<span class="fstat-no" title="function not covered" >or</span>der =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >              return &lt;HistoryList</span>
+              key={order.id}
+               order={order}
+               onDelete={this.handleDelete}
+              /&gt;})) : &lt;Spinner /&gt;
+            }
           &lt;/ul&gt;
-          &lt;div id="order-history-modal"&gt;
-            &lt;div id="order-history-modal-content"&gt;
-              &lt;h3&gt;Could not load order history at this time&lt;/h3&gt;
-              &lt;a href="./orderHistory.html"&gt;Refresh&lt;/a&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
         &lt;/Main&gt;
       &lt;/div&gt;
     &lt;/section&gt;
     );
   }
 }
-export default OrderHistory;</pre></td></tr>
+&nbsp;
+const mapStateToProps = <span class="fstat-no" title="function not covered" >({</span>placedOrder}) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    loader: placedOrder.loader,
+    orders: placedOrder.userOrders.orders
+  }
+}
+&nbsp;
+export default connect(mapStateToProps, {getUserOrders})(OrderHistory);
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 15 2019 13:02:40 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 22 2019 00:31:31 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

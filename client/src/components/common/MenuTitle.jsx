@@ -17,13 +17,13 @@ const MenuTitle = ({menus, onOrder, loader}) => {
           </div>
           <ul id="available-meal-list" className="available-meal-list">
           {
-            loader ? <Spinner /> : menus.map(menu => {
-              return <MenuList 
+            !loader && menus ? (menus.map(menu => {
+              return <MenuList
                 key={menu.id}
                 meal={menu}
                 onOrder={onOrder}
               />
-            })
+            })) : <Spinner />
           }
           </ul>
       </div>

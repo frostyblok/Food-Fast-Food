@@ -11,13 +11,11 @@ export class OrderPage extends Component {
   }
 
   handleOrder = (id) => {
-    console.log('Order id >>>>>>>>>>>>>', id);
     const { history } = this.props;
     setStorage('menu-id', id);
     history.push(`/menu/${id}/confirm-order`);
   }
   render() {
-    console.log(this.props);
     const { menus, loader } = this.props.menuList;
     return (
       <section className="row-main">

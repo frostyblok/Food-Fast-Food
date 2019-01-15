@@ -17,9 +17,9 @@ const { idChecker } = checkParams;
 const { authentication, adminAuthentication } = Auth;
 
 router.get('/', authentication, adminAuthentication, getAllOrders);
-router.get('/:id', authentication, adminAuthentication, idChecker, getOneOrder);
+router.get('/:id', authentication, idChecker, getOneOrder);
 router.post('/', authentication, validateOrder, createOrder);
 router.put('/:id', authentication, adminAuthentication, idChecker, updateOneOrder);
-router.delete('/:id', authentication, adminAuthentication, idChecker, deleteOneOrder);
+router.delete('/:id', authentication, idChecker, deleteOneOrder);
 
 export default router;

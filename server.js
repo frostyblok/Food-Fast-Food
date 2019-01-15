@@ -20,7 +20,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//app.use(express.static(path.join(__dirname, './dist')));
+app.use(express.static(path.join(__dirname, './dist')));
+
 app.use('/api/v1/orders', OrderRouter);
 app.use('/api/v1/menu', MenuRouter);
 app.use('/api/v1/auth', UserRouter);

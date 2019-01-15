@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {getUserOrders} from '../../actions/orderAction';
 import SideBar from '../common/SideBar.jsx';
 import Main from '../common/Main.jsx';
+import FlexContainer from '../common/FlexContainer.jsx';
+import HistoryList from '../common/HistoryList.jsx';
+import Spinner from '../common/Spinner.jsx';
+import setStorage from '../../helpers/setStorage';
 
-class OrderHistory extends Component {
+export class OrderHistory extends Component {
+  componentDidMount() {
+    const {getUserOrders} = this.props;
+    getUserOrders();
+  }
+
+  handleDelete = (id) => {
+    const {history} = this.props;
+    setStorage('order-id', id);
+    history.push(`/order/${id}/delete`);
+  }
   render() {
+    const {loader, orders} = this.props;
     return (
     <section className="row-main">
       <div className="container">
@@ -12,32 +29,29 @@ class OrderHistory extends Component {
           <div className="order-history-text">
             <h4>Order History</h4>
           </div>
-          <div className="flex-container">
-            <div className="order-cont"><h4 className="flex-container-text-style">Order No</h4></div>
-            <div className="date-cont"><h4 className="flex-container-text-style">Date<br />
-            (dd-mm-yyyy)</h4></div>
-            <div className="food-hist-cont"><h4 className="flex-container-text-style">Order Name</h4></div>
-            <div className="status-cont"><h4 className="flex-container-text-style">Status</h4></div>
-            <div className="amount-cont"><h4 className="flex-container-text-style">Amount</h4></div>
-          </div>
+          <FlexContainer />
           <ul id="flex-body" className="flex-body">
-            <div id="main-modal">
-              <div id="main-modal-content">
-                <div id="display-para">
-                </div>
-              </div>
-            </div>
+            {
+              !loader && orders ? (orders.map(order => {
+              return <HistoryList
+              key={order.id}
+               order={order}
+               onDelete={this.handleDelete}
+              />})) : <Spinner />
+            }
           </ul>
-          <div id="order-history-modal">
-            <div id="order-history-modal-content">
-              <h3>Could not load order history at this time</h3>
-              <a href="./orderHistory.html">Refresh</a>
-            </div>
-          </div>
         </Main>
       </div>
     </section>
     );
   }
 }
-export default OrderHistory;
+
+const mapStateToProps = ({placedOrder}) => {
+  return {
+    loader: placedOrder.loader,
+    orders: placedOrder.userOrders.orders
+  }
+}
+
+export default connect(mapStateToProps, {getUserOrders})(OrderHistory);
