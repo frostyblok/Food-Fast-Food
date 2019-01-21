@@ -1,5 +1,5 @@
 const initState = {
-  menus: '',
+  menus: [],
   loader: false
 };
 
@@ -7,11 +7,13 @@ const menuReducer = (state = initState, action) => {
   switch (action.type) {
     case 'GET_MENU': 
       return {
+        ...state,
         type: action.type,
         menus: action.menu
       };
-    case 'GET_ONE_MENU': 
+    case 'GET_ONE_MENU':
     return {
+      ...state,
       type: action.type,
       menu: action.menu
     };

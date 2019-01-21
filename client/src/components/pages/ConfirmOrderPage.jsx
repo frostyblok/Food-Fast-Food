@@ -4,23 +4,27 @@ import OneOrder from './OneOrder.jsx';
 import { getOneMenu } from '../../actions/menuAction';
 import { placeOrder } from '../../actions/orderAction';
 import Spinner from '../common/Spinner.jsx';
+import { PLACE_ORDER } from '../../actions/types.js';
 
 export class ConfirmOrderPage extends Component {
 
   componentDidMount() {
     this.props.getOneMenu();
   }
+  componentDidUpdate() {
+    const { placedOrder, history } = this.props;
+    if(placedOrder.type === PLACE_ORDER) {
+      history.push('/order-history');
+    }
+  }
 
   onConfirmOrder = (food_name, food_price, quantity) => {
     const {placeOrder} = this.props;
     const payload = {food_name, food_price, quantity};
-    console.log('My payload>>>>>>', payload);
     placeOrder(payload);
   }
   render() {
-    const {menu} = this.props.menuList;
-    console.log('This is menu>>>>>>>>>>', this.props.menuList);
-    console.log('This is the real menu>>>>>>>', menu);
+    const {menu} = this.props;
     return (
       <div>
         {!menu ? <Spinner /> : (<section>
@@ -29,7 +33,7 @@ export class ConfirmOrderPage extends Component {
             <div id="main-modal">
               <div id="main-modal-content">
                 <div id="display-para">
-                  <OneOrder 
+                  <OneOrder
                     menu={menu}
                     onConfirm={this.onConfirmOrder}
                   />
@@ -40,15 +44,15 @@ export class ConfirmOrderPage extends Component {
         </div>
       </section>)}
       </div>
-      
-    
+
+
      );
   }
 }
 
 const mapStateToProps = ({menuList, placedOrder}) => {
   return {
-    menuList,
+    menu: menuList.menu,
     placedOrder
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { LoginPage } from '../../../src/components/pages/LoginPage.jsx';
 
 const mockStore = configureStore([thunk]);
@@ -12,7 +12,8 @@ const setup = () => {
     onChange: jest.fn(),
     onSubmit: jest.fn(),
     currentUser: {},
-    signinUser: jest.fn()
+    signinUser: jest.fn(),
+    history: ['/']
   }
   return shallow(<LoginPage {...props} />);
 }

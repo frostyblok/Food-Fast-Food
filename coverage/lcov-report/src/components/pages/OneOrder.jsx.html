@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>10/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -94,21 +94,7 @@
 49
 50
 51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+52</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,20 +102,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,23 +130,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,60 +152,46 @@ export class OneOrder extends Component {
     foodQuantity: ''
   }
 &nbsp;
-  handleChange = <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+  handleChange = (event) =&gt; {
+    this.setState({
       [event.target.name]: event.target.value
     });
   }
 &nbsp;
-  handleConfirm = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-    const { menu: {menu_name, menu_price}, onConfirm} = <span class="cstat-no" title="statement not covered" >this.props;</span>
-    const {foodQuantity} = <span class="cstat-no" title="statement not covered" >this.state;</span>
-    const quantity = <span class="cstat-no" title="statement not covered" >parseInt(foodQuantity, 10);</span>
-<span class="cstat-no" title="statement not covered" >    onConfirm(menu_name, menu_price, quantity);</span>
+  handleConfirm = () =&gt; {
+    const { menu: {menu_name, menu_price}, onConfirm} = this.props;
+    const {foodQuantity} = this.state;
+    const quantity = parseInt(foodQuantity, 10);
+    const price = menu_price * quantity;
+    onConfirm(menu_name, price, quantity);
   }
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-    const {menu} = <span class="cstat-no" title="statement not covered" >this.props;</span>
-<span class="cstat-no" title="statement not covered" >    return ( </span>
-      &lt;div&gt;
-        &lt;h2 id="confirm-card-text" className="confirm-order-card-text"&gt;Confirm Order&lt;/h2&gt;
+  render() {
+    const {menu} = this.props;
+    const numbers = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+    return &lt;div&gt;
+        &lt;h2 id="confirm-card-text" className="confirm-order-card-text"&gt;
+          Confirm Order
+        &lt;/h2&gt;
         &lt;div id="confirm-order-container" className="confirm-order-container"&gt;
           &lt;div className="confirm-order-img"&gt;
             &lt;h3 className="confirm-order-food-name"&gt;{menu.menu_name}&lt;/h3&gt;
-            &lt;img id="data-menu-image" src={menu.menu_image}/&gt;
+            &lt;img id="data-menu-image" src={menu.menu_image} /&gt;
           &lt;/div&gt;
           &lt;div className="confirm-order-select"&gt;
             &lt;h4&gt;Quantity:&lt;/h4&gt;
             &lt;select onChange={this.handleChange} name="foodQuantity" className="slect-style" id="slect-style-1"&gt;
-              &lt;option&gt;0&lt;/option&gt;
-              &lt;option&gt;1&lt;/option&gt;
-              &lt;option&gt;2&lt;/option&gt;
-              &lt;option&gt;3&lt;/option&gt;
-              &lt;option&gt;4&lt;/option&gt;
-              &lt;option&gt;5&lt;/option&gt;
-              &lt;option&gt;6&lt;/option&gt;
-              &lt;option&gt;7&lt;/option&gt;
-              &lt;option&gt;8&lt;/option&gt;
-              &lt;option&gt;9&lt;/option&gt;
-              &lt;option&gt;10&lt;/option&gt;
-              &lt;option&gt;11&lt;/option&gt;
-              &lt;option&gt;12&lt;/option&gt;
-              &lt;option&gt;13&lt;/option&gt;
-              &lt;option&gt;14&lt;/option&gt;
-              &lt;option&gt;15&lt;/option&gt;
-              &lt;option&gt;16&lt;/option&gt;
-              &lt;option&gt;17&lt;/option&gt;
-              &lt;option&gt;18&lt;/option&gt;
-              &lt;option&gt;19&lt;/option&gt;
-              &lt;option&gt;20&lt;/option&gt;
+              {numbers.map(number =&gt; {
+                return &lt;option key={number}&gt;{number}&lt;/option&gt;;
+              })}
             &lt;/select&gt;
           &lt;/div&gt;
           &lt;div className="complete-order-link"&gt;
-            &lt;button onClick={this.handleConfirm} id="user-confirm-order"&gt;Complete Order&lt;/button&gt;
+            &lt;button onClick={this.handleConfirm} className="complete-order-green" id="user-confirm-order"&gt;
+              Complete Order
+            &lt;/button&gt;
           &lt;/div&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
-    );
+      &lt;/div&gt;;
   }
 }
 &nbsp;
@@ -244,7 +202,7 @@ export default OneOrder;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 15 2019 13:02:40 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 22 2019 00:31:31 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

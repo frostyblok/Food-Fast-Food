@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MenuForm from '../forms/MenuForm.jsx';
+import MenuForm from '../../client/src/components/forms/MenuForm.jsx';
 
-class AddFood extends Component {
+class EditFood extends Component {
   render() {
     return (
       <section className="row-main">
@@ -18,7 +18,7 @@ class AddFood extends Component {
           <div className="col-9 main-interface">
             <div className="main-interface-content">
               <div className="order-history-text">
-                <h4>Add New Food</h4>
+                <h4>Edit Food Item</h4>
                 <div className="add-new-food">
                   <div id="complete-modal">
                     <div id="complete-modal-content">
@@ -50,4 +50,4 @@ class AddFood extends Component {
      );
   }
 }
-export default AddFood;
+export default EditFood;

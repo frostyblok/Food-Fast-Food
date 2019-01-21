@@ -4,10 +4,10 @@ const LoginForm = ({onChange, onSubmit}) => {
   return (
     <form className="myform-signup" id="myform-login" onSubmit={(event) => onSubmit(event)}>
       <div className="input-field">
-        <input type="text" name="email" placeholder="Email" id="email" onChange={() => onChange(event)}  required />
+        <input type="text" name="email" placeholder="Email" id="email" onChange={(event) => onChange(event)}  required />
       </div>
       <div className="input-field">
-        <input type="password" name="password" placeholder="*******" id="password" onChange={() => onChange(event)} required />
+        <input type="password" name="password" placeholder="*******" id="password" onChange={(event) => onChange(event)} required />
       </div>
       <div className="forgot-password">
         <a href="#">Forgot Password?</a>

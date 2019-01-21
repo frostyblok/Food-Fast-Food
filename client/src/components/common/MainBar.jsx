@@ -9,7 +9,7 @@ const MainBar = ({menus, onOrder, loader}) => {
   return ( 
     <Main>
       <SearchFood />
-      <MenuTitle 
+      <MenuTitle
         menus={menus}
         onOrder={onOrder}
         loader={loader}

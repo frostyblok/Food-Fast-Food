@@ -166,10 +166,10 @@ header {
 
 .flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
 .flex-body li {display: flex; flex-wrap: nowrap; padding: 10px 0px;}
-.order-disp {width: 100px;}
+.order-disp {width: 85px;}
 .order-disp a {color: #b5335d;}
 .order-name-disp {width: 140px;}
-.date-disp {width: 140px;}
+.date-disp {width: 161px;}
 .status-disp {width: 130px;}
 .amount-disp {width: 101px;}
 
@@ -572,7 +572,17 @@ header {
 .confirm-order-select {margin: 18px 0px;}
 .confirm-order-select h4 {color: #bf6565; margin: 0px}
 .complete-order-link {margin-bottom: 10px;}
-.complete-order-link button {
+.complete-order-red {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #c34343;
+    color: white;
+    padding: 7px 5px;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+.complete-order-green {
     border: none;
     outline: none;
     cursor: pointer;
@@ -620,6 +630,8 @@ footer {
     width: 100%;
     background: #c53f41;
     color: #dadaca;
+    position: fixed;
+    bottom: 0px;
 }
 .adjust-footer {position: absolute; bottom: 0;}
 .copyright {text-align: center; font-size: 16px;}
@@ -651,3 +663,5 @@ footer {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
 }
+
+.myCursor {cursor: pointer;}

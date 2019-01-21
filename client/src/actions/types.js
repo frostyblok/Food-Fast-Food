@@ -6,4 +6,9 @@ export const GET_ONE_MENU = 'GET_ONE_MENU';
 export const SET_STATUS = 'SET_STATUS';
 export const MENU_ERROR = 'MENU_ERROR';
 export const PLACE_ORDER = 'PLACE_ORDER';
-export const PLACE_ORDER_ERROR = 'PLACE_ORDER_ERROR';
+export const ORDER_ERROR = 'ORDER_ERROR';
+export const GET_USER_ORDERS = 'GET_USER_ORDERS';
+export const GET_ONE_ORDER = 'GET_ONE_ORDER';
+export const DELETE_ORDER = 'DELETE_ORDER';
+
+

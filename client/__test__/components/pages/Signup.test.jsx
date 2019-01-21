@@ -4,8 +4,6 @@ import thunk from 'redux-thunk';
 import { shallow } from 'enzyme';
 import { SignUpPage } from '../../../src/components/pages/SignupPage.jsx';
 
-const mockStore = configureStore([thunk]);
-
 let props;
 const setup = () => {
   props = {
