@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1548200572029" clover="3.2.0">
-  <project timestamp="1548200572029" name="All files">
+<coverage generated="1548204619912" clover="3.2.0">
+  <project timestamp="1548204619913" name="All files">
     <metrics statements="277" coveredstatements="220" conditionals="43" coveredconditionals="34" methods="117" coveredmethods="90" elements="437" coveredelements="344" complexity="0" loc="277" ncloc="277" packages="8" files="39" classes="39">
       <package name="src">
         <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="app.js" path="/Users/oluwakunlefakorede/Desktop/FrostyFood/Food-Fast-Food/client/src/app.js">
+        <file name="App.js" path="/Users/oluwakunlefakorede/Desktop/FrostyFood/Food-Fast-Food/client/src/App.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="19" count="1" type="stmt"/>
         </file>
