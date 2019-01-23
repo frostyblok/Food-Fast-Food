@@ -7,11 +7,13 @@ let props;
 const setup = () => {
   props = {
     order: { order: {
+      id: 1,
       food_name: '',
       food_image: '',
       }
     },
-    onConfirm: jest.fn()
+    onConfirm: jest.fn(),
+    menus: [{id:1}]
 
   }
   return shallow(<OneOrderDelete {...props} />);

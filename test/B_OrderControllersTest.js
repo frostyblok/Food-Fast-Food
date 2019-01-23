@@ -317,18 +317,6 @@ describe('Orders', () => {
       });
   });
 
-  it('it should not fetch a specific order for an unknown admin', (done) => {
-    chai.request(app)
-      .get(`/api/v1/orders/${id}`)
-      .set('x-access-token', authToken)
-      .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('You are not allowed to access the route');
-        expect(res.status).to.equal(403);
-        done();
-      });
-  });
-
   it('it should not fetch a specific order that does not exit', (done) => {
     // HTTP GET -> GET A SPECIFIC ORDER;
     chai.request(app)

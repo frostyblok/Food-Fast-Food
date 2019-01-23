@@ -261,24 +261,6 @@ describe('Menu', () => {
       });
   });
 
-  it('it should not allow menu with too long image url', (done) => {
-    const newOrder = {
-      menu_name: 'Food',
-      menu_price: '335',
-      menu_image: 'dfdfjdfkdfjdfjdfkljdfkjdfkdjf.jpg',
-    };
-    chai.request(app)
-      .post('/api/v1/menu')
-      .set('x-access-token', adminAuth)
-      .send(newOrder)
-      .end((err, res) => {
-        expect(res.body).to.have.property('message')
-          .eql('Invalid image url');
-        expect(res.status).to.equal(400);
-        done();
-      });
-  });
-
   it('it should not allow menu with invalid menu price', (done) => {
     const newOrder = {
       menu_name: 'Moi Moi',

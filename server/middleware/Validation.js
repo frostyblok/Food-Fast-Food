@@ -201,11 +201,5 @@ export const validateMenu = (req, res, next) => {
       message: 'The price has exceeded the order\'s valuation',
     });
   }
-  if (menu_image.length > 300) {
-    return res.status(400).send({
-      status: 'Error',
-      message: 'Invalid image url',
-    });
-  }
   return next();
 };

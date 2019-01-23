@@ -6,7 +6,7 @@ const wrapper = shallow(<FlexContainer />);
 
 describe('one order component', () => {
   it('should render component', () => {
-    expect(wrapper.find('div').length).toBe(6);
-    expect(wrapper.find('h4').length).toBe(5);
+    expect(wrapper.find('div').length).toBe(7);
+    expect(wrapper.find('h4').length).toBe(6);
   });
 });
