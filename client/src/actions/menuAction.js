@@ -15,7 +15,6 @@ export const getAllMenu = () => dispatch => {
   axios.defaults.headers.common['x-access-token'] = myToken;
   return axios.get(`${baseUrl}/api/v1/menu`)
   .then(({data: {allMenu}}) => {
-    console.log('All menu>>>>>>', allMenu);
     dispatch(getAllMenuAction(allMenu));
     dispatch(loaderAction(false));
   })

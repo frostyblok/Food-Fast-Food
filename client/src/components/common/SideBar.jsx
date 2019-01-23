@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const SideBar = () => {
   return ( 
@@ -6,8 +7,8 @@ const SideBar = () => {
       <div className="sidebar-content">
         <h4 className="categories-style">Categories</h4>
         <ul className="menu-history">
-          <li><a href="#">Menu</a></li>
-          <li><a id="order-history-fetch" href="#">Order History</a></li>
+          <li><Link to="order">Menu</Link></li>
+          <li><Link id="order-history-fetch" to="/order-history">Order History</Link></li>
         </ul>
       </div>
     </div>

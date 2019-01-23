@@ -24,7 +24,7 @@ export class DeleteOrder extends Component {
     }
   }
   render() {
-    const {oneOrder} = this.props;
+    const {oneOrder, menus} = this.props;
     return (
       <div>
       {!oneOrder ? <Spinner /> : (<section>
@@ -36,6 +36,7 @@ export class DeleteOrder extends Component {
                 <OneOrderDelete
                   order={oneOrder}
                   onConfirm={this.handleDelete}
+                  menus={menus}
                 />
               </div>
             </div>
@@ -48,10 +49,11 @@ export class DeleteOrder extends Component {
   }
 }
 
-const mapStateToProps = ({placedOrder}) => {
+const mapStateToProps = ({placedOrder, menuList}) => {
   return {
     placedOrder,
-    oneOrder: placedOrder.oneOrder
+    oneOrder: placedOrder.oneOrder,
+    menus: menuList.menus
   }
 }
 

@@ -161,7 +161,7 @@ header {
 .order-cont {width: 100px !important;}
 .date-cont {width: 140px;}
 .food-hist-cont {width: 140px;}
-.status-cont {width: 130px;}
+.status-cont {width: 100px;}
 .amount-cont {width: 101px;}
 
 .flex-body {list-style: none; padding: 0px; color: #b5335d; margin: 0px;}
@@ -170,8 +170,8 @@ header {
 .order-disp a {color: #b5335d;}
 .order-name-disp {width: 140px;}
 .date-disp {width: 161px;}
-.status-disp {width: 130px;}
-.amount-disp {width: 101px;}
+.status-disp {width: 107px;}
+.amount-disp {width: 108px;}
 
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 const SignupForm = ({onChange, onSubmit}) => {
   return (
@@ -19,7 +20,7 @@ const SignupForm = ({onChange, onSubmit}) => {
         <input type="submit" name="login" value="SIGN UP" />
       </div>
       <div id="signup-link">
-        <p>Already have an account? <a href="login.html">Login Here</a></p>
+        <p>Already have an account? <Link to="/login">Login Here</Link></p>
       </div>
     </form>
   )

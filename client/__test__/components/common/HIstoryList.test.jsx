@@ -16,7 +16,7 @@ describe('History list component', () => {
   const wrapper = setup();
   const action = wrapper.instance();
   it('should render component', () => {
-    expect(wrapper.find('div').length).toBe(5);
+    expect(wrapper.find('div').length).toBe(6);
     expect(wrapper.find('li').length).toBe(1);
   });
 });
