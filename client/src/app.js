@@ -17,7 +17,7 @@ import NavBar from './components/common/NavBar.jsx';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter> 
         <div>
           <NavBar />
           <Switch>
@@ -29,7 +29,7 @@ class App extends Component {
             <Route path="/order-history" component={OrderHistory} />
             <Route path="/menu/:id/confirm-order" component={ConfirmOrderPage} />
             <Route path="/order/:id/delete" component={DeleteOrder} />
-            <Route path="/error-page" component={ErrorPage} />
+            <Route path="/error-page" component={ErrorPage} /> 
           </Switch>
           <Footer />
         </div>
