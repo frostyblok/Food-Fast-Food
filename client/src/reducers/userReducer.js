@@ -32,6 +32,12 @@ const userReuducer = (state = initState, action) => {
       type: action.type,
       loader: action.status
     };
+    case 'LOGOUT':
+    return {
+      ...state,
+      type: action.type,
+      isAuthenticated: false
+    }
     default: 
      return state;
   }

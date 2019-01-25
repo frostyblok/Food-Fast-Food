@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import { LOGIN_USER, SIGNUP_USER, USER_ERROR, SET_STATUS } from '../actions/types';
+import { LOGIN_USER, SIGNUP_USER, USER_ERROR, SET_STATUS, LOGOUT } from '../actions/types';
 import setStorage from '../helpers/setStorage';
 import {baseUrl} from '../const';
 
@@ -9,6 +9,7 @@ const signinUserAction = (payload) => ({ type: LOGIN_USER, payload });
 const signupUserAction = (payload) => ({ type: SIGNUP_USER, payload });
 export const loaderAction = (status) => ({type: SET_STATUS, status})
 export const authError = (error) => ({ type: USER_ERROR, error});
+export const logoutAction = () => ({ type: LOGOUT });;
 
 export const signinUser = (user)  => dispatch => {
   dispatch(loaderAction(true));
@@ -38,4 +39,8 @@ export const signupUser = (user) => dispatch => {
     dispatch(authError(message));
     dispatch(loaderAction(false));
   });
+}
+
+export const logout = () => dispatch => {
+  dispatch(logoutAction());
 }

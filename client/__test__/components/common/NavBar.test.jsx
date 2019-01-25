@@ -6,7 +6,8 @@ let props;
 
 const setup = () => {
   props = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    logout: jest.fn()
   }
   return shallow(<NavBar {...props} />);
 }
