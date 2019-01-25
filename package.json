@@ -10,6 +10,7 @@
   "scripts": {
     "start-react": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
+    "heroku-postbuild": "npm run build",
     "test": "npm run migrate && mocha --exit --timeout 10000 --compilers js:@babel/register ./test/*.js",
     "lint": "eslint",
     "dev": "nodemon --exec babel-node server.js",
@@ -91,7 +92,8 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "<rootDir>/client/src/**/*.{js,jsx}"
+      "<rootDir>/client/src/**/*.{js,jsx}",
+      "!<rootDir>/client/src/store/*.{js,jsx}"
     ],
     "bail": false,
     "setupFiles": [
