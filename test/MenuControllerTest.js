@@ -85,7 +85,7 @@ describe('Menu', () => {
     const newMenu = {
       menu_name: 'Jollof Rice',
       menu_price: 2600,
-      menu_image: 'rice.jpg',
+      menu_image: 'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547591886/jrice.jpg',
     };
     chai.request(app)
       .post('/api/v1/menu')
@@ -101,9 +101,9 @@ describe('Menu', () => {
 
   it('it should add a new menu', (done) => {
     const newMenu = {
-      menu_name: 'plantain Chips',
+      menu_name: 'Plantain Chips',
       menu_price: 600,
-      menu_image: 'chips.jpg',
+      menu_image: 'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547592160/Plantain_Chips_2.jpg',
     };
     chai.request(app)
       .post('/api/v1/menu')
@@ -121,7 +121,7 @@ describe('Menu', () => {
     const newMenu = {
       menu_name: 'Fried Rice',
       menu_price: 4000,
-      menu_image: 'friedr.jpg',
+      menu_image: 'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547591900/frice.jpg',
     };
     chai.request(app)
       .post('/api/v1/menu')
@@ -139,7 +139,7 @@ describe('Menu', () => {
     const newMenu = {
       menu_name: 'Beans Bread',
       menu_price: 1000,
-      menu_image: 'beansbread.jpg',
+      menu_image: 'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547592221/crockpot-beans-500x500-kalynskitchen.jpg',
     };
     chai.request(app)
       .post('/api/v1/menu')
