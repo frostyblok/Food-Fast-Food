@@ -6,5 +6,5 @@ services:
   - postgresql
 env:
 - SECRET_KEY=839745FJKSDJKPLDFJFOIWRSFD ADMIN_PASSWORD=andela2018 USER_PASSWORD=sarriball
-script: npm test
+script: npm run jest
 after_success: npm run coveralls
