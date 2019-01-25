@@ -88,7 +88,7 @@ const createTable = () => {
   VALUES (
     'Fried Plantain',
     2000,
-    'friedplantain.jpg'
+    'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547591900/frice.jpg'
   );
 
   INSERT INTO menu (
@@ -99,7 +99,7 @@ const createTable = () => {
   VALUES (
     'chopped Fish',
     1500,
-    'chopfish.jpg'
+    'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547593537/images.jpg'
   );
 
   INSERT INTO menu (
@@ -110,7 +110,7 @@ const createTable = () => {
   VALUES (
     'Potato Beans',
     2500,
-    'pobeans.jpg'
+    'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547592221/crockpot-beans-500x500-kalynskitchen.jpg'
   );
 
   INSERT INTO menu (
@@ -121,7 +121,7 @@ const createTable = () => {
   VALUES (
     'Ofada Rice',
     3500,
-    'ofdarice.jpg'
+    'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547592113/ofada.jpg'
   );
 
   INSERT INTO menu (
@@ -132,7 +132,7 @@ const createTable = () => {
   VALUES (
     'Bannana Meal',
     4500,
-    'bameals.jpg'
+    'https://res.cloudinary.com/dotmiu2lg/image/upload/v1547592282/Peanut-Butter-Banana-Chia-Oatmeal-6.jpg'
   );
   `;
   clientString.query(query)
