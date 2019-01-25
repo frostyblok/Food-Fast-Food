@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {logout} from '../../actions/userAction';
 
 export class NavBar extends Component {
 
   onLogout = () => {
+    const {logout} = this.props;
     localStorage.clear();
+    logout();
   }
   render() {
     const {isAuthenticated} = this.props;
@@ -38,4 +41,4 @@ const mapStateToProps = ({currentUser}) => {
   }
 }
 
-export default connect(mapStateToProps, {})(NavBar);
+export default connect(mapStateToProps, {logout})(NavBar);

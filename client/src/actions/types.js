@@ -10,5 +10,4 @@ export const ORDER_ERROR = 'ORDER_ERROR';
 export const GET_USER_ORDERS = 'GET_USER_ORDERS';
 export const GET_ONE_ORDER = 'GET_ONE_ORDER';
 export const DELETE_ORDER = 'DELETE_ORDER';
-
-
+export const LOGOUT = 'LOGOUT';

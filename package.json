@@ -15,8 +15,8 @@
     "dev": "nodemon --exec babel-node server.js",
     "start": "npm run migrate && babel-node server.js",
     "migrate": "npx babel-node server/models/tables.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
+    "coverage": "npm run jest -- --coverage",
+    "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "jest": "jest"
   },
   "repository": {
