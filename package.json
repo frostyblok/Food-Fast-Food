@@ -92,7 +92,8 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "<rootDir>/client/src/**/*.{js,jsx}"
+      "<rootDir>/client/src/**/*.{js,jsx}",
+      "!<rootDir>/client/src/store/*.{js,jsx}"
     ],
     "bail": false,
     "setupFiles": [
