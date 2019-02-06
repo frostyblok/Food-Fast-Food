@@ -29,7 +29,7 @@ const Secure = {
     }
     return res.status(403).json({
       status: 'Error',
-      message: 'You are not allowed to view this page',
+      message: 'You are not allowed to view this pagee',
     });
   },
   adminAuthentication(req, res, next) {

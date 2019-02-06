@@ -1,5 +1,6 @@
 import axios from 'axios';
 import toastr from 'toastr';
+import jwtDecode from 'jwt-decode';
 import { baseUrl } from '../const';
 import { PLACE_ORDER, ORDER_ERROR, GET_USER_ORDERS, GET_ONE_ORDER, DELETE_ORDER } from './types';
 import { loaderAction } from './userAction';
@@ -32,8 +33,10 @@ export const placeOrder = (order) => dispatch => {
 export const getUserOrders = () => dispatch => {
   dispatch(loaderAction(true));
   const myToken = getStorage('token');
+  const payload = jwtDecode(myToken);
+  const user_id = payload.id;
   axios.defaults.headers.common['x-access-token'] = myToken;
-  return axios.get(`${baseUrl}/api/v1/users/2/orders`)
+  return axios.get(`${baseUrl}/api/v1/users/${user_id}/orders`)
   .then(({data}) => {
     dispatch(getUserOrdersAction(data));
     dispatch(loaderAction(false));
