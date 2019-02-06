@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1548591215481" clover="3.2.0">
-  <project timestamp="1548591215481" name="All files">
-    <metrics statements="278" coveredstatements="226" conditionals="44" coveredconditionals="35" methods="120" coveredmethods="90" elements="442" coveredelements="351" complexity="0" loc="278" ncloc="278" packages="7" files="38" classes="38">
+<coverage generated="1549457014807" clover="3.2.0">
+  <project timestamp="1549457014807" name="All files">
+    <metrics statements="280" coveredstatements="228" conditionals="44" coveredconditionals="35" methods="120" coveredmethods="90" elements="444" coveredelements="353" complexity="0" loc="280" ncloc="280" packages="7" files="38" classes="38">
       <package name="src">
         <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="App.js" path="/Users/oluwakunlefakorede/Desktop/FrostyFood/Food-Fast-Food/client/src/App.js">
@@ -23,7 +23,7 @@
         </file>
       </package>
       <package name="src.actions">
-        <metrics statements="105" coveredstatements="82" conditionals="0" coveredconditionals="0" methods="47" coveredmethods="28"/>
+        <metrics statements="107" coveredstatements="84" conditionals="0" coveredconditionals="0" methods="47" coveredmethods="28"/>
         <file name="menuAction.js" path="/Users/oluwakunlefakorede/Desktop/FrostyFood/Food-Fast-Food/client/src/actions/menuAction.js">
           <metrics statements="22" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="8"/>
           <line num="7" count="4" type="stmt"/>
@@ -114,32 +114,34 @@
           <line num="13" count="14" type="stmt"/>
         </file>
         <file name="userAction.js" path="/Users/oluwakunlefakorede/Desktop/FrostyFood/Food-Fast-Food/client/src/actions/userAction.js">
-          <metrics statements="25" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="12"/>
-          <line num="8" count="11" type="stmt"/>
+          <metrics statements="27" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="12"/>
           <line num="9" count="11" type="stmt"/>
-          <line num="10" count="22" type="stmt"/>
-          <line num="11" count="11" type="stmt"/>
+          <line num="10" count="11" type="stmt"/>
+          <line num="11" count="22" type="stmt"/>
           <line num="12" count="11" type="stmt"/>
-          <line num="14" count="11" type="stmt"/>
-          <line num="15" count="2" type="stmt"/>
+          <line num="13" count="11" type="stmt"/>
+          <line num="15" count="11" type="stmt"/>
           <line num="16" count="2" type="stmt"/>
-          <line num="18" count="1" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
           <line num="19" count="1" type="stmt"/>
           <line num="20" count="1" type="stmt"/>
           <line num="21" count="1" type="stmt"/>
-          <line num="24" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
           <line num="25" count="1" type="stmt"/>
-          <line num="29" count="11" type="stmt"/>
-          <line num="30" count="2" type="stmt"/>
-          <line num="31" count="2" type="stmt"/>
-          <line num="33" count="1" type="stmt"/>
-          <line num="34" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="11" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="33" count="2" type="stmt"/>
           <line num="35" count="1" type="stmt"/>
           <line num="36" count="1" type="stmt"/>
-          <line num="39" count="1" type="stmt"/>
-          <line num="40" count="1" type="stmt"/>
-          <line num="44" count="11" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="47" count="11" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
         </file>
       </package>
       <package name="src.components.common">
@@ -305,7 +307,7 @@
           <line num="22" count="2" type="stmt"/>
           <line num="23" count="2" type="stmt"/>
           <line num="24" count="2" type="stmt"/>
-          <line num="37" count="42" type="stmt"/>
+          <line num="37" count="40" type="stmt"/>
         </file>
         <file name="OneOrderDelete.jsx" path="/Users/oluwakunlefakorede/Desktop/FrostyFood/Food-Fast-Food/client/src/components/pages/OneOrderDelete.jsx">
           <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>

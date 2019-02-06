@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export class OneOrder extends Component {
   state = {
-    foodQuantity: ''
+    foodQuantity: '1'
   }
 
   handleChange = (event) => {
@@ -20,7 +20,7 @@ export class OneOrder extends Component {
   }
   render() {
     const {menu} = this.props;
-    const numbers = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+    const numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
     return <div>
         <h2 id="confirm-card-text" className="confirm-order-card-text">
           Confirm Order

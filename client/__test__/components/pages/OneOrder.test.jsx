@@ -20,7 +20,7 @@ describe('one order component', () => {
     expect(wrapper.find('h2').length).toBe(1);
     expect(wrapper.find('h3').length).toBe(1);
     expect(wrapper.find('select').length).toBe(1);
-    expect(wrapper.find('option').length).toBe(21);
+    expect(wrapper.find('option').length).toBe(20);
   });
 
   it('should set food quantity in the state when the value changes', () => {
