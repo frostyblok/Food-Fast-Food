@@ -51,38 +51,6 @@ describe('Order action test', () => {
     });
   });
 
-  it('should get users list of orders', () => {
-    moxios.stubRequest(`${baseUrl}/api/v1/order`, {
-      status: 200,
-      response: { userOrders: [order] }
-    });
-    const expectedAction = [
-      {type: SET_STATUS, status: true},
-      {type: GET_USER_ORDERS, order: {order}},
-      {type: SET_STATUS, status: false}
-    ];
-    const store = mockStore();
-    store.dispatch(getUserOrders()).then(() => {
-      expect(store.getActions()).toEqual(expectedAction);
-    });
-  });
-
-  it('should not get users list of orders', () => {
-    moxios.stubRequest(`${baseUrl}/api/v1/order`, {
-      status: 401,
-      response: { error: 'Request failed with status code 401'}
-    });
-    const expectedAction = [
-      {type: SET_STATUS, status: true},
-      {type: ORDER_ERROR, error: 'Request failed with status code 401'},
-      {type: SET_STATUS, status: false}
-    ];
-    const store = mockStore();
-    store.dispatch(getUserOrders()).then(() => {
-      expect(store.getActions()).toEqual(expectedAction);
-    });
-  });
-
   it('should get one order', () => {
     moxios.stubRequest(`${baseUrl}/api/v1/order/${order_id}`, {
       status: 200,

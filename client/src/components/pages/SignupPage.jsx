@@ -16,7 +16,7 @@ export class SignUpPage extends Component {
   componentDidUpdate() {
     const { currentUser, history } = this.props;
     if (currentUser.type === SIGNUP_USER) {
-      history.push('/');
+      history.push('/order');
     }
   }
 
